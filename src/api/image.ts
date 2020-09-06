@@ -2,11 +2,6 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-  // get all images
-  res.json({});
-});
-
 router.get('/:id', async (req, res) => {
   // get single image
   res.json({});
