@@ -2,33 +2,28 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-  // get all shoes
+router.get('/:shoeID', async (req, res) => {
+  // get reviews for a shoe
   res.json({});
 });
 
-router.get('/:id', async (req, res) => {
-  // get single shoe
-  res.json({});
-});
-
-router.post('/', async (req, res) => {
-  // add a new shoe
+router.post('/:shoeID', async (req, res) => {
+  // add a new review
   res.json({});
 });
 
 router.put('/:id', async (req, res) => {
-  // update the entire content of a shoe
+  // update the entire content of a review
   res.json({});
 });
 
 router.patch('/:id', async (req, res) => {
-  // update a single or multiple table of a shoe
+  // update a single or multiple table of a review
   res.json({});
 });
 
 router.delete('/:id', async (req, res) => {
-  // remove a shoe
+  // remove a review
   res.json({});
 });
 
