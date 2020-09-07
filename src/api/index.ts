@@ -1,5 +1,7 @@
 import express from 'express';
 
+import indexHandlers from './indexHandlers';
+
 import cart from './cart';
 import customer from './customer';
 import image from './image';
@@ -10,19 +12,7 @@ import wishlist from './wishlist';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.json({
-    endpoints: {
-      cart: '/cart',
-      customer: '/customer',
-      image: '/image',
-      order: '/order',
-      review: '/review',
-      shoe: '/shoe',
-      wishlist: '/wishlist',
-    },
-  });
-});
+router.use('/', indexHandlers);
 
 router.use('/cart', cart);
 router.use('/customer', customer);

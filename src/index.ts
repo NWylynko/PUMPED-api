@@ -3,6 +3,7 @@ import 'source-map-support/register';
 
 import chalk from 'chalk';
 import net from 'net';
+import { promisify } from 'util';
 import { StartingTime, PUMPED } from './startInfo';
 import db from './db';
 import app from './app';
@@ -38,13 +39,31 @@ const handler = async () => {
   const MSSinceStart = new Date().getTime() - StartingTime.getTime();
   console.log('alive: \t', timeConversion(MSSinceStart));
 
-  await db.close();
-  console.log('DB: \t', chalk.red('closed'));
+  const close = [{
+    name: 'DB',
+    closer: db.close,
+  }, {
+    name: 'Port',
+    closer: promisify(server.close),
+  }];
 
-  server.close();
-  console.log('Port: \t', chalk.red('closed'));
+  let exitCode = 0;
 
-  process.exit(0);
+  const closers = close.map(async ({ name, closer }) => {
+    try {
+      await closer();
+      console.log(`${name}: \t`, chalk.red('closed'));
+    } catch (error) {
+      console.error(`${name}: \t`, chalk.red(error.message));
+      exitCode += 1;
+    }
+  });
+
+  await Promise.all(closers);
+
+  console.log('GoodBye 👋');
+
+  process.exit(exitCode);
 };
 
 process.on('SIGINT', handler);

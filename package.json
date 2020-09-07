@@ -21,6 +21,7 @@
     "helmet": "^4.1.0",
     "morgan": "^1.10.0",
     "source-map-support": "^0.5.19",
+    "sql-template-tag": "^4.0.0",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
