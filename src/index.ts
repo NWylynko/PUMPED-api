@@ -43,7 +43,9 @@ const stopExpressApi: () => Promise<number> = () => new Promise((resolve) => {
   });
 });
 
-const exitHandler = async () => {
+// eslint-disable-next-line no-undef
+const exitHandler = async (event: NodeJS.Signals) => {
+  console.log(event);
   console.log(`--- Stopping ${PUMPED} api ---`);
 
   const MSSinceStart = new Date().getTime() - StartingTime.getTime();

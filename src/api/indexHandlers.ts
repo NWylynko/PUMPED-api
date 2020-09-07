@@ -1,5 +1,5 @@
 import express from 'express';
-import db, { SQL, resetDB, openDB } from '../db';
+import db, { SQL } from '../db';
 
 const router = express.Router();
 
@@ -17,19 +17,17 @@ router.get('/', async (req, res) => {
   });
 });
 
-router.get('/reset', async (req, res) => {
-  // reset database
-
+router.get('/createTables', async (req, res, next) => {
   try {
-    await resetDB('./main.db');
-    await openDB('./main.db');
-
-    await db.run(SQL.tables);
-
-    res.json({ success: true });
+    const result = await db.run(SQL.tables);
+    res.json({ success: true, result });
   } catch (error) {
-    res.json({ error });
+    next(error);
   }
+});
+
+router.get('/error', async (req, res, next) => {
+  next('lol');
 });
 
 export default router;
