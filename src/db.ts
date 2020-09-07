@@ -29,10 +29,16 @@ interface DBAsync {
   close: () => Promise<number>;
 }
 
+interface Result extends sqlite3.RunResult {
+  errno: number;
+  code: string;
+}
+
 const dbAsync: DBAsync = {
   run: (sql: string, params: any[] = []) => new Promise((resolve, reject) => {
-    db.run(sql, params, (result: sqlite3.RunResult, error: Error | null) => {
+    db.run(sql, params, (result: Result, error: Error | null) => {
       if (error) reject(error);
+      if (result?.errno === 1) reject(result.code);
       resolve(result);
     });
   }),
@@ -48,7 +54,8 @@ export const SQL = {
     ColourImage: loadSQL('tables/ColourImage'),
     Customer: loadSQL('tables/Customer'),
     Image: loadSQL('tables/Image'),
-    Order: loadSQL('tables/OrderItem'),
+    Order: loadSQL('tables/Order'),
+    OrderItem: loadSQL('tables/OrderItem'),
     Review: loadSQL('tables/Review'),
     Section: loadSQL('tables/Section'),
     Shoe: loadSQL('tables/Shoe'),
