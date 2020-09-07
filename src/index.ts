@@ -3,7 +3,6 @@ import 'source-map-support/register';
 
 import chalk from 'chalk';
 import net from 'net';
-import { promisify } from 'util';
 import { StartingTime, PUMPED } from './startInfo';
 import db from './db';
 import app from './app';
@@ -33,39 +32,32 @@ let server = app.listen(port, () => {
   }
 });
 
-const handler = async () => {
+const stopExpressApi: () => Promise<number> = () => new Promise((resolve) => {
+  server.close((error) => {
+    if (error) {
+      console.error('Port: \t', chalk.red(error.message));
+    } else {
+      console.log('Port: \t', chalk.red('closed'));
+    }
+    resolve(error ? 1 : 0);
+  });
+});
+
+const exitHandler = async () => {
   console.log(`--- Stopping ${PUMPED} api ---`);
 
   const MSSinceStart = new Date().getTime() - StartingTime.getTime();
   console.log('alive: \t', timeConversion(MSSinceStart));
 
-  const close = [{
-    name: 'DB',
-    closer: db.close,
-  }, {
-    name: 'Port',
-    closer: promisify(server.close),
-  }];
+  const exitCodes = await Promise.all([db.close(), stopExpressApi()]);
 
-  let exitCode = 0;
-
-  const closers = close.map(async ({ name, closer }) => {
-    try {
-      await closer();
-      console.log(`${name}: \t`, chalk.red('closed'));
-    } catch (error) {
-      console.error(`${name}: \t`, chalk.red(error.message));
-      exitCode += 1;
-    }
-  });
-
-  await Promise.all(closers);
+  const exitCode = exitCodes.reduce((sum, value) => value + sum);
 
   console.log('GoodBye 👋');
 
   process.exit(exitCode);
 };
 
-process.on('SIGINT', handler);
-process.on('SIGTERM', handler);
-process.on('SIGUSR2', handler);
+process.on('SIGINT', exitHandler);
+process.on('SIGTERM', exitHandler);
+process.on('SIGUSR2', exitHandler);

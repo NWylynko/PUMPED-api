@@ -23,13 +23,24 @@ export const openDB = (file: string) => new Promise((resolve, reject) => {
 });
 
 interface DBAsync {
-  run: (sql: string) => Promise<sqlite3.RunResult>,
-  close: () => Promise<void>
+  run: (sql: string) => Promise<sqlite3.RunResult>;
+  close: () => Promise<number>;
 }
 
 const dbAsync: DBAsync = {
   run: promisify(db.run),
-  close: promisify(db.close),
+  close: () => new Promise((resolve) => {
+    db.close((error) => {
+      if (error) {
+        // eslint-disable-next-line no-console
+        console.error('DB: \t', chalk.red(error.message));
+      } else {
+        // eslint-disable-next-line no-console
+        console.log('DB: \t', chalk.red('closed'));
+      }
+      resolve(error ? 1 : 0);
+    });
+  }),
 };
 
 export const SQL = {
@@ -39,10 +50,7 @@ export const SQL = {
 export const resetDB = async (file: string) => {
   await dbAsync.close();
 
-  // eslint-disable-next-line no-console
-  console.log('DB: \t', chalk.red('closed'));
-
-  await fs.unlink('./main.db');
+  return fs.unlink(file);
 };
 
 export default dbAsync;
