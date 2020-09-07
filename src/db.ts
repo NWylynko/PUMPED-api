@@ -9,7 +9,7 @@ const db = new sqlite3.Database('./main.db', () => {
 });
 
 export const SQL = {
-  Shoe: loadSQL('tables/Shoe'),
+  tables: loadSQL('tables'),
 };
 
 export default db;
