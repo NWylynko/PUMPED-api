@@ -40,7 +40,24 @@ const dbAsync: DBAsync = {
 };
 
 export const SQL = {
-  tables: loadSQL('tables'),
+  tables: {
+    Brand: loadSQL('tables/Brand'),
+    Cart: loadSQL('tables/Cart'),
+    Collection: loadSQL('tables/Collection'),
+    Colour: loadSQL('tables/Colour'),
+    ColourImage: loadSQL('tables/ColourImage'),
+    Customer: loadSQL('tables/Customer'),
+    Image: loadSQL('tables/Image'),
+    Order: loadSQL('tables/OrderItem'),
+    Review: loadSQL('tables/Review'),
+    Section: loadSQL('tables/Section'),
+    Shoe: loadSQL('tables/Shoe'),
+    ShoeTag: loadSQL('tables/ShoeTag'),
+    Stock: loadSQL('tables/Stock'),
+    Style: loadSQL('tables/Style'),
+    Tag: loadSQL('tables/Tag'),
+    WishList: loadSQL('tables/WishList'),
+  },
 };
 
 export default dbAsync;
