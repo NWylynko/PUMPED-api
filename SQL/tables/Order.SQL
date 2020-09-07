@@ -1,0 +1,8 @@
+CREATE TABLE "Order" (
+  "ID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  "CustomerID" INTEGER NOT NULL,
+  "dateOfPurchase" INTEGER NOT NULL,
+  "paid" INTEGER NOT NULL,
+  "deliveryAddress" TEXT NOT NULL,
+  FOREIGN KEY("CustomerID") REFERENCES "Customer"("ID")
+);

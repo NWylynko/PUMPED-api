@@ -1,0 +1,13 @@
+CREATE TABLE "OrderItem" (
+  "OrderID" INTEGER NOT NULL,
+  "ShoeID" INTEGER NOT NULL,
+  "StockID" INTEGER NOT NULL,
+  "ColourID" INTEGER NOT NULL,
+  "quantity" INTEGER NOT NULL DEFAULT 1,
+  "price" INTEGER NOT NULL,
+  PRIMARY KEY("OrderID", "ShoeID", "StockID", "ColourID"),
+  FOREIGN KEY("ShoeID") REFERENCES "Shoe"("ID"),
+  FOREIGN KEY("OrderID") REFERENCES "Order"("ID"),
+  FOREIGN KEY("StockID") REFERENCES "Stock"("ID"),
+  FOREIGN KEY("ColourID") REFERENCES "Colour"("ID")
+);

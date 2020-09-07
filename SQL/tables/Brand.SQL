@@ -1,0 +1,7 @@
+CREATE TABLE "Brand" (
+  "ID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  "name" TEXT NOT NULL,
+  "website" TEXT,
+  "icon" INTEGER,
+  FOREIGN KEY("icon") REFERENCES "Image"("ID")
+);
