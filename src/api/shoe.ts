@@ -29,6 +29,8 @@ interface ShoeWithColours extends ShoeWithoutColours {
 // probably just going to have to send another db.get to get
 // the average of stars and then add it into the data with a
 // default of 0 if it returns null
+// or store a starsAverage in the shoe table and re-calculate
+// it every time a new review is submitted
 
 router.get('/', async (req, res, next) => {
   // get all shoes
