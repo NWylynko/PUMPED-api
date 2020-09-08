@@ -4,37 +4,66 @@ import db from '../db';
 
 const router = express.Router();
 
+interface ShoeWithoutColours {
+  ID: number;
+  Name: string;
+  Description: string;
+  Price: number;
+  releaseDate: number;
+  Brand: string;
+  Style: string;
+  Section: string;
+  Collection: string;
+  stars: number;
+}
+
+interface ShoeWithColours extends ShoeWithoutColours {
+  colours: string[];
+}
+
 router.get('/', async (req, res, next) => {
   // get all shoes
 
   try {
     const {
-      brand = '%', style = '%', section = '%', collection = '%',
+      brand = '%',
+      style = '%',
+      section = '%',
+      collection = '%',
     } = req.query;
 
     const { sql, values } = SQL`
       SELECT
         Shoe.ID,
         Shoe.Name,
-        Shoe.description,
+        Shoe.Description,
         Shoe.Price,
         Shoe.releaseDate,
         Brand.name as "Brand",
         Style.name as "Style",
         Section.name as "Section",
-        Collection.name as "Collection"
-      FROM Shoe, Brand, Style, Section, Collection
+        Collection.name as "Collection",
+        avg(Review.stars) as "Stars"
+      FROM Shoe, Brand, Style, Section, Collection, Review
       WHERE Shoe.BrandID = Brand.ID
         AND Shoe.StyleID = Style.ID
         AND Shoe.SectionID = Section.ID
         AND Shoe.CollectionID = Collection.ID
+        AND Review.ShoeID = Shoe.ID
         AND Brand.name LIKE ${brand}
         AND Style.name LIKE ${style}
         AND Section.name LIKE ${section}
         AND Collection.name LIKE ${collection}
-      `;
+    `;
 
-    const results = await db.all(sql, values);
+    const shoes: ShoeWithoutColours[] = await db.all(sql, values);
+
+    const results: ShoeWithColours[] = await Promise.all(shoes.map(async (shoe) => {
+      // eslint-disable-next-line no-shadow
+      const { sql, values } = SQL`SELECT colour, hex FROM Colour WHERE ShoeID = ${shoe.ID}`;
+      const colours = await db.all(sql, values);
+      return { ...shoe, colours };
+    }));
 
     res.json({ results });
   } catch (error) {
@@ -52,7 +81,15 @@ router.post('/', async (req, res, next) => {
 
   try {
     const {
-      name, description, price, releaseDate, BrandID, StyleID, SectionID, CollectionID, CoverImage,
+      name,
+      description,
+      price,
+      releaseDate,
+      BrandID,
+      StyleID,
+      SectionID,
+      CollectionID,
+      CoverImage,
     } = {
       name: 'Jogga',
       description: 'run fast',

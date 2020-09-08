@@ -1,11 +1,13 @@
 CREATE TABLE "Review" (
-  "ID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  "CustomerID" INTEGER NOT NULL,
-  "stars" INTEGER NOT NULL CHECK(
-    stars >= 0
-    AND stars <= 5
-  ),
-  "message" TEXT,
-  "timestamp" timestamp,
-  FOREIGN KEY("CustomerID") REFERENCES "Customer"("ID")
+	"ShoeID" INTEGER NOT NULL,
+	"CustomerID" INTEGER NOT NULL,
+	"stars" INTEGER NOT NULL CHECK(
+		"stars" >= 0
+		AND "stars" <= 5
+	),
+	"message" TEXT,
+	"timestamp" timestamp,
+	PRIMARY KEY("ShoeID", "CustomerID"),
+	FOREIGN KEY("CustomerID") REFERENCES "Customer"("ID"),
+	FOREIGN KEY("ShoeID") REFERENCES "Shoe"("ID")
 );
