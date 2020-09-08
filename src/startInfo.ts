@@ -13,4 +13,5 @@ export const PUMPED = chalk.red('P')
 
 console.log(`--- Starting ${PUMPED} api ---`);
 console.log('PID: \t', process.pid);
+console.log('Dir: \t', __dirname);
 console.log('Time: \t', StartingTime.toDateString());

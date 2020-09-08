@@ -1,10 +1,19 @@
 import { Request, Response, NextFunction } from 'express';
+import path from 'path';
 
 export function notFound(req: Request, res: Response, next: NextFunction) {
   res.status(404);
   const error = new Error(`🔍 - Not Found - ${req.originalUrl}`);
   next(error);
 }
+
+const baseDir = path.join(__dirname, '../');
+
+const cleanUpStack = (dirtyStack: string) => {
+  const x = dirtyStack.replace(/ {4}at /g, '').split('\n');
+  x.shift();
+  return x.map((value) => value.replace(baseDir, ''));
+};
 
 /* eslint-disable no-unused-vars */
 export function errorHandler(err: Error | string, req: Request, res: Response, next: NextFunction) {
@@ -23,7 +32,7 @@ export function errorHandler(err: Error | string, req: Request, res: Response, n
   res.json({
     error: true,
     message: error.message,
-    stack: process.env.NODE_ENV === 'production' ? '🥞' : error.stack,
+    stack: process.env.NODE_ENV === 'production' ? '🥞' : cleanUpStack(error.stack || ''),
   });
 }
 

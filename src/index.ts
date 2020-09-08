@@ -47,7 +47,7 @@ const stopExpressApi: () => Promise<number> = () => new Promise((resolve) => {
 const exitHandler = async (event: NodeJS.Signals) => {
   console.log(`--- Stopping ${PUMPED} api ---`);
 
-  console.log('Signal: ', event)
+  console.log('Signal: ', event);
 
   const MSSinceStart = new Date().getTime() - StartingTime.getTime();
   console.log('Alive: \t', timeConversion(MSSinceStart));

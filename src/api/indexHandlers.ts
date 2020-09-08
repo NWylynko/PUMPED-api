@@ -45,7 +45,7 @@ router.get('/createTables', async (req, res, next) => {
 });
 
 router.get('/error', async (req, res, next) => {
-  next('lol');
+  next(new Error('lol'));
 });
 
 export default router;
