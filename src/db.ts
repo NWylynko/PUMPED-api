@@ -25,6 +25,7 @@ const closeDB: () => Promise<number> = () => new Promise((resolve) => {
 
 interface DBAsync {
   run: (sql: string, params?: any[]) => Promise<sqlite3.RunResult>;
+  all: (sql: string, params?: any[]) => Promise<any[]>;
   close: () => Promise<number>;
 }
 
@@ -38,6 +39,12 @@ const dbAsync: DBAsync = {
     db.run(sql, params, (result: Result, error: Error | null) => {
       if (error) reject(error);
       if (result?.errno === 1) reject(result.code);
+      resolve(result);
+    });
+  }),
+  all: (sql: string, params: any[] = []) => new Promise((resolve, reject) => {
+    db.all(sql, params, (error: Error | null, result: any[]) => {
+      if (error) reject(error);
       resolve(result);
     });
   }),

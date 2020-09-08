@@ -10,6 +10,8 @@ import review from './review';
 import shoe from './shoe';
 import wishlist from './wishlist';
 
+import search from './search';
+
 const router = express.Router();
 
 router.use('/', indexHandlers);
@@ -21,5 +23,7 @@ router.use('/order', order);
 router.use('/review', review);
 router.use('/shoe', shoe);
 router.use('/wishlist', wishlist);
+
+router.use('/search', search);
 
 export default router;
