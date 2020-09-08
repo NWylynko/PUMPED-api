@@ -21,6 +21,15 @@ interface ShoeWithColours extends ShoeWithoutColours {
   colours: string[];
 }
 
+// doesn't work as stars average from reviews will error if
+// there are no reviews to average the stars from and instead
+// of defaulting to 0 or null it will just silent error and the
+// row wont be returned, using IFNULL seems like it would fix
+// this to set a default at 0 but doesn't seem to work.
+// probably just going to have to send another db.get to get
+// the average of stars and then add it into the data with a
+// default of 0 if it returns null
+
 router.get('/', async (req, res, next) => {
   // get all shoes
 
@@ -60,21 +69,66 @@ router.get('/', async (req, res, next) => {
 
     const results: ShoeWithColours[] = await Promise.all(shoes.map(async (shoe) => {
       // eslint-disable-next-line no-shadow
-      const { sql, values } = SQL`SELECT colour, hex FROM Colour WHERE ShoeID = ${shoe.ID}`;
+      const { sql, values } = SQL`
+        SELECT colour, hex 
+        FROM Colour 
+        WHERE ShoeID = ${shoe.ID}`;
       const colours = await db.all(sql, values);
       return { ...shoe, colours };
     }));
 
-    res.json({ results });
+    res.json({ data: results });
   } catch (error) {
     next(error);
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res, next) => {
   // get single shoe
-  res.json({});
+
+  try {
+    const { ID } = req.params;
+
+    const { sql, values } = SQL`
+      SELECT
+        Shoe.ID,
+        Shoe.Name,
+        Shoe.Description,
+        Shoe.Price,
+        Shoe.releaseDate,
+        Brand.name as "Brand",
+        Style.name as "Style",
+        Section.name as "Section",
+        Collection.name as "Collection",
+        avg(Review.stars) as "Stars"
+      FROM Shoe, Brand, Style, Section, Collection, Review
+      WHERE Shoe.BrandID = Brand.ID
+        AND Shoe.StyleID = Style.ID
+        AND Shoe.SectionID = Section.ID
+        AND Shoe.CollectionID = Collection.ID
+        AND Review.ShoeID = Shoe.ID
+        AND Shoe.ID = ${ID}
+    `;
+
+    const shoe: ShoeWithoutColours = await db.get(sql, values);
+
+    res.json({ data: shoe });
+  } catch (error) {
+    next(error);
+  }
 });
+
+interface newShoe {
+  name: string;
+  description: string;
+  price: number;
+  releaseDate: number;
+  BrandID: number;
+  StyleID: number;
+  SectionID: number;
+  CollectionID?: number;
+  CoverImage?: number;
+}
 
 router.post('/', async (req, res, next) => {
   // add a new shoe
@@ -90,25 +144,35 @@ router.post('/', async (req, res, next) => {
       SectionID,
       CollectionID,
       CoverImage,
-    } = {
-      name: 'Jogga',
-      description: 'run fast',
-      price: 80,
-      releaseDate: new Date().toDateString(),
-      BrandID: 1,
-      StyleID: 1,
-      SectionID: 1,
-      CollectionID: 1,
-      CoverImage: 1,
-    };
+    }: newShoe = req.body;
 
-    const { sql, values } = SQL`INSERT INTO "main"."Shoe"
-    ("name", "description", "price", "releaseDate", "BrandID", "StyleID", "SectionID", "CollectionID", "CoverImage")
-    VALUES (${name}, ${description}, ${price}, ${releaseDate}, ${BrandID}, ${StyleID}, ${SectionID}, ${CollectionID}, ${CoverImage});`;
+    const { sql, values } = SQL`
+      INSERT INTO "main"."Shoe"
+      (
+        "name", 
+        "description", 
+        "price", 
+        "releaseDate", 
+        "BrandID", 
+        "StyleID", 
+        "SectionID", 
+        "CollectionID", 
+        "CoverImage"
+      ) VALUES (
+        ${name}, 
+        ${description}, 
+        ${price}, 
+        ${releaseDate}, 
+        ${BrandID}, 
+        ${StyleID}, 
+        ${SectionID}, 
+        ${CollectionID}, 
+        ${CoverImage}
+      );`;
 
     const result = await db.run(sql, values);
 
-    res.json({ result });
+    res.json({ data: result || req.body });
   } catch (error) {
     next(error);
   }
