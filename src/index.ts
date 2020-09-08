@@ -45,11 +45,12 @@ const stopExpressApi: () => Promise<number> = () => new Promise((resolve) => {
 
 // eslint-disable-next-line no-undef
 const exitHandler = async (event: NodeJS.Signals) => {
-  console.log(event);
   console.log(`--- Stopping ${PUMPED} api ---`);
 
+  console.log('Signal: ', event)
+
   const MSSinceStart = new Date().getTime() - StartingTime.getTime();
-  console.log('alive: \t', timeConversion(MSSinceStart));
+  console.log('Alive: \t', timeConversion(MSSinceStart));
 
   const exitCodes = await Promise.all([db.close(), stopExpressApi()]);
 

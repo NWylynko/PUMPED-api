@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import chalk from 'chalk';
 import sqlite3 from 'sqlite3';
-import { promisify } from 'util';
 import loadSQL from './utils/loadSQL';
 
 export const db = new sqlite3.Database('./main.db', (err) => {
