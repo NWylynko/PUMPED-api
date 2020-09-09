@@ -3,67 +3,79 @@ import chalk from 'chalk';
 import sqlite3 from 'sqlite3';
 import loadSQL from './utils/loadSQL';
 
-export const db = new sqlite3.Database('./main.db', (err) => {
-  if (err) throw new Error(err.message);
-}).on('open', () => {
-  // eslint-disable-next-line no-console
-  console.log('DB: \t', chalk.green('open'));
-});
+const { NODE_ENV: env = 'development' } = process.env;
 
-const closeDB: () => Promise<number> = () => new Promise((resolve) => {
-  db.close((error) => {
-    if (error) {
-      // eslint-disable-next-line no-console
-      console.error('DB: \t', chalk.red(error.message));
-    } else {
-      // eslint-disable-next-line no-console
-      console.log('DB: \t', chalk.red('closed'));
-    }
-    resolve(error ? 1 : 0);
-  });
-});
-
-interface DBAsync {
-  run: (sql: string, params?: any[]) => Promise<sqlite3.RunResult>;
-  all: (sql: string, params?: any[]) => Promise<any[]>;
-  get: (sql: string, params?: any[]) => Promise<any>;
-  exec: (sql: string) => Promise<void>;
-  close: () => Promise<number>;
-}
+const dbFile = `./main.${env}.db`;
 
 interface Result extends sqlite3.RunResult {
   errno: number;
   code: string;
 }
 
-const dbAsync: DBAsync = {
-  run: (sql: string, params: any[] = []) => new Promise((resolve, reject) => {
-    db.run(sql, params, (result: Result, error: Error | null) => {
-      if (error) reject(error);
-      if (result?.errno === 1) reject(result.code);
-      resolve(result);
+class Database {
+  db!: sqlite3.Database;
+
+  open() {
+    this.db = new sqlite3.Database(dbFile, (err) => {
+      if (err) throw new Error(err.message);
+    }).on('open', () => {
+      // eslint-disable-next-line no-console
+      console.log('DB: \t', chalk.green('open'), dbFile);
+    }).on('close', () => {
+      // eslint-disable-next-line no-console
+      console.log('DB: \t', chalk.red('closed'));
     });
-  }),
-  all: (sql: string, params: any[] = []) => new Promise((resolve, reject) => {
-    db.all(sql, params, (error: Error | null, results: any[]) => {
-      if (error) reject(error);
-      resolve(results);
+  }
+
+  close(): Promise<number> {
+    return new Promise((resolve) => {
+      this.db.close((error) => {
+        if (error) {
+        // eslint-disable-next-line no-console
+          console.error('DB: \t', chalk.red(error.message));
+        }
+        resolve(error ? 1 : 0);
+      });
     });
-  }),
-  get: (sql: string, params: any[] = []) => new Promise((resolve, reject) => {
-    db.get(sql, params, (error: Error | null, result: any) => {
-      if (error) reject(error);
-      resolve(result);
+  }
+
+  run(sql: string, params: any[] = []): Promise<Result> {
+    return new Promise((resolve, reject) => {
+      this.db.run(sql, params, (result: Result, error: Error | null) => {
+        if (error) reject(error);
+        if (result?.errno === 1) reject(result.code);
+        resolve(result);
+      });
     });
-  }),
-  exec: (sql: string) => new Promise((resolve, reject) => {
-    db.exec(sql, (error: Error | null) => {
-      if (error) reject(error);
-      resolve();
+  }
+
+  all(sql: string, params: any[] = []): Promise<any[]> {
+    return new Promise((resolve, reject) => {
+      this.db.all(sql, params, (error: Error | null, results: any[]) => {
+        if (error) reject(error);
+        resolve(results);
+      });
     });
-  }),
-  close: closeDB,
-};
+  }
+
+  get(sql: string, params: any[] = []): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.db.get(sql, params, (error: Error | null, result: any) => {
+        if (error) reject(error);
+        resolve(result);
+      });
+    });
+  }
+
+  exec(sql: string) {
+    return new Promise((resolve, reject) => {
+      this.db.exec(sql, (error: Error | null) => {
+        if (error) reject(error);
+        resolve();
+      });
+    });
+  }
+}
 
 export const SQL = {
   tables: {
@@ -85,7 +97,10 @@ export const SQL = {
     Tag: loadSQL('tables/Tag'),
     WishList: loadSQL('tables/WishList'),
   },
-  testData: loadSQL('testdata')
+  testData: loadSQL('testdata'),
 };
 
-export default dbAsync;
+const db = new Database();
+db.open();
+
+export default db;
