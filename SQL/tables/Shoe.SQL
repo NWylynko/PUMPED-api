@@ -4,6 +4,7 @@ CREATE TABLE "Shoe" (
   "description" TEXT NOT NULL,
   "price" INTEGER NOT NULL,
   "releaseDate" INTEGER NOT NULL,
+  "Stars" INTEGER DEFAULT 0,
   "BrandID" INTEGER NOT NULL,
   "StyleID" INTEGER NOT NULL,
   "SectionID" INTEGER NOT NULL,

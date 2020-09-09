@@ -9,6 +9,8 @@ router.get('/:shoeID', async (req, res) => {
 
 router.post('/:shoeID', async (req, res) => {
   // add a new review
+
+  // re-calculate the averageStars of the shoe
   res.json({});
 });
 

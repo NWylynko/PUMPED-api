@@ -27,6 +27,7 @@ interface DBAsync {
   run: (sql: string, params?: any[]) => Promise<sqlite3.RunResult>;
   all: (sql: string, params?: any[]) => Promise<any[]>;
   get: (sql: string, params?: any[]) => Promise<any>;
+  exec: (sql: string) => Promise<void>;
   close: () => Promise<number>;
 }
 
@@ -55,6 +56,12 @@ const dbAsync: DBAsync = {
       resolve(result);
     });
   }),
+  exec: (sql: string) => new Promise((resolve, reject) => {
+    db.exec(sql, (error: Error | null) => {
+      if (error) reject(error);
+      resolve();
+    });
+  }),
   close: closeDB,
 };
 
@@ -78,6 +85,7 @@ export const SQL = {
     Tag: loadSQL('tables/Tag'),
     WishList: loadSQL('tables/WishList'),
   },
+  testData: loadSQL('testdata')
 };
 
 export default dbAsync;

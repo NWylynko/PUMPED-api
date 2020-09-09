@@ -21,17 +21,6 @@ interface ShoeWithColours extends ShoeWithoutColours {
   colours: string[];
 }
 
-// doesn't work as stars average from reviews will error if
-// there are no reviews to average the stars from and instead
-// of defaulting to 0 or null it will just silent error and the
-// row wont be returned, using IFNULL seems like it would fix
-// this to set a default at 0 but doesn't seem to work.
-// probably just going to have to send another db.get to get
-// the average of stars and then add it into the data with a
-// default of 0 if it returns null
-// or store a starsAverage in the shoe table and re-calculate
-// it every time a new review is submitted
-
 router.get('/', async (req, res, next) => {
   // get all shoes
 
@@ -41,6 +30,7 @@ router.get('/', async (req, res, next) => {
       style = '%',
       section = '%',
       collection = '%',
+      stars = 0
     } = req.query;
 
     const { sql, values } = SQL`
@@ -50,17 +40,17 @@ router.get('/', async (req, res, next) => {
         Shoe.Description,
         Shoe.Price,
         Shoe.releaseDate,
+        Shoe.Stars,
         Brand.name as "Brand",
         Style.name as "Style",
         Section.name as "Section",
         Collection.name as "Collection",
-        avg(Review.stars) as "Stars"
-      FROM Shoe, Brand, Style, Section, Collection, Review
+      FROM Shoe, Brand, Style, Section, Collection
       WHERE Shoe.BrandID = Brand.ID
         AND Shoe.StyleID = Style.ID
         AND Shoe.SectionID = Section.ID
         AND Shoe.CollectionID = Collection.ID
-        AND Review.ShoeID = Shoe.ID
+        AND Shoe.Stars > ${stars}
         AND Brand.name LIKE ${brand}
         AND Style.name LIKE ${style}
         AND Section.name LIKE ${section}
@@ -98,17 +88,16 @@ router.get('/:id', async (req, res, next) => {
         Shoe.Description,
         Shoe.Price,
         Shoe.releaseDate,
+        Shoe.Stars
         Brand.name as "Brand",
         Style.name as "Style",
         Section.name as "Section",
         Collection.name as "Collection",
-        avg(Review.stars) as "Stars"
-      FROM Shoe, Brand, Style, Section, Collection, Review
+      FROM Shoe, Brand, Style, Section, Collection
       WHERE Shoe.BrandID = Brand.ID
         AND Shoe.StyleID = Style.ID
         AND Shoe.SectionID = Section.ID
         AND Shoe.CollectionID = Collection.ID
-        AND Review.ShoeID = Shoe.ID
         AND Shoe.ID = ${ID}
     `;
 
