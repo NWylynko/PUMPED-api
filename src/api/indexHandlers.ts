@@ -46,8 +46,7 @@ router.get('/createTables', async (req, res, next) => {
 
 router.get('/createTestData', async (req, res, next) => {
   try {
-
-    await db.exec(SQL.testData)
+    await db.exec(SQL.testData);
 
     res.json({
       Success: true,
@@ -56,7 +55,6 @@ router.get('/createTestData', async (req, res, next) => {
     next(new Error(error));
   }
 });
-
 
 router.get('/error', async (req, res, next) => {
   next(new Error('lol'));

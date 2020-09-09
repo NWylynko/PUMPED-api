@@ -30,7 +30,7 @@ router.get('/', async (req, res, next) => {
       style = '%',
       section = '%',
       collection = '%',
-      stars = 0
+      stars = 0,
     } = req.query;
 
     const { sql, values } = SQL`
