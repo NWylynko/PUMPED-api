@@ -11,8 +11,13 @@ router.get('/', async (req, res) => {
       image: '/image',
       order: '/order',
       review: '/review',
+      search: '/search',
       shoe: '/shoe',
       wishlist: '/wishlist',
+      index: {
+        createTables: '/createTables',
+        createTestData: '/createTestData',
+      },
     },
   });
 });

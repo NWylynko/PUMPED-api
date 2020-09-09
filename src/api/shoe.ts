@@ -44,13 +44,13 @@ router.get('/', async (req, res, next) => {
         Brand.name as "Brand",
         Style.name as "Style",
         Section.name as "Section",
-        Collection.name as "Collection",
+        Collection.name as "Collection"
       FROM Shoe, Brand, Style, Section, Collection
       WHERE Shoe.BrandID = Brand.ID
         AND Shoe.StyleID = Style.ID
         AND Shoe.SectionID = Section.ID
         AND Shoe.CollectionID = Collection.ID
-        AND Shoe.Stars > ${stars}
+        AND Shoe.Stars >= ${stars}
         AND Brand.name LIKE ${brand}
         AND Style.name LIKE ${style}
         AND Section.name LIKE ${section}
@@ -69,13 +69,15 @@ router.get('/', async (req, res, next) => {
       return { ...shoe, colours };
     }));
 
-    res.json({ data: results });
+    const empty = results.length === 0 ? true : undefined;
+
+    res.json({ data: results, empty });
   } catch (error) {
     next(error);
   }
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:ID', async (req, res, next) => {
   // get single shoe
 
   try {
@@ -88,11 +90,11 @@ router.get('/:id', async (req, res, next) => {
         Shoe.Description,
         Shoe.Price,
         Shoe.releaseDate,
-        Shoe.Stars
+        Shoe.Stars,
         Brand.name as "Brand",
         Style.name as "Style",
         Section.name as "Section",
-        Collection.name as "Collection",
+        Collection.name as "Collection"
       FROM Shoe, Brand, Style, Section, Collection
       WHERE Shoe.BrandID = Brand.ID
         AND Shoe.StyleID = Style.ID
@@ -103,7 +105,9 @@ router.get('/:id', async (req, res, next) => {
 
     const shoe: ShoeWithoutColours = await db.get(sql, values);
 
-    res.json({ data: shoe });
+    const empty = !shoe ? true : undefined;
+
+    res.json({ data: shoe, empty });
   } catch (error) {
     next(error);
   }

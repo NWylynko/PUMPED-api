@@ -8,6 +8,8 @@ import db from './db';
 import app from './app';
 import timeConversion from './utils/timeConversion';
 
+require('dotenv').config();
+
 const port = process.env.PORT || 5000;
 
 interface expressError extends Error {
@@ -30,14 +32,14 @@ let server = app.listen(port, () => {
   } else {
     throw new Error(error.code);
   }
+}).on('close', () => {
+  console.log('Port: \t', chalk.red('closed'));
 });
 
 const stopExpressApi: () => Promise<number> = () => new Promise((resolve) => {
   server.close((error) => {
     if (error) {
       console.error('Port: \t', chalk.red(error.message));
-    } else {
-      console.log('Port: \t', chalk.red('closed'));
     }
     resolve(error ? 1 : 0);
   });
