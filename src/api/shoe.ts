@@ -205,7 +205,7 @@ interface PartOfShoe {
 }
 
 router.patch('/:ID', async (req, res, next) => {
-  // update a single or multiple table of a shoe
+  // update a single or multiple items in a shoe
   try {
     if (Object.keys(req.body).length === 0) {
       throw new Error('no data sent');
