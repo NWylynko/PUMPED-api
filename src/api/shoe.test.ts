@@ -1,11 +1,11 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import supertest from 'supertest';
 import express from '../app';
-import resetDB from '../utils/resetTestDB';
+import { resetDBForTest } from '../utils/resetDB';
 
 const app = supertest(express);
 
-beforeEach(resetDB);
+beforeEach(async (done) => { await resetDBForTest(); done();});
 
 describe('GET all shoes', () => {
   it('gets all shoes', async () => {
@@ -98,7 +98,7 @@ describe('GET all shoes', () => {
   });
 });
 
-describe('GET single shoes', () => {
+describe('GET single shoe', () => {
   it('get shoe with id 1', async () => {
     const response = await app
       .get('/shoe/1');
@@ -133,5 +133,45 @@ describe('GET single shoes', () => {
     const json = JSON.parse(response.text);
 
     expect(json).toMatchSnapshot();
+  });
+});
+
+describe('Post add shoe', () => {
+
+  it('no data', async () => {
+    const response = await app
+      .post('/shoe');
+
+    const json = JSON.parse(response.text);
+
+    expect(json).toMatchSnapshot();
+  });
+
+  it('perfect amount of data', async () => {
+    const addData = await app
+      .post('/shoe')
+      .type('json')
+      .send(JSON.stringify({
+        name: 'test shoe',
+        description: 'runs fast',
+        price: 50,
+        releaseDate: 29456887,
+        BrandID: 2,
+        StyleID: 1,
+        SectionID: 1,
+        CollectionID: 1,
+        CoverImage: 1,
+      }))
+
+    const addDataJson = JSON.parse(addData.text);
+
+    expect(addDataJson).toMatchSnapshot();
+
+    const getShoe = await app
+      .get('/shoe?name=test%20shoe')
+
+    const getShoeJson = JSON.parse(getShoe.text);
+
+    expect(getShoeJson).toMatchSnapshot();
   });
 });

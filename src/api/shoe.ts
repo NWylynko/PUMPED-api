@@ -30,6 +30,7 @@ router.get('/', async (req, res, next) => {
       style = '%',
       section = '%',
       collection = '%',
+      name = '%',
       stars = 0,
     } = req.query;
 
@@ -55,6 +56,7 @@ router.get('/', async (req, res, next) => {
         AND Style.name LIKE ${style}
         AND Section.name LIKE ${section}
         AND Collection.name LIKE ${collection}
+        AND Shoe.name LIKE ${name}
     `;
 
     const shoes: ShoeWithoutColours[] = await db.all(sql, values);

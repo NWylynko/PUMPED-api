@@ -5,7 +5,7 @@ import loadSQL from './utils/loadSQL';
 
 const { NODE_ENV: env = 'development' } = process.env;
 
-const dbFile = `./main.${env}.db`;
+const dbFile = env === 'test' ? ':memory:' : `./main.${env}.db`;
 
 interface Result extends sqlite3.RunResult {
   errno: number;
@@ -15,16 +15,20 @@ interface Result extends sqlite3.RunResult {
 class Database {
   db!: sqlite3.Database;
 
-  open() {
+  open(): Promise<boolean> {
+    return new Promise((resolve) => {
     this.db = new sqlite3.Database(dbFile, (err) => {
       if (err) throw new Error(err.message);
     }).on('open', () => {
       // eslint-disable-next-line no-console
       console.log('DB: \t', chalk.green('open'), dbFile);
+      resolve(true)
     }).on('close', () => {
       // eslint-disable-next-line no-console
       console.log('DB: \t', chalk.red('closed'));
+      resolve(false)
     });
+  })
   }
 
   close(): Promise<number> {

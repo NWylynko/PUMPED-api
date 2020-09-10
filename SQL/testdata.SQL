@@ -273,42 +273,38 @@ INSERT INTO "main"."OrderItem" (
     "OrderID",
     "ShoeID",
     "StockID",
-    "ColourID",
     "quantity",
     "price"
   )
 VALUES
-  (1, 1, 1, 1, 1, 70);
+  (1, 1, 1, 1, 70);
 INSERT INTO "main"."OrderItem" (
     "OrderID",
     "ShoeID",
     "StockID",
-    "ColourID",
     "quantity",
     "price"
   )
 VALUES
-  (1, 2, 3, 1, 1, 70);
+  (1, 2, 3, 1, 70);
 INSERT INTO "main"."OrderItem" (
     "OrderID",
     "ShoeID",
     "StockID",
-    "ColourID",
     "quantity",
     "price"
   )
 VALUES
-  (2, 1, 2, 1, 1, 70);
+  (2, 1, 2, 1, 70);
 INSERT INTO "main"."OrderItem" (
     "OrderID",
     "ShoeID",
     "StockID",
-    "ColourID",
     "quantity",
     "price"
   )
 VALUES
-  (3, 2, 3, 1, 1, 70);
+  (3, 2, 3, 1, 70);
 -- Review
 INSERT INTO "main"."Review" (
     "ShoeID",
@@ -381,23 +377,23 @@ INSERT INTO "main"."ShoeTag" ("ShoeID", "TagID")
 VALUES
   (2, 3);
 -- WishList
-INSERT INTO "main"."WishList" ("CustomerID", "ShoeID", "StockID", "ColourID")
+INSERT INTO "main"."WishList" ("CustomerID", "ShoeID", "StockID")
 VALUES
-  (1, 1, 2, 1);
-INSERT INTO "main"."WishList" ("CustomerID", "ShoeID", "StockID", "ColourID")
+  (1, 1, 2);
+INSERT INTO "main"."WishList" ("CustomerID", "ShoeID", "StockID")
 VALUES
-  (1, 2, 1, 2);
-INSERT INTO "main"."WishList" ("CustomerID", "ShoeID", "StockID", "ColourID")
+  (1, 2, 1);
+INSERT INTO "main"."WishList" ("CustomerID", "ShoeID", "StockID")
 VALUES
-  (2, 1, 1, 1);
+  (2, 1, 1);
 
 -- Carts
 INSERT INTO "main"."Cart"
-("CustomerID", "ShoeID", "StockID", "ColourID", "quantity")
-VALUES (1, 1, 2, 1, 2);
+("CustomerID", "ShoeID", "StockID", "quantity")
+VALUES (1, 1, 2, 2);
 INSERT INTO "main"."Cart"
-("CustomerID", "ShoeID", "StockID", "ColourID", "quantity")
-VALUES (1, 2, 1, 3, 4);
+("CustomerID", "ShoeID", "StockID", "quantity")
+VALUES (1, 2, 1, 4);
 INSERT INTO "main"."Cart"
-("CustomerID", "ShoeID", "StockID", "ColourID", "quantity")
-VALUES (2, 1, 1, 2, 3);
+("CustomerID", "ShoeID", "StockID", "quantity")
+VALUES (2, 1, 1, 3);

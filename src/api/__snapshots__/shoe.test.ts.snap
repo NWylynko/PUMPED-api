@@ -335,7 +335,7 @@ Object {
 }
 `;
 
-exports[`GET single shoes get shoe with id 1 1`] = `
+exports[`GET single shoe get shoe with id 1 1`] = `
 Object {
   "data": Object {
     "Brand": "nike",
@@ -352,7 +352,7 @@ Object {
 }
 `;
 
-exports[`GET single shoes get shoe with id 2 1`] = `
+exports[`GET single shoe get shoe with id 2 1`] = `
 Object {
   "data": Object {
     "Brand": "adias",
@@ -369,7 +369,7 @@ Object {
 }
 `;
 
-exports[`GET single shoes get shoe with id 3 1`] = `
+exports[`GET single shoe get shoe with id 3 1`] = `
 Object {
   "data": Object {
     "Brand": "adias",
@@ -386,8 +386,53 @@ Object {
 }
 `;
 
-exports[`GET single shoes get shoe with id 4 (doesn't exist) 1`] = `
+exports[`GET single shoe get shoe with id 4 (doesn't exist) 1`] = `
 Object {
   "empty": true,
+}
+`;
+
+exports[`Post add shoe no data 1`] = `
+Object {
+  "data": Object {
+    "code": "SQLITE_CONSTRAINT",
+    "errno": 19,
+  },
+}
+`;
+
+exports[`Post add shoe perfect amount of data 1`] = `
+Object {
+  "data": Object {
+    "BrandID": 2,
+    "CollectionID": 1,
+    "CoverImage": 1,
+    "SectionID": 1,
+    "StyleID": 1,
+    "description": "runs fast",
+    "name": "test shoe",
+    "price": 50,
+    "releaseDate": 29456887,
+  },
+}
+`;
+
+exports[`Post add shoe perfect amount of data 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "Brand": "adias",
+      "Collection": "air max",
+      "ID": 4,
+      "Section": "mens",
+      "Stars": 0,
+      "Style": "runners",
+      "colours": Array [],
+      "description": "runs fast",
+      "name": "test shoe",
+      "price": 50,
+      "releaseDate": 29456887,
+    },
+  ],
 }
 `;
