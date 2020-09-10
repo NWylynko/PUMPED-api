@@ -266,3 +266,41 @@ describe('PATCH (update) a shoe', () => {
     expect(getShoeJson).toMatchSnapshot();
   });
 });
+
+describe('DELETE a shoe', () => {
+  it('remove a shoe', async () => {
+    const ID = 1;
+
+    const response = await app
+      .delete(encodeURI(`/shoe/${ID}`));
+
+    const json = JSON.parse(response.text);
+
+    expect(json).toMatchSnapshot();
+
+    const getShoe = await app
+      .get(encodeURI(`/shoe/${ID}`));
+
+    const getShoeJson = JSON.parse(getShoe.text);
+
+    expect(getShoeJson).toMatchSnapshot();
+  });
+
+  it('remove a non existent shoe', async () => {
+    const ID = 4;
+
+    const response = await app
+      .delete(`/shoe/${ID}`);
+
+    const json = JSON.parse(response.text);
+
+    expect(json).toMatchSnapshot();
+
+    const getShoe = await app
+      .get(encodeURI(`/shoe/${ID}`));
+
+    const getShoeJson = JSON.parse(getShoe.text);
+
+    expect(getShoeJson).toMatchSnapshot();
+  });
+});

@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DELETE a shoe remove a non existent shoe 1`] = `
+Object {
+  "data": Object {
+    "ID": "4",
+  },
+  "success": true,
+}
+`;
+
+exports[`DELETE a shoe remove a non existent shoe 2`] = `
+Object {
+  "empty": true,
+  "success": true,
+}
+`;
+
+exports[`DELETE a shoe remove a shoe 1`] = `
+Object {
+  "data": Object {
+    "ID": "1",
+  },
+  "success": true,
+}
+`;
+
+exports[`DELETE a shoe remove a shoe 2`] = `
+Object {
+  "empty": true,
+  "success": true,
+}
+`;
+
 exports[`GET all shoes gets all shoes 1`] = `
 Object {
   "data": Array [

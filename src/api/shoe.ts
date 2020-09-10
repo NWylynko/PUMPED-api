@@ -236,10 +236,22 @@ router.patch('/:ID', async (req, res, next) => {
   }
 });
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:ID', async (req, res, next) => {
   // remove a shoe
   try {
-    res.json({});
+    const { ID } = req.params;
+
+    const { sql, values } = SQL`
+      DELETE FROM "Shoe"
+      WHERE Shoe.ID = ${ID}
+    `;
+
+    await db.run(sql, values);
+
+    res.json({
+      success: true,
+      data: { ...req.params },
+    });
   } catch (error) {
     next(error);
   }
