@@ -5,7 +5,7 @@ import { resetDBForTest } from '../utils/resetDB';
 
 const app = supertest(express);
 
-beforeEach(async (done) => { await resetDBForTest(); done();});
+beforeEach(async (done) => { await resetDBForTest(); done(); });
 
 describe('GET all shoes', () => {
   it('gets all shoes', async () => {
@@ -137,18 +137,16 @@ describe('GET single shoe', () => {
 });
 
 describe('Post add shoe', () => {
-
   it('no data', async () => {
     const response = await app
       .post('/shoe');
 
     const json = JSON.parse(response.text);
 
-    expect(json).toMatchSnapshot();
+    expect({ error: json.error, message: json.message }).toMatchSnapshot();
   });
 
   it('perfect amount of data', async () => {
-
     const shoe = {
       name: 'test shoe',
       description: 'runs fast',
@@ -159,19 +157,19 @@ describe('Post add shoe', () => {
       SectionID: 1,
       CollectionID: 1,
       CoverImage: 1,
-    }
+    };
 
     const addData = await app
       .post('/shoe')
       .type('json')
-      .send(JSON.stringify(shoe))
+      .send(JSON.stringify(shoe));
 
     const addDataJson = JSON.parse(addData.text);
 
     expect(addDataJson).toMatchSnapshot();
 
     const getShoe = await app
-      .get(encodeURI(`/shoe?name=${shoe.name}`))
+      .get(encodeURI(`/shoe?name=${shoe.name}`));
 
     const getShoeJson = JSON.parse(getShoe.text);
 
@@ -179,7 +177,6 @@ describe('Post add shoe', () => {
   });
 
   it('no cover image', async () => {
-
     const shoe = {
       name: 'test shoe',
       description: 'runs fast',
@@ -189,19 +186,80 @@ describe('Post add shoe', () => {
       StyleID: 1,
       SectionID: 1,
       CollectionID: 1,
-    }
+    };
 
     const addData = await app
       .post('/shoe')
       .type('json')
-      .send(JSON.stringify(shoe))
+      .send(JSON.stringify(shoe));
 
     const addDataJson = JSON.parse(addData.text);
 
     expect(addDataJson).toMatchSnapshot();
 
     const getShoe = await app
-      .get(encodeURI(`/shoe?name=${shoe.name}`))
+      .get(encodeURI(`/shoe?name=${shoe.name}`));
+
+    const getShoeJson = JSON.parse(getShoe.text);
+
+    expect(getShoeJson).toMatchSnapshot();
+  });
+});
+
+describe('PATCH (update) a shoe', () => {
+  it('no data', async () => {
+    const response = await app
+      .patch('/shoe/1');
+
+    const json = JSON.parse(response.text);
+
+    expect({ error: json.error, message: json.message }).toMatchSnapshot();
+  });
+
+  it('1 item updated', async () => {
+    const shoe = {
+      name: 'fly kicks',
+    };
+
+    const ID = 1;
+
+    const updateData = await app
+      .patch(`/shoe/${ID}`)
+      .type('json')
+      .send(JSON.stringify(shoe));
+
+    const updateDataJson = JSON.parse(updateData.text);
+
+    expect(updateDataJson).toMatchSnapshot();
+
+    const getShoe = await app
+      .get(encodeURI(`/shoe/${ID}`));
+
+    const getShoeJson = JSON.parse(getShoe.text);
+
+    expect(getShoeJson).toMatchSnapshot();
+  });
+
+  it('3 items updated', async () => {
+    const shoe = {
+      name: 'test shoe',
+      description: 'runs fast',
+      price: 50,
+    };
+
+    const ID = 3;
+
+    const updateData = await app
+      .patch(`/shoe/${ID}`)
+      .type('json')
+      .send(JSON.stringify(shoe));
+
+    const updateDataJson = JSON.parse(updateData.text);
+
+    expect(updateDataJson).toMatchSnapshot();
+
+    const getShoe = await app
+      .get(encodeURI(`/shoe/${ID}`));
 
     const getShoeJson = JSON.parse(getShoe.text);
 

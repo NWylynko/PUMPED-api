@@ -1,5 +1,6 @@
 import express from 'express';
 import SQL from 'sql-template-tag';
+import { escape } from 'sqlstring';
 import db from '../db';
 
 const router = express.Router();
@@ -73,7 +74,11 @@ router.get('/', async (req, res, next) => {
 
     const empty = results.length === 0 ? true : undefined;
 
-    res.json({ data: results, empty });
+    res.json({
+      success: true,
+      data: results,
+      empty,
+    });
   } catch (error) {
     next(error);
   }
@@ -109,7 +114,11 @@ router.get('/:ID', async (req, res, next) => {
 
     const empty = !shoe ? true : undefined;
 
-    res.json({ data: shoe, empty });
+    res.json({
+      success: true,
+      data: shoe,
+      empty,
+    });
   } catch (error) {
     next(error);
   }
@@ -131,6 +140,10 @@ router.post('/', async (req, res, next) => {
   // add a new shoe
 
   try {
+    if (Object.keys(req.body).length === 0) {
+      throw new Error('no data sent');
+    }
+
     const {
       name,
       description,
@@ -144,7 +157,7 @@ router.post('/', async (req, res, next) => {
     }: newShoe = req.body;
 
     const { sql, values } = SQL`
-      INSERT INTO "main"."Shoe"
+      INSERT INTO "Shoe"
       (
         "name", 
         "description", 
@@ -167,27 +180,69 @@ router.post('/', async (req, res, next) => {
         ${CoverImage}
       );`;
 
-    const result = await db.run(sql, values);
+    await db.run(sql, values);
 
-    res.json({ data: result || req.body });
+    res.json({
+      success: true,
+      data: req.body,
+    });
   } catch (error) {
     next(error);
   }
 });
 
-router.put('/:id', async (req, res) => {
-  // update the entire content of a shoe
-  res.json({});
-});
+interface PartOfShoe {
+  [x: string]: any;
+  name?: string;
+  description?: string;
+  price?: number;
+  releaseDate?: number;
+  BrandID?: number;
+  StyleID?: number;
+  SectionID?: number;
+  CollectionID?: number;
+  CoverImage?: number;
+}
 
-router.patch('/:id', async (req, res) => {
+router.patch('/:ID', async (req, res, next) => {
   // update a single or multiple table of a shoe
-  res.json({});
+  try {
+    if (Object.keys(req.body).length === 0) {
+      throw new Error('no data sent');
+    }
+
+    let sql = 'UPDATE "Shoe" SET ';
+
+    const parts: PartOfShoe = req.body;
+
+    Object.keys(parts).forEach((partName, index, array) => {
+      // if the current item is the length of the array then its the last item
+      // the last item cant have a comma
+      const comma = index === array.length - 1 ? '' : ',';
+
+      sql += `${escape(partName)} = ${escape(parts[partName])}${comma} `;
+    });
+
+    sql += `WHERE Shoe.ID = ${escape(req.params.ID)}`;
+
+    await db.run(sql);
+
+    res.json({
+      success: true,
+      data: { ...req.params, ...req.body },
+    });
+  } catch (error) {
+    next(error);
+  }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res, next) => {
   // remove a shoe
-  res.json({});
+  try {
+    res.json({});
+  } catch (error) {
+    next(error);
+  }
 });
 
 export default router;
