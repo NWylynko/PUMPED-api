@@ -123,8 +123,8 @@ interface newShoe {
   BrandID: number;
   StyleID: number;
   SectionID: number;
-  CollectionID?: number;
-  CoverImage?: number;
+  CollectionID: number;
+  CoverImage?: number | null;
 }
 
 router.post('/', async (req, res, next) => {
@@ -140,7 +140,7 @@ router.post('/', async (req, res, next) => {
       StyleID,
       SectionID,
       CollectionID,
-      CoverImage,
+      CoverImage = null,
     }: newShoe = req.body;
 
     const { sql, values } = SQL`

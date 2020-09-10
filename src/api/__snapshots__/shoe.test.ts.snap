@@ -392,6 +392,41 @@ Object {
 }
 `;
 
+exports[`Post add shoe no cover image 1`] = `
+Object {
+  "data": Object {
+    "BrandID": 2,
+    "CollectionID": 1,
+    "SectionID": 1,
+    "StyleID": 1,
+    "description": "runs fast",
+    "name": "test shoe",
+    "price": 50,
+    "releaseDate": 29456887,
+  },
+}
+`;
+
+exports[`Post add shoe no cover image 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "Brand": "adias",
+      "Collection": "air max",
+      "ID": 4,
+      "Section": "mens",
+      "Stars": 0,
+      "Style": "runners",
+      "colours": Array [],
+      "description": "runs fast",
+      "name": "test shoe",
+      "price": 50,
+      "releaseDate": 29456887,
+    },
+  ],
+}
+`;
+
 exports[`Post add shoe no data 1`] = `
 Object {
   "data": Object {

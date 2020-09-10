@@ -8,7 +8,7 @@ CREATE TABLE "Shoe" (
   "BrandID" INTEGER NOT NULL,
   "StyleID" INTEGER NOT NULL,
   "SectionID" INTEGER NOT NULL,
-  "CollectionID" INTEGER,
+  "CollectionID" INTEGER NOT NULL,
   "CoverImage" INTEGER,
   FOREIGN KEY("BrandID") REFERENCES "Brand"("ID"),
   FOREIGN KEY("StyleID") REFERENCES "Style"("ID"),

@@ -174,4 +174,31 @@ describe('Post add shoe', () => {
 
     expect(getShoeJson).toMatchSnapshot();
   });
+
+  it('no cover image', async () => {
+    const addData = await app
+      .post('/shoe')
+      .type('json')
+      .send(JSON.stringify({
+        name: 'test shoe',
+        description: 'runs fast',
+        price: 50,
+        releaseDate: 29456887,
+        BrandID: 2,
+        StyleID: 1,
+        SectionID: 1,
+        CollectionID: 1,
+      }))
+
+    const addDataJson = JSON.parse(addData.text);
+
+    expect(addDataJson).toMatchSnapshot();
+
+    const getShoe = await app
+      .get('/shoe?name=test%20shoe')
+
+    const getShoeJson = JSON.parse(getShoe.text);
+
+    expect(getShoeJson).toMatchSnapshot();
+  });
 });
