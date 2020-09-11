@@ -10,7 +10,7 @@ on:
 
 jobs:
 
-  Lint:
+  jest:
     
     runs-on: ubuntu-latest
 
