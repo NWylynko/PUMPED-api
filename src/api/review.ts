@@ -2,31 +2,66 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/:shoeID', async (req, res) => {
+router.get('/:shoeID', async (req, res, next) => {
   // get reviews for a shoe
-  res.json({});
+  try {
+
+    const data = {}
+
+    res.json({ 
+      success: true,
+      data
+    });
+  } catch (error) {
+    next(error)
+  }
 });
 
-router.post('/:shoeID', async (req, res) => {
+router.post('/:shoeID', async (req, res, next) => {
   // add a new review
 
   // re-calculate the averageStars of the shoe
-  res.json({});
+  try {
+
+    const data = {}
+
+    res.json({ 
+      success: true,
+      data
+    });
+  } catch (error) {
+    next(error)
+  }
 });
 
-router.put('/:id', async (req, res) => {
-  // update the entire content of a review
-  res.json({});
-});
-
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', async (req, res, next) => {
   // update a single or multiple table of a review
-  res.json({});
+  try {
+
+    const data = {}
+
+    res.json({ 
+      success: true,
+      data
+    });
+  } catch (error) {
+    next(error)
+  }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res, next) => {
   // remove a review
-  res.json({});
+  try {
+
+    const data = {}
+
+    res.json({ 
+      success: true,
+      data
+    });
+  } catch (error) {
+    next(error)
+  }
 });
 
 export default router;

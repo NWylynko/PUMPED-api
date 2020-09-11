@@ -2,34 +2,79 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/:customerID', async (req, res) => {
+router.get('/:customerID', async (req, res, next) => {
   // get a customers orders
-  res.json({});
+  try {
+
+    const data = {}
+
+    res.json({ 
+      success: true,
+      data
+    });
+  } catch (error) {
+    next(error)
+  }
 });
 
-router.post('/:customerID', async (req, res) => {
+router.post('/:customerID', async (req, res, next) => {
   // add a new order
-  res.json({});
+  try {
+
+    const data = {}
+
+    res.json({ 
+      success: true,
+      data
+    });
+  } catch (error) {
+    next(error)
+  }
 });
 
-router.put('/:customerID/:id', async (req, res) => {
-  // update the entire content of a order item
-  res.json({});
-});
-
-router.patch('/:customerID/:id', async (req, res) => {
+router.patch('/:customerID/:id', async (req, res, next) => {
   // update a single or multiple table of a order item
-  res.json({});
+  try {
+
+    const data = {}
+
+    res.json({ 
+      success: true,
+      data
+    });
+  } catch (error) {
+    next(error)
+  }
 });
 
-router.delete('/:customerID/:id', async (req, res) => {
-  // remove a order item
-  res.json({});
+router.delete('/:customerID/:id', async (req, res, next) => {
+  // remove an order item
+  try {
+
+    const data = {}
+
+    res.json({ 
+      success: true,
+      data
+    });
+  } catch (error) {
+    next(error)
+  }
 });
 
-router.delete('/:customerID', async (req, res) => {
+router.delete('/:customerID', async (req, res, next) => {
   // remove an order
-  res.json({});
+  try {
+
+    const data = {}
+
+    res.json({ 
+      success: true,
+      data
+    });
+  } catch (error) {
+    next(error)
+  }
 });
 
 export default router;

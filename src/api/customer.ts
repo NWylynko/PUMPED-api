@@ -2,29 +2,64 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res, next) => {
   // get single customer
-  res.json({});
+  try {
+
+    const data = {}
+
+    res.json({ 
+      success: true,
+      data
+    });
+  } catch (error) {
+    next(error)
+  }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
   // add a new customer
-  res.json({});
+  try {
+
+    const data = {}
+
+    res.json({ 
+      success: true,
+      data
+    });
+  } catch (error) {
+    next(error)
+  }
 });
 
-router.put('/:id', async (req, res) => {
-  // update the entire content of a customer
-  res.json({});
-});
-
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', async (req, res, next) => {
   // update a single or multiple table of a customer
-  res.json({});
+  try {
+
+    const data = {}
+
+    res.json({ 
+      success: true,
+      data
+    });
+  } catch (error) {
+    next(error)
+  }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res, next) => {
   // remove a customer
-  res.json({});
+  try {
+
+    const data = {}
+
+    res.json({ 
+      success: true,
+      data
+    });
+  } catch (error) {
+    next(error)
+  }
 });
 
 export default router;
