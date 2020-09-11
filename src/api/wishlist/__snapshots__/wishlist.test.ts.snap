@@ -248,6 +248,15 @@ Object {
 }
 `;
 
+exports[`GET wishlist get shoes for customer 4 1`] = `200`;
+
+exports[`GET wishlist get shoes for customer 4 2`] = `
+Object {
+  "data": Array [],
+  "success": true,
+}
+`;
+
 exports[`POST wishlist add shoe (1) to customer (1) 1`] = `200`;
 
 exports[`POST wishlist add shoe (1) to customer (1) 2`] = `

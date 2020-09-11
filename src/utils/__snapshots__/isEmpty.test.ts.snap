@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`array is empty 1`] = `true`;
+
+exports[`array it is not empty 1`] = `undefined`;
+
+exports[`object is empty 1`] = `true`;
+
+exports[`object it is not empty 1`] = `undefined`;

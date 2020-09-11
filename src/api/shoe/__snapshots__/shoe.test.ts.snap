@@ -556,6 +556,7 @@ Object {
   "data": Object {
     "BrandID": 2,
     "CollectionID": 1,
+    "CoverImage": null,
     "SectionID": 1,
     "StyleID": 1,
     "description": "runs fast",

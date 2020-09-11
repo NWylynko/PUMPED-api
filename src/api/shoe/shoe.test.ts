@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import supertest from 'supertest';
-import express from '../app';
-import { resetDBForTest } from '../utils/resetDB';
+import express from '../../app';
+import { resetDBForTest } from '../../utils/resetDB';
 
 const app = supertest(express);
 

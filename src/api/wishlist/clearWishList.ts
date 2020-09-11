@@ -1,0 +1,16 @@
+import SQL from 'sql-template-tag';
+import db from '../../db';
+import { WishList } from './types';
+
+async function clearWishList(CustomerID: string): Promise<WishList> {
+  const { sql, values } = SQL`
+      DELETE FROM "WishList"
+      WHERE CustomerID = ${CustomerID}
+    `;
+
+  await db.run(sql, values);
+
+  return { CustomerID };
+}
+
+export default clearWishList;
