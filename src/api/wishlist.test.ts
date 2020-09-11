@@ -12,6 +12,8 @@ describe('GET wishlist', () => {
     it(`get shoes for customer ${id}`, async () => {
       const response = await app.get(`/wishlist/${id}`);
 
+      expect(response.status).toMatchSnapshot();
+
       const json = JSON.parse(response.text);
 
       expect(json).toMatchSnapshot();
@@ -26,12 +28,16 @@ describe('POST wishlist', () => {
         const response = await app
           .post(`/wishlist/${CustomerID}/${ShoeID}`);
 
+        expect(response.status).toMatchSnapshot();
+
         const json = JSON.parse(response.text);
 
         expect(json).toMatchSnapshot();
 
         const getWishlist = await app
           .get(encodeURI(`/wishlist/${CustomerID}`));
+
+        expect(getWishlist.status).toMatchSnapshot();
 
         const getWishlistJson = JSON.parse(getWishlist.text);
 
@@ -48,12 +54,16 @@ describe('DELETE wishlist item', () => {
         const response = await app
           .delete(`/wishlist/${CustomerID}/${ShoeID}`);
 
+        expect(response.status).toMatchSnapshot();
+
         const json = JSON.parse(response.text);
 
         expect(json).toMatchSnapshot();
 
         const getWishlist = await app
           .get(encodeURI(`/wishlist/${CustomerID}`));
+
+        expect(getWishlist.status).toMatchSnapshot();
 
         const getWishlistJson = JSON.parse(getWishlist.text);
 
@@ -69,12 +79,16 @@ describe('DELETE wishlist', () => {
       const response = await app
         .delete(`/wishlist/${CustomerID}`);
 
+      expect(response.status).toMatchSnapshot();
+
       const json = JSON.parse(response.text);
 
       expect(json).toMatchSnapshot();
 
       const getWishlist = await app
         .get(encodeURI(`/wishlist/${CustomerID}`));
+
+      expect(getWishlist.status).toMatchSnapshot();
 
       const getWishlistJson = JSON.parse(getWishlist.text);
 

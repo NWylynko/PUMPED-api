@@ -1,6 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DELETE a shoe remove a non existent shoe 1`] = `
+exports[`DELETE a shoe remove a non existent shoe 1`] = `200`;
+
+exports[`DELETE a shoe remove a non existent shoe 2`] = `
 Object {
   "data": Object {
     "ID": "4",
@@ -9,14 +11,18 @@ Object {
 }
 `;
 
-exports[`DELETE a shoe remove a non existent shoe 2`] = `
+exports[`DELETE a shoe remove a non existent shoe 3`] = `200`;
+
+exports[`DELETE a shoe remove a non existent shoe 4`] = `
 Object {
   "empty": true,
   "success": true,
 }
 `;
 
-exports[`DELETE a shoe remove a shoe 1`] = `
+exports[`DELETE a shoe remove a shoe 1`] = `200`;
+
+exports[`DELETE a shoe remove a shoe 2`] = `
 Object {
   "data": Object {
     "ID": "1",
@@ -25,14 +31,18 @@ Object {
 }
 `;
 
-exports[`DELETE a shoe remove a shoe 2`] = `
+exports[`DELETE a shoe remove a shoe 3`] = `200`;
+
+exports[`DELETE a shoe remove a shoe 4`] = `
 Object {
   "empty": true,
   "success": true,
 }
 `;
 
-exports[`GET all shoes gets all shoes 1`] = `
+exports[`GET all shoes gets all shoes 1`] = `200`;
+
+exports[`GET all shoes gets all shoes 2`] = `
 Object {
   "data": Array [
     Object {
@@ -93,7 +103,9 @@ Object {
 }
 `;
 
-exports[`GET all shoes with brand nike and stars over 3 1`] = `
+exports[`GET all shoes with brand nike and stars over 3 1`] = `200`;
+
+exports[`GET all shoes with brand nike and stars over 3 2`] = `
 Object {
   "data": Array [
     Object {
@@ -123,7 +135,9 @@ Object {
 }
 `;
 
-exports[`GET all shoes with brand of nike 1`] = `
+exports[`GET all shoes with brand of nike 1`] = `200`;
+
+exports[`GET all shoes with brand of nike 2`] = `
 Object {
   "data": Array [
     Object {
@@ -153,7 +167,9 @@ Object {
 }
 `;
 
-exports[`GET all shoes with brand of nike and style of basketball 1`] = `
+exports[`GET all shoes with brand of nike and style of basketball 1`] = `200`;
+
+exports[`GET all shoes with brand of nike and style of basketball 2`] = `
 Object {
   "data": Array [
     Object {
@@ -183,7 +199,9 @@ Object {
 }
 `;
 
-exports[`GET all shoes with collection of hypes 1`] = `
+exports[`GET all shoes with collection of hypes 1`] = `200`;
+
+exports[`GET all shoes with collection of hypes 2`] = `
 Object {
   "data": Array [
     Object {
@@ -213,7 +231,9 @@ Object {
 }
 `;
 
-exports[`GET all shoes with non existent brand 1`] = `
+exports[`GET all shoes with non existent brand 1`] = `200`;
+
+exports[`GET all shoes with non existent brand 2`] = `
 Object {
   "data": Array [],
   "empty": true,
@@ -221,7 +241,9 @@ Object {
 }
 `;
 
-exports[`GET all shoes with section of mens 1`] = `
+exports[`GET all shoes with section of mens 1`] = `200`;
+
+exports[`GET all shoes with section of mens 2`] = `
 Object {
   "data": Array [
     Object {
@@ -269,7 +291,9 @@ Object {
 }
 `;
 
-exports[`GET all shoes with section of mens and collection of hypes 1`] = `
+exports[`GET all shoes with section of mens and collection of hypes 1`] = `200`;
+
+exports[`GET all shoes with section of mens and collection of hypes 2`] = `
 Object {
   "data": Array [
     Object {
@@ -299,7 +323,9 @@ Object {
 }
 `;
 
-exports[`GET all shoes with stars over 3 1`] = `
+exports[`GET all shoes with stars over 3 1`] = `200`;
+
+exports[`GET all shoes with stars over 3 2`] = `
 Object {
   "data": Array [
     Object {
@@ -329,7 +355,9 @@ Object {
 }
 `;
 
-exports[`GET all shoes with style of basketball 1`] = `
+exports[`GET all shoes with style of basketball 1`] = `200`;
+
+exports[`GET all shoes with style of basketball 2`] = `
 Object {
   "data": Array [
     Object {
@@ -377,7 +405,9 @@ Object {
 }
 `;
 
-exports[`GET single shoe get shoe with id 1 1`] = `
+exports[`GET single shoe get shoe with id 1 1`] = `200`;
+
+exports[`GET single shoe get shoe with id 1 2`] = `
 Object {
   "data": Object {
     "Brand": "nike",
@@ -395,7 +425,9 @@ Object {
 }
 `;
 
-exports[`GET single shoe get shoe with id 2 1`] = `
+exports[`GET single shoe get shoe with id 2 1`] = `200`;
+
+exports[`GET single shoe get shoe with id 2 2`] = `
 Object {
   "data": Object {
     "Brand": "adias",
@@ -413,7 +445,9 @@ Object {
 }
 `;
 
-exports[`GET single shoe get shoe with id 3 1`] = `
+exports[`GET single shoe get shoe with id 3 1`] = `200`;
+
+exports[`GET single shoe get shoe with id 3 2`] = `
 Object {
   "data": Object {
     "Brand": "adias",
@@ -431,14 +465,18 @@ Object {
 }
 `;
 
-exports[`GET single shoe get shoe with id 4 (doesn't exist) 1`] = `
+exports[`GET single shoe get shoe with id 4 1`] = `200`;
+
+exports[`GET single shoe get shoe with id 4 2`] = `
 Object {
   "empty": true,
   "success": true,
 }
 `;
 
-exports[`PATCH (update) a shoe 1 item updated 1`] = `
+exports[`PATCH (update) a shoe 1 item updated 1`] = `200`;
+
+exports[`PATCH (update) a shoe 1 item updated 2`] = `
 Object {
   "data": Object {
     "ID": "1",
@@ -448,7 +486,9 @@ Object {
 }
 `;
 
-exports[`PATCH (update) a shoe 1 item updated 2`] = `
+exports[`PATCH (update) a shoe 1 item updated 3`] = `200`;
+
+exports[`PATCH (update) a shoe 1 item updated 4`] = `
 Object {
   "data": Object {
     "Brand": "nike",
@@ -466,7 +506,9 @@ Object {
 }
 `;
 
-exports[`PATCH (update) a shoe 3 items updated 1`] = `
+exports[`PATCH (update) a shoe 3 items updated 1`] = `200`;
+
+exports[`PATCH (update) a shoe 3 items updated 2`] = `
 Object {
   "data": Object {
     "ID": "3",
@@ -478,7 +520,9 @@ Object {
 }
 `;
 
-exports[`PATCH (update) a shoe 3 items updated 2`] = `
+exports[`PATCH (update) a shoe 3 items updated 3`] = `200`;
+
+exports[`PATCH (update) a shoe 3 items updated 4`] = `
 Object {
   "data": Object {
     "Brand": "adias",
@@ -496,14 +540,18 @@ Object {
 }
 `;
 
-exports[`PATCH (update) a shoe no data 1`] = `
+exports[`PATCH (update) a shoe no data 1`] = `500`;
+
+exports[`PATCH (update) a shoe no data 2`] = `
 Object {
   "error": true,
   "message": "no data sent",
 }
 `;
 
-exports[`Post add shoe no cover image 1`] = `
+exports[`Post add shoe no cover image 1`] = `200`;
+
+exports[`Post add shoe no cover image 2`] = `
 Object {
   "data": Object {
     "BrandID": 2,
@@ -519,7 +567,9 @@ Object {
 }
 `;
 
-exports[`Post add shoe no cover image 2`] = `
+exports[`Post add shoe no cover image 3`] = `200`;
+
+exports[`Post add shoe no cover image 4`] = `
 Object {
   "data": Array [
     Object {
@@ -540,14 +590,18 @@ Object {
 }
 `;
 
-exports[`Post add shoe no data 1`] = `
+exports[`Post add shoe no data 1`] = `500`;
+
+exports[`Post add shoe no data 2`] = `
 Object {
   "error": true,
   "message": "no data sent",
 }
 `;
 
-exports[`Post add shoe perfect amount of data 1`] = `
+exports[`Post add shoe perfect amount of data 1`] = `200`;
+
+exports[`Post add shoe perfect amount of data 2`] = `
 Object {
   "data": Object {
     "BrandID": 2,
@@ -564,7 +618,9 @@ Object {
 }
 `;
 
-exports[`Post add shoe perfect amount of data 2`] = `
+exports[`Post add shoe perfect amount of data 3`] = `200`;
+
+exports[`Post add shoe perfect amount of data 4`] = `
 Object {
   "data": Array [
     Object {

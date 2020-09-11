@@ -11,6 +11,8 @@ describe('GET all shoes', () => {
   it('gets all shoes', async () => {
     const response = await app.get('/shoe');
 
+    expect(response.status).toMatchSnapshot();
+
     const json = JSON.parse(response.text);
 
     expect(json).toMatchSnapshot();
@@ -19,6 +21,8 @@ describe('GET all shoes', () => {
   it('with brand of nike', async () => {
     const response = await app
       .get('/shoe?brand=nike');
+
+    expect(response.status).toMatchSnapshot();
 
     const json = JSON.parse(response.text);
 
@@ -29,6 +33,8 @@ describe('GET all shoes', () => {
     const response = await app
       .get('/shoe?style=basketball');
 
+    expect(response.status).toMatchSnapshot();
+
     const json = JSON.parse(response.text);
 
     expect(json).toMatchSnapshot();
@@ -37,6 +43,8 @@ describe('GET all shoes', () => {
   it('with brand of nike and style of basketball', async () => {
     const response = await app
       .get('/shoe?brand=nike&style=basketball');
+
+    expect(response.status).toMatchSnapshot();
 
     const json = JSON.parse(response.text);
 
@@ -47,6 +55,8 @@ describe('GET all shoes', () => {
     const response = await app
       .get('/shoe?section=mens');
 
+    expect(response.status).toMatchSnapshot();
+
     const json = JSON.parse(response.text);
 
     expect(json).toMatchSnapshot();
@@ -55,6 +65,8 @@ describe('GET all shoes', () => {
   it('with collection of hypes', async () => {
     const response = await app
       .get('/shoe?collection=hypes');
+
+    expect(response.status).toMatchSnapshot();
 
     const json = JSON.parse(response.text);
 
@@ -65,6 +77,8 @@ describe('GET all shoes', () => {
     const response = await app
       .get('/shoe?section=mens&collection=hypes');
 
+    expect(response.status).toMatchSnapshot();
+
     const json = JSON.parse(response.text);
 
     expect(json).toMatchSnapshot();
@@ -73,6 +87,8 @@ describe('GET all shoes', () => {
   it('with stars over 3', async () => {
     const response = await app
       .get('/shoe?stars=3');
+
+    expect(response.status).toMatchSnapshot();
 
     const json = JSON.parse(response.text);
 
@@ -83,6 +99,8 @@ describe('GET all shoes', () => {
     const response = await app
       .get('/shoe?brand=nike&stars=3');
 
+    expect(response.status).toMatchSnapshot();
+
     const json = JSON.parse(response.text);
 
     expect(json).toMatchSnapshot();
@@ -92,6 +110,8 @@ describe('GET all shoes', () => {
     const response = await app
       .get('/shoe?brand=notAShoeBrand');
 
+    expect(response.status).toMatchSnapshot();
+
     const json = JSON.parse(response.text);
 
     expect(json).toMatchSnapshot();
@@ -99,40 +119,17 @@ describe('GET all shoes', () => {
 });
 
 describe('GET single shoe', () => {
-  it('get shoe with id 1', async () => {
-    const response = await app
-      .get('/shoe/1');
+  [1, 2, 3, 4].forEach((id) => {
+    it(`get shoe with id ${id}`, async () => {
+      const response = await app
+        .get(`/shoe/${id}`);
 
-    const json = JSON.parse(response.text);
+      expect(response.status).toMatchSnapshot();
 
-    expect(json).toMatchSnapshot();
-  });
+      const json = JSON.parse(response.text);
 
-  it('get shoe with id 2', async () => {
-    const response = await app
-      .get('/shoe/2');
-
-    const json = JSON.parse(response.text);
-
-    expect(json).toMatchSnapshot();
-  });
-
-  it('get shoe with id 3', async () => {
-    const response = await app
-      .get('/shoe/3');
-
-    const json = JSON.parse(response.text);
-
-    expect(json).toMatchSnapshot();
-  });
-
-  it("get shoe with id 4 (doesn't exist)", async () => {
-    const response = await app
-      .get('/shoe/4');
-
-    const json = JSON.parse(response.text);
-
-    expect(json).toMatchSnapshot();
+      expect(json).toMatchSnapshot();
+    });
   });
 });
 
@@ -140,6 +137,8 @@ describe('Post add shoe', () => {
   it('no data', async () => {
     const response = await app
       .post('/shoe');
+
+    expect(response.status).toMatchSnapshot();
 
     const json = JSON.parse(response.text);
 
@@ -164,12 +163,16 @@ describe('Post add shoe', () => {
       .type('json')
       .send(JSON.stringify(shoe));
 
+    expect(addData.status).toMatchSnapshot();
+
     const addDataJson = JSON.parse(addData.text);
 
     expect(addDataJson).toMatchSnapshot();
 
     const getShoe = await app
       .get(encodeURI(`/shoe?name=${shoe.name}`));
+
+    expect(getShoe.status).toMatchSnapshot();
 
     const getShoeJson = JSON.parse(getShoe.text);
 
@@ -193,12 +196,16 @@ describe('Post add shoe', () => {
       .type('json')
       .send(JSON.stringify(shoe));
 
+    expect(addData.status).toMatchSnapshot();
+
     const addDataJson = JSON.parse(addData.text);
 
     expect(addDataJson).toMatchSnapshot();
 
     const getShoe = await app
       .get(encodeURI(`/shoe?name=${shoe.name}`));
+
+    expect(getShoe.status).toMatchSnapshot();
 
     const getShoeJson = JSON.parse(getShoe.text);
 
@@ -210,6 +217,8 @@ describe('PATCH (update) a shoe', () => {
   it('no data', async () => {
     const response = await app
       .patch('/shoe/1');
+
+    expect(response.status).toMatchSnapshot();
 
     const json = JSON.parse(response.text);
 
@@ -228,12 +237,16 @@ describe('PATCH (update) a shoe', () => {
       .type('json')
       .send(JSON.stringify(shoe));
 
+    expect(updateData.status).toMatchSnapshot();
+
     const updateDataJson = JSON.parse(updateData.text);
 
     expect(updateDataJson).toMatchSnapshot();
 
     const getShoe = await app
       .get(encodeURI(`/shoe/${ID}`));
+
+    expect(getShoe.status).toMatchSnapshot();
 
     const getShoeJson = JSON.parse(getShoe.text);
 
@@ -254,12 +267,16 @@ describe('PATCH (update) a shoe', () => {
       .type('json')
       .send(JSON.stringify(shoe));
 
+    expect(updateData.status).toMatchSnapshot();
+
     const updateDataJson = JSON.parse(updateData.text);
 
     expect(updateDataJson).toMatchSnapshot();
 
     const getShoe = await app
       .get(encodeURI(`/shoe/${ID}`));
+
+    expect(getShoe.status).toMatchSnapshot();
 
     const getShoeJson = JSON.parse(getShoe.text);
 
@@ -274,12 +291,16 @@ describe('DELETE a shoe', () => {
     const response = await app
       .delete(encodeURI(`/shoe/${ID}`));
 
+    expect(response.status).toMatchSnapshot();
+
     const json = JSON.parse(response.text);
 
     expect(json).toMatchSnapshot();
 
     const getShoe = await app
       .get(encodeURI(`/shoe/${ID}`));
+
+    expect(getShoe.status).toMatchSnapshot();
 
     const getShoeJson = JSON.parse(getShoe.text);
 
@@ -292,12 +313,16 @@ describe('DELETE a shoe', () => {
     const response = await app
       .delete(`/shoe/${ID}`);
 
+    expect(response.status).toMatchSnapshot();
+
     const json = JSON.parse(response.text);
 
     expect(json).toMatchSnapshot();
 
     const getShoe = await app
       .get(encodeURI(`/shoe/${ID}`));
+
+    expect(getShoe.status).toMatchSnapshot();
 
     const getShoeJson = JSON.parse(getShoe.text);
 
