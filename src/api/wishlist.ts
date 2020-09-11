@@ -5,11 +5,11 @@ import db from '../db';
 
 const router = express.Router();
 
-router.get('/:customerID', async (req, res, next) => {
+router.get('/:CustomerID', async (req, res, next) => {
   // get a customers wishlist
   try {
 
-    const { customerID } = req.params
+    const { CustomerID } = req.params
 
     const { sql, values } = SQL`
       SELECT
@@ -29,7 +29,7 @@ router.get('/:customerID', async (req, res, next) => {
         AND Shoe.SectionID = Section.ID
         AND Shoe.CollectionID = Collection.ID
         AND Shoe.ID = WishList.ShoeID
-        AND WishList.customerID = ${customerID}
+        AND WishList.CustomerID = ${CustomerID}
     `
 
     const data = await db.all(sql, values)
@@ -43,15 +43,29 @@ router.get('/:customerID', async (req, res, next) => {
   }
 });
 
-router.post('/:customerID', async (req, res, next) => {
+router.post('/:CustomerID', async (req, res, next) => {
   // add a new wishlist item
   try {
 
-    const data = {}
+    const { CustomerID } = req.params
+
+    const { ShoeID } = req.body
+
+    const { sql, values } = SQL`
+    INSERT INTO "WishList"
+    (
+      "ShoeID",
+      "CustomerID"
+    ) VALUES (
+      ${ShoeID}, 
+      ${CustomerID}
+    );`;
+
+    await db.run(sql, values);
 
     res.json({ 
       success: true,
-      data
+      data: { CustomerID, ShoeID }
     });
   } catch (error) {
     next(error)

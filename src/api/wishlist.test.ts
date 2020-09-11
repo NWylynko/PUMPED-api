@@ -19,3 +19,30 @@ describe('GET wishlist', () => {
   })
 
 })
+
+describe('POST wishlist', () => {
+  [1, 2, 3].forEach(CustomerID => {
+    [1, 2, 3].forEach(ShoeID => {
+      it(`add shoe (${ShoeID}) to customer (${CustomerID})`, async () => {
+        const response = await app
+          .post(`/wishlist/${CustomerID}`)
+          .type('json')
+          .send(JSON.stringify({
+            ShoeID
+          }));
+    
+        const json = JSON.parse(response.text);
+    
+        expect(json).toMatchSnapshot();
+
+        const getWishlist = await app
+          .get(encodeURI(`/wishlist/${CustomerID}`));
+    
+        const getWishlistJson = JSON.parse(getWishlist.text);
+    
+        expect(getWishlistJson).toMatchSnapshot();
+      })
+    })
+  })
+
+})

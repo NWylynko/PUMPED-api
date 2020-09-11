@@ -58,3 +58,345 @@ Object {
   "success": true,
 }
 `;
+
+exports[`POST wishlist add shoe (1) to customer (1) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "1",
+    "ShoeID": 1,
+  },
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (1) to customer (1) 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "Brand": "nike",
+      "Collection": "hypes",
+      "ID": 1,
+      "Section": "mens",
+      "Stars": 3.5,
+      "Style": "basketball",
+      "description": "run",
+      "name": "airss",
+      "price": 40,
+      "releaseDate": 2938457,
+    },
+    Object {
+      "Brand": "adias",
+      "Collection": "air max",
+      "ID": 2,
+      "Section": "mens",
+      "Stars": 2,
+      "Style": "basketball",
+      "description": "dive",
+      "name": "jumpers",
+      "price": 80,
+      "releaseDate": 2098475298,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (1) to customer (2) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "2",
+    "ShoeID": 1,
+  },
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (1) to customer (2) 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "Brand": "nike",
+      "Collection": "hypes",
+      "ID": 1,
+      "Section": "mens",
+      "Stars": 3.5,
+      "Style": "basketball",
+      "description": "run",
+      "name": "airss",
+      "price": 40,
+      "releaseDate": 2938457,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (1) to customer (3) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "3",
+    "ShoeID": 1,
+  },
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (1) to customer (3) 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "Brand": "nike",
+      "Collection": "hypes",
+      "ID": 1,
+      "Section": "mens",
+      "Stars": 3.5,
+      "Style": "basketball",
+      "description": "run",
+      "name": "airss",
+      "price": 40,
+      "releaseDate": 2938457,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (2) to customer (1) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "1",
+    "ShoeID": 2,
+  },
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (2) to customer (1) 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "Brand": "nike",
+      "Collection": "hypes",
+      "ID": 1,
+      "Section": "mens",
+      "Stars": 3.5,
+      "Style": "basketball",
+      "description": "run",
+      "name": "airss",
+      "price": 40,
+      "releaseDate": 2938457,
+    },
+    Object {
+      "Brand": "adias",
+      "Collection": "air max",
+      "ID": 2,
+      "Section": "mens",
+      "Stars": 2,
+      "Style": "basketball",
+      "description": "dive",
+      "name": "jumpers",
+      "price": 80,
+      "releaseDate": 2098475298,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (2) to customer (2) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "2",
+    "ShoeID": 2,
+  },
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (2) to customer (2) 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "Brand": "nike",
+      "Collection": "hypes",
+      "ID": 1,
+      "Section": "mens",
+      "Stars": 3.5,
+      "Style": "basketball",
+      "description": "run",
+      "name": "airss",
+      "price": 40,
+      "releaseDate": 2938457,
+    },
+    Object {
+      "Brand": "adias",
+      "Collection": "air max",
+      "ID": 2,
+      "Section": "mens",
+      "Stars": 2,
+      "Style": "basketball",
+      "description": "dive",
+      "name": "jumpers",
+      "price": 80,
+      "releaseDate": 2098475298,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (2) to customer (3) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "3",
+    "ShoeID": 2,
+  },
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (2) to customer (3) 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "Brand": "adias",
+      "Collection": "air max",
+      "ID": 2,
+      "Section": "mens",
+      "Stars": 2,
+      "Style": "basketball",
+      "description": "dive",
+      "name": "jumpers",
+      "price": 80,
+      "releaseDate": 2098475298,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (3) to customer (1) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "1",
+    "ShoeID": 3,
+  },
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (3) to customer (1) 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "Brand": "nike",
+      "Collection": "hypes",
+      "ID": 1,
+      "Section": "mens",
+      "Stars": 3.5,
+      "Style": "basketball",
+      "description": "run",
+      "name": "airss",
+      "price": 40,
+      "releaseDate": 2938457,
+    },
+    Object {
+      "Brand": "adias",
+      "Collection": "air max",
+      "ID": 2,
+      "Section": "mens",
+      "Stars": 2,
+      "Style": "basketball",
+      "description": "dive",
+      "name": "jumpers",
+      "price": 80,
+      "releaseDate": 2098475298,
+    },
+    Object {
+      "Brand": "adias",
+      "Collection": "air max",
+      "ID": 3,
+      "Section": "womens",
+      "Stars": 0,
+      "Style": "runners",
+      "description": "sprint",
+      "name": "kicks",
+      "price": 120,
+      "releaseDate": 2098475234,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (3) to customer (2) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "2",
+    "ShoeID": 3,
+  },
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (3) to customer (2) 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "Brand": "nike",
+      "Collection": "hypes",
+      "ID": 1,
+      "Section": "mens",
+      "Stars": 3.5,
+      "Style": "basketball",
+      "description": "run",
+      "name": "airss",
+      "price": 40,
+      "releaseDate": 2938457,
+    },
+    Object {
+      "Brand": "adias",
+      "Collection": "air max",
+      "ID": 3,
+      "Section": "womens",
+      "Stars": 0,
+      "Style": "runners",
+      "description": "sprint",
+      "name": "kicks",
+      "price": 120,
+      "releaseDate": 2098475234,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (3) to customer (3) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "3",
+    "ShoeID": 3,
+  },
+  "success": true,
+}
+`;
+
+exports[`POST wishlist add shoe (3) to customer (3) 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "Brand": "adias",
+      "Collection": "air max",
+      "ID": 3,
+      "Section": "womens",
+      "Stars": 0,
+      "Style": "runners",
+      "description": "sprint",
+      "name": "kicks",
+      "price": 120,
+      "releaseDate": 2098475234,
+    },
+  ],
+  "success": true,
+}
+`;
