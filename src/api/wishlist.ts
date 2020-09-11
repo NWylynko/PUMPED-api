@@ -1,6 +1,5 @@
 import express from 'express';
 import SQL from 'sql-template-tag';
-import { escape } from 'sqlstring';
 import db from '../db';
 
 const router = express.Router();
@@ -48,14 +47,15 @@ router.post('/:CustomerID/:ShoeID', async (req, res, next) => {
     const { CustomerID, ShoeID } = req.params;
 
     const { sql, values } = SQL`
-    INSERT INTO "WishList"
-    (
-      "ShoeID",
-      "CustomerID"
-    ) VALUES (
-      ${ShoeID}, 
-      ${CustomerID}
-    );`;
+      INSERT INTO "WishList"
+      (
+        "ShoeID",
+        "CustomerID"
+      ) VALUES (
+        ${ShoeID}, 
+        ${CustomerID}
+      );
+    `;
 
     await db.run(sql, values);
 
