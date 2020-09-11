@@ -8,8 +8,7 @@ const router = express.Router();
 router.get('/:CustomerID', async (req, res, next) => {
   // get a customers wishlist
   try {
-
-    const { CustomerID } = req.params
+    const { CustomerID } = req.params;
 
     const { sql, values } = SQL`
       SELECT
@@ -30,24 +29,23 @@ router.get('/:CustomerID', async (req, res, next) => {
         AND Shoe.CollectionID = Collection.ID
         AND Shoe.ID = WishList.ShoeID
         AND WishList.CustomerID = ${CustomerID}
-    `
+    `;
 
-    const data = await db.all(sql, values)
+    const data = await db.all(sql, values);
 
-    res.json({ 
+    res.json({
       success: true,
-      data
+      data,
     });
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
 
 router.post('/:CustomerID/:ShoeID', async (req, res, next) => {
   // add a new wishlist item
   try {
-
-    const { CustomerID, ShoeID } = req.params
+    const { CustomerID, ShoeID } = req.params;
 
     const { sql, values } = SQL`
     INSERT INTO "WishList"
@@ -61,20 +59,19 @@ router.post('/:CustomerID/:ShoeID', async (req, res, next) => {
 
     await db.run(sql, values);
 
-    res.json({ 
+    res.json({
       success: true,
-      data: { CustomerID, ShoeID }
+      data: { CustomerID, ShoeID },
     });
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
 
 router.delete('/:CustomerID/:ShoeID', async (req, res, next) => {
   // remove a wishlist item
   try {
-
-    const { CustomerID, ShoeID } = req.params
+    const { CustomerID, ShoeID } = req.params;
 
     const { sql, values } = SQL`
       DELETE FROM "WishList"
@@ -84,20 +81,19 @@ router.delete('/:CustomerID/:ShoeID', async (req, res, next) => {
 
     await db.run(sql, values);
 
-    res.json({ 
+    res.json({
       success: true,
-      data: { CustomerID, ShoeID }
+      data: { CustomerID, ShoeID },
     });
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
 
 router.delete('/:CustomerID', async (req, res, next) => {
   // clear a wishlist
   try {
-
-    const { CustomerID } = req.params
+    const { CustomerID } = req.params;
 
     const { sql, values } = SQL`
       DELETE FROM "WishList"
@@ -106,12 +102,12 @@ router.delete('/:CustomerID', async (req, res, next) => {
 
     await db.run(sql, values);
 
-    res.json({ 
+    res.json({
       success: true,
-      data: { CustomerID }
+      data: { CustomerID },
     });
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
 

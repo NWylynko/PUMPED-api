@@ -1,5 +1,5 @@
 import express from 'express';
-import resetDB from '../utils/resetDB'
+import resetDB from '../utils/resetDB';
 
 const router = express.Router();
 
@@ -22,11 +22,9 @@ router.get('/', async (req, res) => {
   });
 });
 
-
-
 router.get('/resetDB', async (req, res, next) => {
   try {
-    await resetDB()
+    await resetDB();
     res.json({
       success: true,
     });

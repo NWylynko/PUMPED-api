@@ -17,18 +17,18 @@ class Database {
 
   open(): Promise<boolean> {
     return new Promise((resolve) => {
-    this.db = new sqlite3.Database(dbFile, (err) => {
-      if (err) throw new Error(err.message);
-    }).on('open', () => {
+      this.db = new sqlite3.Database(dbFile, (err) => {
+        if (err) throw new Error(err.message);
+      }).on('open', () => {
       // eslint-disable-next-line no-console
-      console.log('DB: \t', chalk.green('open'), dbFile);
-      resolve(true)
-    }).on('close', () => {
+        console.log('DB: \t', chalk.green('open'), dbFile);
+        resolve(true);
+      }).on('close', () => {
       // eslint-disable-next-line no-console
-      console.log('DB: \t', chalk.red('closed'));
-      resolve(false)
+        console.log('DB: \t', chalk.red('closed'));
+        resolve(false);
+      });
     });
-  })
   }
 
   close(): Promise<number> {
