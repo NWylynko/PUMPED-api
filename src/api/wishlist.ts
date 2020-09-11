@@ -2,34 +2,40 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/:customerID', async (req, res) => {
+router.get('/:customerID', async (req, res, next) => {
   // get a customers wishlist
-  res.json({});
+  try {
+    
+  } catch (error) {
+    res.json({});
+  }
 });
 
-router.post('/:customerID', async (req, res) => {
+router.post('/:customerID', async (req, res, next) => {
   // add a new wishlist item
-  res.json({});
+  try {
+    
+  } catch (error) {
+    res.json({});
+  }
 });
 
-router.put('/:customerID/:id', async (req, res) => {
-  // update the entire content of a wishlist item
-  res.json({});
-});
-
-router.patch('/:customerID/:id', async (req, res) => {
-  // update a single or multiple table of a wishlist item
-  res.json({});
-});
-
-router.delete('/:customerID/:id', async (req, res) => {
+router.delete('/:customerID/:id', async (req, res, next) => {
   // remove a wishlist item
-  res.json({});
+  try {
+    
+  } catch (error) {
+    res.json({});
+  }
 });
 
-router.delete('/:customerID', async (req, res) => {
+router.delete('/:customerID', async (req, res, next) => {
   // clear a wishlist
-  res.json({});
+  try {
+    
+  } catch (error) {
+    res.json({});
+  }
 });
 
 export default router;

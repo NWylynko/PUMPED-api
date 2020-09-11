@@ -1,9 +1,7 @@
 CREATE TABLE "WishList" (
   "CustomerID" INTEGER NOT NULL,
   "ShoeID" INTEGER NOT NULL,
-  "StockID" INTEGER NOT NULL,
-  PRIMARY KEY("CustomerID", "ShoeID", "StockID"),
-  FOREIGN KEY("StockID") REFERENCES "Stock"("ID"),
+  PRIMARY KEY("CustomerID", "ShoeID"),
   FOREIGN KEY("CustomerID") REFERENCES "Customer"("ID"),
   FOREIGN KEY("ShoeID") REFERENCES "Shoe"("ID")
 );

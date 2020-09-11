@@ -377,15 +377,15 @@ INSERT INTO "main"."ShoeTag" ("ShoeID", "TagID")
 VALUES
   (2, 3);
 -- WishList
-INSERT INTO "main"."WishList" ("CustomerID", "ShoeID", "StockID")
+INSERT INTO "main"."WishList" ("CustomerID", "ShoeID")
 VALUES
-  (1, 1, 2);
-INSERT INTO "main"."WishList" ("CustomerID", "ShoeID", "StockID")
+  (1, 1);
+INSERT INTO "main"."WishList" ("CustomerID", "ShoeID")
 VALUES
-  (1, 2, 1);
-INSERT INTO "main"."WishList" ("CustomerID", "ShoeID", "StockID")
+  (1, 2);
+INSERT INTO "main"."WishList" ("CustomerID", "ShoeID")
 VALUES
-  (2, 1, 1);
+  (2, 1);
 
 -- Carts
 INSERT INTO "main"."Cart"
