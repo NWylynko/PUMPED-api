@@ -40,5 +40,26 @@ describe('POST wishlist', () => {
       })
     })
   })
+})
 
+describe('DELETE wishlist', () => {
+  [1, 2].forEach(CustomerID => {
+    [1, 2].forEach(ShoeID => {
+      it(`remove shoe (${ShoeID}) to customer (${CustomerID})`, async () => {
+        const response = await app
+          .delete(`/wishlist/${CustomerID}/${ShoeID}`)
+    
+        const json = JSON.parse(response.text);
+    
+        expect(json).toMatchSnapshot();
+
+        const getWishlist = await app
+          .get(encodeURI(`/wishlist/${CustomerID}`));
+    
+        const getWishlistJson = JSON.parse(getWishlist.text);
+    
+        expect(getWishlistJson).toMatchSnapshot();
+      })
+    })
+  })
 })

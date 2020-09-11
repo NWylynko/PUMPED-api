@@ -1,5 +1,112 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DELETE wishlist remove shoe (1) to customer (1) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "1",
+    "ShoeID": "1",
+  },
+  "success": true,
+}
+`;
+
+exports[`DELETE wishlist remove shoe (1) to customer (1) 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "Brand": "adias",
+      "Collection": "air max",
+      "ID": 2,
+      "Section": "mens",
+      "Stars": 2,
+      "Style": "basketball",
+      "description": "dive",
+      "name": "jumpers",
+      "price": 80,
+      "releaseDate": 2098475298,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`DELETE wishlist remove shoe (1) to customer (2) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "2",
+    "ShoeID": "1",
+  },
+  "success": true,
+}
+`;
+
+exports[`DELETE wishlist remove shoe (1) to customer (2) 2`] = `
+Object {
+  "data": Array [],
+  "success": true,
+}
+`;
+
+exports[`DELETE wishlist remove shoe (2) to customer (1) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "1",
+    "ShoeID": "2",
+  },
+  "success": true,
+}
+`;
+
+exports[`DELETE wishlist remove shoe (2) to customer (1) 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "Brand": "nike",
+      "Collection": "hypes",
+      "ID": 1,
+      "Section": "mens",
+      "Stars": 3.5,
+      "Style": "basketball",
+      "description": "run",
+      "name": "airss",
+      "price": 40,
+      "releaseDate": 2938457,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`DELETE wishlist remove shoe (2) to customer (2) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "2",
+    "ShoeID": "2",
+  },
+  "success": true,
+}
+`;
+
+exports[`DELETE wishlist remove shoe (2) to customer (2) 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "Brand": "nike",
+      "Collection": "hypes",
+      "ID": 1,
+      "Section": "mens",
+      "Stars": 3.5,
+      "Style": "basketball",
+      "description": "run",
+      "name": "airss",
+      "price": 40,
+      "releaseDate": 2938457,
+    },
+  ],
+  "success": true,
+}
+`;
+
 exports[`GET wishlist get shoes for customer 1 1`] = `
 Object {
   "data": Array [
