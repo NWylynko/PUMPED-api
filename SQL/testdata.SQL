@@ -1,33 +1,33 @@
 -- Brands
-INSERT INTO "main"."Brand"("name", "website", "icon")
+INSERT INTO "Brand"("name", "website", "icon")
 VALUES
   ('nike', 'nike.com', NULL);
-INSERT INTO "main"."Brand"("name", "website", "icon")
+INSERT INTO "Brand"("name", "website", "icon")
 VALUES
   ('adias', 'adias.com', NULL);
 -- Collections
-INSERT INTO "main"."Collection"("name")
+INSERT INTO "Collection"("name")
 VALUES
   ('air max');
-INSERT INTO "main"."Collection"("name")
+INSERT INTO "Collection"("name")
 VALUES
   ('hypes');
 -- Sections
-INSERT INTO "main"."Section"("name")
+INSERT INTO "Section"("name")
 VALUES
   ('mens');
-INSERT INTO "main"."Section"("name")
+INSERT INTO "Section"("name")
 VALUES
   ('womens');
 -- Styles
-INSERT INTO "main"."Style"("name")
+INSERT INTO "Style"("name")
 VALUES
   ('runners');
-INSERT INTO "main"."Style"("name")
+INSERT INTO "Style"("name")
 VALUES
   ('basketball');
 -- Images
-INSERT INTO "main"."Image"(
+INSERT INTO "Image"(
     "name",
     "fileType",
     "height",
@@ -48,7 +48,7 @@ VALUES
     NULL,
     NULL
   );
-INSERT INTO "main"."Image"(
+INSERT INTO "Image"(
     "name",
     "fileType",
     "height",
@@ -69,7 +69,7 @@ VALUES
     NULL,
     NULL
   );
-INSERT INTO "main"."Image"(
+INSERT INTO "Image"(
     "name",
     "fileType",
     "height",
@@ -90,7 +90,7 @@ VALUES
     NULL,
     NULL
   );
-INSERT INTO "main"."Image"(
+INSERT INTO "Image"(
     "name",
     "fileType",
     "height",
@@ -111,7 +111,7 @@ VALUES
     NULL,
     NULL
   );
-INSERT INTO "main"."Image"(
+INSERT INTO "Image"(
     "name",
     "fileType",
     "height",
@@ -132,7 +132,7 @@ VALUES
     NULL,
     NULL
   );
-INSERT INTO "main"."Image"(
+INSERT INTO "Image"(
     "name",
     "fileType",
     "height",
@@ -154,7 +154,7 @@ VALUES
     NULL
   );
 -- Shoes
-INSERT INTO "main"."Shoe" (
+INSERT INTO "Shoe" (
     "name",
     "description",
     "price",
@@ -167,7 +167,7 @@ INSERT INTO "main"."Shoe" (
   )
 VALUES
   ('airss', 'run', 40, 02938457, 1, 2, 1, 2, 1);
-INSERT INTO "main"."Shoe" (
+INSERT INTO "Shoe" (
     "name",
     "description",
     "price",
@@ -180,7 +180,7 @@ INSERT INTO "main"."Shoe" (
   )
 VALUES
   ('jumpers', 'dive', 80, 2098475298, 2, 2, 1, 1, 2);
-INSERT INTO "main"."Shoe" (
+INSERT INTO "Shoe" (
     "name",
     "description",
     "price",
@@ -204,47 +204,47 @@ VALUES
     3
   );
 -- Colours
-INSERT INTO "main"."Colour" ("ShoeID", "colour", "hex")
+INSERT INTO "Colour" ("ShoeID", "colour", "hex")
 VALUES
   (1, 'red', 'ff0000');
-INSERT INTO "main"."Colour" ("ShoeID", "colour", "hex")
+INSERT INTO "Colour" ("ShoeID", "colour", "hex")
 VALUES
   (1, 'blue', '0000ff');
-INSERT INTO "main"."Colour" ("ShoeID", "colour", "hex")
+INSERT INTO "Colour" ("ShoeID", "colour", "hex")
 VALUES
   (2, 'green', '00ff00');
 -- Stock
-INSERT INTO "main"."Stock" ("ShoeID", "ColourID", "size", "stock")
+INSERT INTO "Stock" ("ShoeID", "ColourID", "size", "stock")
 VALUES
   (1, 1, 11, 3);
-INSERT INTO "main"."Stock" ("ShoeID", "ColourID", "size", "stock")
+INSERT INTO "Stock" ("ShoeID", "ColourID", "size", "stock")
 VALUES
   (1, 2, 8, 2);
-INSERT INTO "main"."Stock" ("ShoeID", "ColourID", "size", "stock")
+INSERT INTO "Stock" ("ShoeID", "ColourID", "size", "stock")
 VALUES
   (2, 3, 9, 4);
 -- ColourImage
-INSERT INTO "main"."ColourImage" ("ColourID", "ImageID")
+INSERT INTO "ColourImage" ("ColourID", "ImageID")
 VALUES
   (1, 4);
-INSERT INTO "main"."ColourImage" ("ColourID", "ImageID")
+INSERT INTO "ColourImage" ("ColourID", "ImageID")
 VALUES
   (2, 5);
-INSERT INTO "main"."ColourImage" ("ColourID", "ImageID")
+INSERT INTO "ColourImage" ("ColourID", "ImageID")
 VALUES
   (3, 6);
 -- Customers
-INSERT INTO "main"."Customer"("firstName", "lastName")
+INSERT INTO "Customer"("firstName", "lastName")
 VALUES
   ('bobby', 'boo');
-INSERT INTO "main"."Customer"("firstName", "lastName")
+INSERT INTO "Customer"("firstName", "lastName")
 VALUES
   ('pippy', 'nippy');
-INSERT INTO "main"."Customer"("firstName", "lastName")
+INSERT INTO "Customer"("firstName", "lastName")
 VALUES
   ('whip', 'nah');
 -- Orders
-INSERT INTO "main"."Order" (
+INSERT INTO "Order" (
     "CustomerID",
     "dateOfPurchase",
     "paid",
@@ -252,7 +252,7 @@ INSERT INTO "main"."Order" (
   )
 VALUES
   (1, 24563456, 'true', 'the moon');
-INSERT INTO "main"."Order" (
+INSERT INTO "Order" (
     "CustomerID",
     "dateOfPurchase",
     "paid",
@@ -260,7 +260,7 @@ INSERT INTO "main"."Order" (
   )
 VALUES
   (1, 2049867456, 'true', 'in the stars');
-INSERT INTO "main"."Order" (
+INSERT INTO "Order" (
     "CustomerID",
     "dateOfPurchase",
     "paid",
@@ -269,7 +269,7 @@ INSERT INTO "main"."Order" (
 VALUES
   (2, 2456245634, 'false', 'mars');
 -- OrderItem
-INSERT INTO "main"."OrderItem" (
+INSERT INTO "OrderItem" (
     "OrderID",
     "ShoeID",
     "StockID",
@@ -278,7 +278,7 @@ INSERT INTO "main"."OrderItem" (
   )
 VALUES
   (1, 1, 1, 1, 70);
-INSERT INTO "main"."OrderItem" (
+INSERT INTO "OrderItem" (
     "OrderID",
     "ShoeID",
     "StockID",
@@ -287,7 +287,7 @@ INSERT INTO "main"."OrderItem" (
   )
 VALUES
   (1, 2, 3, 1, 70);
-INSERT INTO "main"."OrderItem" (
+INSERT INTO "OrderItem" (
     "OrderID",
     "ShoeID",
     "StockID",
@@ -296,7 +296,7 @@ INSERT INTO "main"."OrderItem" (
   )
 VALUES
   (2, 1, 2, 1, 70);
-INSERT INTO "main"."OrderItem" (
+INSERT INTO "OrderItem" (
     "OrderID",
     "ShoeID",
     "StockID",
@@ -306,7 +306,7 @@ INSERT INTO "main"."OrderItem" (
 VALUES
   (3, 2, 3, 1, 70);
 -- Review
-INSERT INTO "main"."Review" (
+INSERT INTO "Review" (
     "ShoeID",
     "CustomerID",
     "stars",
@@ -315,7 +315,7 @@ INSERT INTO "main"."Review" (
   )
 VALUES
   (1, 1, 3, 'good', 35687);
-INSERT INTO "main"."Review" (
+INSERT INTO "Review" (
     "ShoeID",
     "CustomerID",
     "stars",
@@ -324,7 +324,7 @@ INSERT INTO "main"."Review" (
   )
 VALUES
   (1, 2, 4, 'great!', 20938475);
-INSERT INTO "main"."Review" (
+INSERT INTO "Review" (
     "ShoeID",
     "CustomerID",
     "stars",
@@ -357,43 +357,42 @@ SET
 WHERE
   Shoe.ID = '2';
 -- Tags
-INSERT INTO "main"."Tag"("tag")
+INSERT INTO "Tag"("tag")
 VALUES
   ('fast');
-INSERT INTO "main"."Tag"("tag")
+INSERT INTO "Tag"("tag")
 VALUES
   ('speed');
-INSERT INTO "main"."Tag"("tag")
+INSERT INTO "Tag"("tag")
 VALUES
   ('hightops');
 -- ShoeTags
-INSERT INTO "main"."ShoeTag" ("ShoeID", "TagID")
+INSERT INTO "ShoeTag" ("ShoeID", "TagID")
 VALUES
   (1, 1);
-INSERT INTO "main"."ShoeTag" ("ShoeID", "TagID")
+INSERT INTO "ShoeTag" ("ShoeID", "TagID")
 VALUES
   (1, 2);
-INSERT INTO "main"."ShoeTag" ("ShoeID", "TagID")
+INSERT INTO "ShoeTag" ("ShoeID", "TagID")
 VALUES
   (2, 3);
 -- WishList
-INSERT INTO "main"."WishList" ("CustomerID", "ShoeID")
+INSERT INTO "WishList" ("CustomerID", "ShoeID")
 VALUES
   (1, 1);
-INSERT INTO "main"."WishList" ("CustomerID", "ShoeID")
+INSERT INTO "WishList" ("CustomerID", "ShoeID")
 VALUES
   (1, 2);
-INSERT INTO "main"."WishList" ("CustomerID", "ShoeID")
+INSERT INTO "WishList" ("CustomerID", "ShoeID")
 VALUES
   (2, 1);
-
 -- Carts
-INSERT INTO "main"."Cart"
-("CustomerID", "ShoeID", "StockID", "quantity")
-VALUES (1, 1, 2, 2);
-INSERT INTO "main"."Cart"
-("CustomerID", "ShoeID", "StockID", "quantity")
-VALUES (1, 2, 1, 4);
-INSERT INTO "main"."Cart"
-("CustomerID", "ShoeID", "StockID", "quantity")
-VALUES (2, 1, 1, 3);
+INSERT INTO "Cart" ("CustomerID", "ShoeID", "StockID", "quantity")
+VALUES
+  (1, 1, 2, 2);
+INSERT INTO "Cart" ("CustomerID", "ShoeID", "StockID", "quantity")
+VALUES
+  (1, 2, 1, 4);
+INSERT INTO "Cart" ("CustomerID", "ShoeID", "StockID", "quantity")
+VALUES
+  (2, 1, 1, 3);
