@@ -1,6 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DELETE wishlist remove shoe (1) to customer (1) 1`] = `
+exports[`DELETE wishlist clear wishlist of customer (1) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "1",
+  },
+  "success": true,
+}
+`;
+
+exports[`DELETE wishlist clear wishlist of customer (1) 2`] = `
+Object {
+  "data": Array [],
+  "success": true,
+}
+`;
+
+exports[`DELETE wishlist clear wishlist of customer (2) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "2",
+  },
+  "success": true,
+}
+`;
+
+exports[`DELETE wishlist clear wishlist of customer (2) 2`] = `
+Object {
+  "data": Array [],
+  "success": true,
+}
+`;
+
+exports[`DELETE wishlist clear wishlist of customer (3) 1`] = `
+Object {
+  "data": Object {
+    "CustomerID": "3",
+  },
+  "success": true,
+}
+`;
+
+exports[`DELETE wishlist clear wishlist of customer (3) 2`] = `
+Object {
+  "data": Array [],
+  "success": true,
+}
+`;
+
+exports[`DELETE wishlist item remove shoe (1) to customer (1) 1`] = `
 Object {
   "data": Object {
     "CustomerID": "1",
@@ -10,7 +58,7 @@ Object {
 }
 `;
 
-exports[`DELETE wishlist remove shoe (1) to customer (1) 2`] = `
+exports[`DELETE wishlist item remove shoe (1) to customer (1) 2`] = `
 Object {
   "data": Array [
     Object {
@@ -30,7 +78,7 @@ Object {
 }
 `;
 
-exports[`DELETE wishlist remove shoe (1) to customer (2) 1`] = `
+exports[`DELETE wishlist item remove shoe (1) to customer (2) 1`] = `
 Object {
   "data": Object {
     "CustomerID": "2",
@@ -40,14 +88,14 @@ Object {
 }
 `;
 
-exports[`DELETE wishlist remove shoe (1) to customer (2) 2`] = `
+exports[`DELETE wishlist item remove shoe (1) to customer (2) 2`] = `
 Object {
   "data": Array [],
   "success": true,
 }
 `;
 
-exports[`DELETE wishlist remove shoe (2) to customer (1) 1`] = `
+exports[`DELETE wishlist item remove shoe (2) to customer (1) 1`] = `
 Object {
   "data": Object {
     "CustomerID": "1",
@@ -57,7 +105,7 @@ Object {
 }
 `;
 
-exports[`DELETE wishlist remove shoe (2) to customer (1) 2`] = `
+exports[`DELETE wishlist item remove shoe (2) to customer (1) 2`] = `
 Object {
   "data": Array [
     Object {
@@ -77,7 +125,7 @@ Object {
 }
 `;
 
-exports[`DELETE wishlist remove shoe (2) to customer (2) 1`] = `
+exports[`DELETE wishlist item remove shoe (2) to customer (2) 1`] = `
 Object {
   "data": Object {
     "CustomerID": "2",
@@ -87,7 +135,7 @@ Object {
 }
 `;
 
-exports[`DELETE wishlist remove shoe (2) to customer (2) 2`] = `
+exports[`DELETE wishlist item remove shoe (2) to customer (2) 2`] = `
 Object {
   "data": Array [
     Object {

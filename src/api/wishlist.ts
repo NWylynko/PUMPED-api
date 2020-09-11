@@ -93,15 +93,22 @@ router.delete('/:CustomerID/:ShoeID', async (req, res, next) => {
   }
 });
 
-router.delete('/:customerID', async (req, res, next) => {
+router.delete('/:CustomerID', async (req, res, next) => {
   // clear a wishlist
   try {
 
-    const data = {}
+    const { CustomerID } = req.params
+
+    const { sql, values } = SQL`
+      DELETE FROM "WishList"
+      WHERE CustomerID = ${CustomerID}
+    `;
+
+    await db.run(sql, values);
 
     res.json({ 
       success: true,
-      data
+      data: { CustomerID }
     });
   } catch (error) {
     next(error)

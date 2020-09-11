@@ -42,7 +42,7 @@ describe('POST wishlist', () => {
   })
 })
 
-describe('DELETE wishlist', () => {
+describe('DELETE wishlist item', () => {
   [1, 2].forEach(CustomerID => {
     [1, 2].forEach(ShoeID => {
       it(`remove shoe (${ShoeID}) to customer (${CustomerID})`, async () => {
@@ -60,6 +60,26 @@ describe('DELETE wishlist', () => {
     
         expect(getWishlistJson).toMatchSnapshot();
       })
+    })
+  })
+})
+
+describe('DELETE wishlist', () => {
+  [1, 2, 3].forEach(CustomerID => {
+    it(`clear wishlist of customer (${CustomerID})`, async () => {
+      const response = await app
+        .delete(`/wishlist/${CustomerID}`)
+  
+      const json = JSON.parse(response.text);
+  
+      expect(json).toMatchSnapshot();
+
+      const getWishlist = await app
+        .get(encodeURI(`/wishlist/${CustomerID}`));
+  
+      const getWishlistJson = JSON.parse(getWishlist.text);
+  
+      expect(getWishlistJson).toMatchSnapshot();
     })
   })
 })
