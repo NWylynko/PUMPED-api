@@ -43,13 +43,11 @@ router.get('/:CustomerID', async (req, res, next) => {
   }
 });
 
-router.post('/:CustomerID', async (req, res, next) => {
+router.post('/:CustomerID/:ShoeID', async (req, res, next) => {
   // add a new wishlist item
   try {
 
-    const { CustomerID } = req.params
-
-    const { ShoeID } = req.body
+    const { CustomerID, ShoeID } = req.params
 
     const { sql, values } = SQL`
     INSERT INTO "WishList"

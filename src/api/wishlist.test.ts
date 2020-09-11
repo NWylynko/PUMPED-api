@@ -25,11 +25,7 @@ describe('POST wishlist', () => {
     [1, 2, 3].forEach(ShoeID => {
       it(`add shoe (${ShoeID}) to customer (${CustomerID})`, async () => {
         const response = await app
-          .post(`/wishlist/${CustomerID}`)
-          .type('json')
-          .send(JSON.stringify({
-            ShoeID
-          }));
+          .post(`/wishlist/${CustomerID}/${ShoeID}`)
     
         const json = JSON.parse(response.text);
     

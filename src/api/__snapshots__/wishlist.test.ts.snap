@@ -63,7 +63,7 @@ exports[`POST wishlist add shoe (1) to customer (1) 1`] = `
 Object {
   "data": Object {
     "CustomerID": "1",
-    "ShoeID": 1,
+    "ShoeID": "1",
   },
   "success": true,
 }
@@ -105,7 +105,7 @@ exports[`POST wishlist add shoe (1) to customer (2) 1`] = `
 Object {
   "data": Object {
     "CustomerID": "2",
-    "ShoeID": 1,
+    "ShoeID": "1",
   },
   "success": true,
 }
@@ -135,7 +135,7 @@ exports[`POST wishlist add shoe (1) to customer (3) 1`] = `
 Object {
   "data": Object {
     "CustomerID": "3",
-    "ShoeID": 1,
+    "ShoeID": "1",
   },
   "success": true,
 }
@@ -165,7 +165,7 @@ exports[`POST wishlist add shoe (2) to customer (1) 1`] = `
 Object {
   "data": Object {
     "CustomerID": "1",
-    "ShoeID": 2,
+    "ShoeID": "2",
   },
   "success": true,
 }
@@ -207,7 +207,7 @@ exports[`POST wishlist add shoe (2) to customer (2) 1`] = `
 Object {
   "data": Object {
     "CustomerID": "2",
-    "ShoeID": 2,
+    "ShoeID": "2",
   },
   "success": true,
 }
@@ -249,7 +249,7 @@ exports[`POST wishlist add shoe (2) to customer (3) 1`] = `
 Object {
   "data": Object {
     "CustomerID": "3",
-    "ShoeID": 2,
+    "ShoeID": "2",
   },
   "success": true,
 }
@@ -279,7 +279,7 @@ exports[`POST wishlist add shoe (3) to customer (1) 1`] = `
 Object {
   "data": Object {
     "CustomerID": "1",
-    "ShoeID": 3,
+    "ShoeID": "3",
   },
   "success": true,
 }
@@ -333,7 +333,7 @@ exports[`POST wishlist add shoe (3) to customer (2) 1`] = `
 Object {
   "data": Object {
     "CustomerID": "2",
-    "ShoeID": 3,
+    "ShoeID": "3",
   },
   "success": true,
 }
@@ -375,7 +375,7 @@ exports[`POST wishlist add shoe (3) to customer (3) 1`] = `
 Object {
   "data": Object {
     "CustomerID": "3",
-    "ShoeID": 3,
+    "ShoeID": "3",
   },
   "success": true,
 }
