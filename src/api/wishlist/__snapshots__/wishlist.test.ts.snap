@@ -257,15 +257,12 @@ Object {
 }
 `;
 
-exports[`POST wishlist add shoe (1) to customer (1) 1`] = `200`;
+exports[`POST wishlist add shoe (1) to customer (1) 1`] = `500`;
 
 exports[`POST wishlist add shoe (1) to customer (1) 2`] = `
 Object {
-  "data": Object {
-    "CustomerID": "1",
-    "ShoeID": "1",
-  },
-  "success": true,
+  "error": true,
+  "message": "SQLITE_CONSTRAINT",
 }
 `;
 
@@ -303,15 +300,12 @@ Object {
 }
 `;
 
-exports[`POST wishlist add shoe (1) to customer (2) 1`] = `200`;
+exports[`POST wishlist add shoe (1) to customer (2) 1`] = `500`;
 
 exports[`POST wishlist add shoe (1) to customer (2) 2`] = `
 Object {
-  "data": Object {
-    "CustomerID": "2",
-    "ShoeID": "1",
-  },
-  "success": true,
+  "error": true,
+  "message": "SQLITE_CONSTRAINT",
 }
 `;
 
@@ -371,15 +365,12 @@ Object {
 }
 `;
 
-exports[`POST wishlist add shoe (2) to customer (1) 1`] = `200`;
+exports[`POST wishlist add shoe (2) to customer (1) 1`] = `500`;
 
 exports[`POST wishlist add shoe (2) to customer (1) 2`] = `
 Object {
-  "data": Object {
-    "CustomerID": "1",
-    "ShoeID": "2",
-  },
-  "success": true,
+  "error": true,
+  "message": "SQLITE_CONSTRAINT",
 }
 `;
 

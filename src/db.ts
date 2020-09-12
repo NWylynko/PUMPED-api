@@ -47,7 +47,7 @@ class Database {
     return new Promise((resolve, reject) => {
       this.db.run(sql, params, (result: Result, error: Error | null) => {
         if (error) reject(error);
-        if (result?.errno === 1) reject(result.code);
+        if (result?.errno) reject(result.code);
         resolve(result);
       });
     });
