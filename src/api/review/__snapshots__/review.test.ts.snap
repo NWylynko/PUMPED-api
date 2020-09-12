@@ -1,0 +1,276 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DELETE (remove) Review of Shoe remove review (should work) 1`] = `200`;
+
+exports[`DELETE (remove) Review of Shoe remove review (should work) 2`] = `
+Object {
+  "data": Object {
+    "CustomerID": "1",
+    "ShoeID": "1",
+  },
+  "success": true,
+}
+`;
+
+exports[`DELETE (remove) Review of Shoe remove review (should work) 3`] = `200`;
+
+exports[`DELETE (remove) Review of Shoe remove review (should work) 4`] = `
+Object {
+  "data": Array [
+    Object {
+      "firstName": "pippy",
+      "lastName": "nippy",
+      "message": "great!",
+      "stars": 4,
+      "timestamp": 20938475,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`GET Review of Shoe gets reviews for ShoeID (1) 1`] = `200`;
+
+exports[`GET Review of Shoe gets reviews for ShoeID (1) 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "firstName": "bobby",
+      "lastName": "boo",
+      "message": "good",
+      "stars": 3,
+      "timestamp": 35687,
+    },
+    Object {
+      "firstName": "pippy",
+      "lastName": "nippy",
+      "message": "great!",
+      "stars": 4,
+      "timestamp": 20938475,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`GET Review of Shoe gets reviews for ShoeID (2) 1`] = `200`;
+
+exports[`GET Review of Shoe gets reviews for ShoeID (2) 2`] = `
+Object {
+  "data": Array [
+    Object {
+      "firstName": "bobby",
+      "lastName": "boo",
+      "message": "terrable!!",
+      "stars": 2,
+      "timestamp": 2984577673,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`GET Review of Shoe gets reviews for ShoeID (3) 1`] = `200`;
+
+exports[`GET Review of Shoe gets reviews for ShoeID (3) 2`] = `
+Object {
+  "data": Array [],
+  "empty": true,
+  "success": true,
+}
+`;
+
+exports[`PATCH (update) Review of Shoe add review (should work) 1`] = `200`;
+
+exports[`PATCH (update) Review of Shoe add review (should work) 2`] = `
+Object {
+  "data": Object {
+    "CustomerID": "3",
+    "ShoeID": "1",
+    "message": "nice",
+    "stars": 4,
+    "timestamp": 3456745367,
+  },
+  "success": true,
+}
+`;
+
+exports[`PATCH (update) Review of Shoe add review (should work) 3`] = `200`;
+
+exports[`PATCH (update) Review of Shoe add review (should work) 4`] = `
+Object {
+  "data": Array [],
+  "empty": true,
+  "success": true,
+}
+`;
+
+exports[`PATCH (update) Review of Shoe update review that doesn't exist (should error) 1`] = `200`;
+
+exports[`PATCH (update) Review of Shoe update review that doesn't exist (should error) 2`] = `
+Object {
+  "data": Object {
+    "CustomerID": "1",
+    "ShoeID": "8",
+    "message": "baddd",
+    "stars": 2,
+    "timestamp": 309458,
+  },
+  "success": true,
+}
+`;
+
+exports[`PATCH (update) Review of Shoe update review that doesn't exist (should error) 3`] = `200`;
+
+exports[`PATCH (update) Review of Shoe update review that doesn't exist (should error) 4`] = `
+Object {
+  "data": Array [
+    Object {
+      "firstName": "bobby",
+      "lastName": "boo",
+      "message": "good",
+      "stars": 3,
+      "timestamp": 35687,
+    },
+    Object {
+      "firstName": "pippy",
+      "lastName": "nippy",
+      "message": "great!",
+      "stars": 4,
+      "timestamp": 20938475,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`PATCH (update) Review of Shoe update review with no data (should error) 1`] = `500`;
+
+exports[`PATCH (update) Review of Shoe update review with no data (should error) 2`] = `
+Object {
+  "error": true,
+  "message": "no data sent",
+}
+`;
+
+exports[`PATCH (update) Review of Shoe update review with no data (should error) 3`] = `200`;
+
+exports[`PATCH (update) Review of Shoe update review with no data (should error) 4`] = `
+Object {
+  "data": Array [
+    Object {
+      "firstName": "bobby",
+      "lastName": "boo",
+      "message": "good",
+      "stars": 3,
+      "timestamp": 35687,
+    },
+    Object {
+      "firstName": "pippy",
+      "lastName": "nippy",
+      "message": "great!",
+      "stars": 4,
+      "timestamp": 20938475,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`POST Review of Shoe add review (should work) 1`] = `200`;
+
+exports[`POST Review of Shoe add review (should work) 2`] = `
+Object {
+  "data": Object {
+    "CustomerID": "3",
+    "ShoeID": "3",
+    "message": "nice",
+    "stars": 4,
+    "timestamp": 3456745367,
+  },
+  "success": true,
+}
+`;
+
+exports[`POST Review of Shoe add review (should work) 3`] = `200`;
+
+exports[`POST Review of Shoe add review (should work) 4`] = `
+Object {
+  "data": Array [
+    Object {
+      "firstName": "whip",
+      "lastName": "nah",
+      "message": "nice",
+      "stars": 4,
+      "timestamp": 3456745367,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`POST Review of Shoe add review from customer who already left a review (should error) 1`] = `500`;
+
+exports[`POST Review of Shoe add review from customer who already left a review (should error) 2`] = `
+Object {
+  "error": true,
+  "message": "SQLITE_CONSTRAINT",
+}
+`;
+
+exports[`POST Review of Shoe add review from customer who already left a review (should error) 3`] = `200`;
+
+exports[`POST Review of Shoe add review from customer who already left a review (should error) 4`] = `
+Object {
+  "data": Array [
+    Object {
+      "firstName": "bobby",
+      "lastName": "boo",
+      "message": "good",
+      "stars": 3,
+      "timestamp": 35687,
+    },
+    Object {
+      "firstName": "pippy",
+      "lastName": "nippy",
+      "message": "great!",
+      "stars": 4,
+      "timestamp": 20938475,
+    },
+  ],
+  "success": true,
+}
+`;
+
+exports[`POST Review of Shoe add review with no data (should error) 1`] = `500`;
+
+exports[`POST Review of Shoe add review with no data (should error) 2`] = `
+Object {
+  "error": true,
+  "message": "no data sent",
+}
+`;
+
+exports[`POST Review of Shoe add review with no data (should error) 3`] = `200`;
+
+exports[`POST Review of Shoe add review with no data (should error) 4`] = `
+Object {
+  "data": Array [
+    Object {
+      "firstName": "bobby",
+      "lastName": "boo",
+      "message": "good",
+      "stars": 3,
+      "timestamp": 35687,
+    },
+    Object {
+      "firstName": "pippy",
+      "lastName": "nippy",
+      "message": "great!",
+      "stars": 4,
+      "timestamp": 20938475,
+    },
+  ],
+  "success": true,
+}
+`;
