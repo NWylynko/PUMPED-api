@@ -5,20 +5,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   res.json({
-    endpoints: {
-      cart: '/cart',
-      customer: '/customer',
-      image: '/image',
-      order: '/order',
-      review: '/review',
-      search: '/search',
-      shoe: '/shoe',
-      wishlist: '/wishlist',
-      index: {
-        createTables: '/createTables',
-        createTestData: '/createTestData',
-      },
-    },
+    ping: 'pong',
   });
 });
 
