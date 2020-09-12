@@ -2,7 +2,7 @@ import { escape } from 'sqlstring';
 import db from '../../db';
 import { PartOfShoe } from './types';
 
-async function updateShoe(ID: string, fields: PartOfShoe): Promise<PartOfShoe> {
+async function updateShoe(ShoeID: string, fields: PartOfShoe): Promise<PartOfShoe> {
   let sql = 'UPDATE "Shoe" SET ';
 
   Object.keys(fields).forEach((partName, index, array) => {
@@ -13,11 +13,11 @@ async function updateShoe(ID: string, fields: PartOfShoe): Promise<PartOfShoe> {
     sql += `${escape(partName)} = ${escape(fields[partName])}${comma} `;
   });
 
-  sql += `WHERE Shoe.ID = ${escape(ID)}`;
+  sql += `WHERE Shoe.ID = ${escape(ShoeID)}`;
 
   await db.run(sql);
 
-  return { ID, ...fields };
+  return { ShoeID, ...fields };
 }
 
 export default updateShoe;

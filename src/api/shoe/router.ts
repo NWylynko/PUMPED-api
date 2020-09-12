@@ -1,5 +1,6 @@
 import express from 'express';
 import { isArrayEmpty, isEmpty } from '../../utils/isEmpty';
+import { requireJsonBody } from '../../middlewares';
 import { newShoe, PartOfShoe } from './types';
 
 import getAllShoes from './getAllShoes';
@@ -26,13 +27,13 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get('/:ID', async (req, res, next) => {
+router.get('/:ShoeID', async (req, res, next) => {
   // get single shoe
 
   try {
-    const { ID } = req.params;
+    const { ShoeID } = req.params;
 
-    const result = await getShoe(ID);
+    const result = await getShoe(ShoeID);
 
     res.json({
       success: true,
@@ -44,15 +45,11 @@ router.get('/:ID', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
+router.post('/', requireJsonBody, async (req, res, next) => {
   // add a new shoe
 
   try {
     const json: newShoe = req.body;
-
-    if (Object.keys(json).length === 0) {
-      throw new Error('no data sent');
-    }
 
     res.json({
       success: true,
@@ -63,18 +60,14 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.patch('/:ID', async (req, res, next) => {
+router.patch('/:ShoeID', requireJsonBody, async (req, res, next) => {
   // update a single or multiple items in a shoe
   try {
-    const { ID } = req.params;
+    const { ShoeID } = req.params;
 
     const fields: PartOfShoe = req.body;
 
-    if (Object.keys(req.body).length === 0) {
-      throw new Error('no data sent');
-    }
-
-    const result = await updateShoe(ID, fields);
+    const result = await updateShoe(ShoeID, fields);
 
     res.json({
       success: true,
@@ -85,12 +78,12 @@ router.patch('/:ID', async (req, res, next) => {
   }
 });
 
-router.delete('/:ID', async (req, res, next) => {
+router.delete('/:ShoeID', async (req, res, next) => {
   // remove a shoe
   try {
-    const { ID } = req.params;
+    const { ShoeID } = req.params;
 
-    const result = await removeShoe(ID);
+    const result = await removeShoe(ShoeID);
 
     res.json({
       success: true,

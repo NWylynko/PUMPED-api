@@ -2,7 +2,7 @@ import SQL from 'sql-template-tag';
 import db from '../../db';
 import { Shoe } from './types';
 
-function getShoe(ID: string): Promise<Shoe> {
+function getShoe(ShoeID: string): Promise<Shoe> {
   const { sql, values } = SQL`
     SELECT
       Shoe.ID,
@@ -20,7 +20,7 @@ function getShoe(ID: string): Promise<Shoe> {
       AND Shoe.StyleID = Style.ID
       AND Shoe.SectionID = Section.ID
       AND Shoe.CollectionID = Collection.ID
-      AND Shoe.ID = ${ID}
+      AND Shoe.ID = ${ShoeID}
   `;
 
   return db.get(sql, values);

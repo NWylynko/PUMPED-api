@@ -5,7 +5,7 @@ exports[`DELETE a shoe remove a non existent shoe 1`] = `200`;
 exports[`DELETE a shoe remove a non existent shoe 2`] = `
 Object {
   "data": Object {
-    "ID": "4",
+    "ShoeID": "4",
   },
   "success": true,
 }
@@ -25,7 +25,7 @@ exports[`DELETE a shoe remove a shoe 1`] = `200`;
 exports[`DELETE a shoe remove a shoe 2`] = `
 Object {
   "data": Object {
-    "ID": "1",
+    "ShoeID": "1",
   },
   "success": true,
 }
@@ -479,7 +479,7 @@ exports[`PATCH (update) a shoe 1 item updated 1`] = `200`;
 exports[`PATCH (update) a shoe 1 item updated 2`] = `
 Object {
   "data": Object {
-    "ID": "1",
+    "ShoeID": "1",
     "name": "fly kicks",
   },
   "success": true,
@@ -511,7 +511,7 @@ exports[`PATCH (update) a shoe 3 items updated 1`] = `200`;
 exports[`PATCH (update) a shoe 3 items updated 2`] = `
 Object {
   "data": Object {
-    "ID": "3",
+    "ShoeID": "3",
     "description": "runs fast",
     "name": "test shoe",
     "price": 50,
