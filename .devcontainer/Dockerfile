@@ -8,4 +8,7 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
   -p https://github.com/zdharma/fast-syntax-highlighting
 
 # copy accross profile
-COPY .zshrc .p10k.zsh /root/
+RUN wget https://raw.githubusercontent.com/NWylynko/zshConfig/master/.zshrc -O /root/.zshrc
+RUN wget https://raw.githubusercontent.com/NWylynko/zshConfig/master/.p10k.zsh -O /root/.p10k.zsh
+
+COPY info.sh /root/
