@@ -24,7 +24,7 @@ export interface SQLError {
 }
 
 const cleanSQL = (sql: string) => sql
-  .replace(/\n/g, '')
+  .replace(/\n/g, ' ')
   .replace(/ {2}/g, '')
   .replace(/ {3}/g, '')
   .replace(/ {4}/g, '')
@@ -49,7 +49,7 @@ class Database {
           // eslint-disable-next-line no-console
           console.log('DB: \t', chalk.red('closed'));
           resolve(false);
-        });
+        }).on('trace', (sql) => console.log('SQL:', cleanSQL(sql)));
     });
   }
 

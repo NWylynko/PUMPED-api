@@ -226,7 +226,7 @@ Object {
     "code": "SQLITE_CONSTRAINT",
     "errno": 19,
   },
-  "sql": "INSERT INTO \\"Review\\"(\\"ShoeID\\",\\"CustomerID\\",\\"stars\\",\\"message\\",\\"timestamp\\")VALUES (?,?,?,?,?);",
+  "sql": " INSERT INTO \\"Review\\" ( \\"ShoeID\\", \\"CustomerID\\", \\"stars\\", \\"message\\", \\"timestamp\\" ) VALUES ( ?, ?, ?, ?, ? ); ",
 }
 `;
 

@@ -271,7 +271,7 @@ Object {
     "code": "SQLITE_CONSTRAINT",
     "errno": 19,
   },
-  "sql": "INSERT INTO \\"WishList\\"(\\"ShoeID\\",\\"CustomerID\\") VALUES (?, ?);",
+  "sql": " INSERT INTO \\"WishList\\" ( \\"ShoeID\\", \\"CustomerID\\" ) VALUES ( ?,? ); ",
 }
 `;
 
@@ -323,7 +323,7 @@ Object {
     "code": "SQLITE_CONSTRAINT",
     "errno": 19,
   },
-  "sql": "INSERT INTO \\"WishList\\"(\\"ShoeID\\",\\"CustomerID\\") VALUES (?, ?);",
+  "sql": " INSERT INTO \\"WishList\\" ( \\"ShoeID\\", \\"CustomerID\\" ) VALUES ( ?,? ); ",
 }
 `;
 
@@ -397,7 +397,7 @@ Object {
     "code": "SQLITE_CONSTRAINT",
     "errno": 19,
   },
-  "sql": "INSERT INTO \\"WishList\\"(\\"ShoeID\\",\\"CustomerID\\") VALUES (?, ?);",
+  "sql": " INSERT INTO \\"WishList\\" ( \\"ShoeID\\", \\"CustomerID\\" ) VALUES ( ?,? ); ",
 }
 `;
 
