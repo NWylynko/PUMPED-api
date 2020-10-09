@@ -8,9 +8,29 @@ const { NODE_ENV: env = 'development' } = process.env;
 const dbFile = env === 'test' ? ':memory:' : `./main.${env}.db`;
 
 interface Result extends sqlite3.RunResult {
-  errno: number;
-  code: string;
+  errno?: number;
+  code?: string;
+  message?: string;
+  stack?: string;
 }
+
+export interface SQLError {
+  error: Error | null;
+  sql: string;
+  params: any[];
+  result?: Result;
+  stack?: string;
+  message?: string;
+}
+
+const cleanSQL = (sql: string) => sql
+  .replace(/\n/g, '')
+  .replace(/ {2}/g, '')
+  .replace(/ {3}/g, '')
+  .replace(/ {4}/g, '')
+  .replace(/ {5}/g, '')
+  .replace(/ {6}/g, '')
+  .replace(/ {7}/g, '');
 
 class Database {
   db!: sqlite3.Database;
@@ -19,15 +39,17 @@ class Database {
     return new Promise((resolve) => {
       this.db = new sqlite3.Database(dbFile, (err) => {
         if (err) throw new Error(err.message);
-      }).on('open', () => {
-      // eslint-disable-next-line no-console
-        console.log('DB: \t', chalk.green('open'), dbFile);
-        resolve(true);
-      }).on('close', () => {
-      // eslint-disable-next-line no-console
-        console.log('DB: \t', chalk.red('closed'));
-        resolve(false);
-      });
+      })
+        .on('open', () => {
+          // eslint-disable-next-line no-console
+          console.log('DB: \t', chalk.green('open'), dbFile);
+          resolve(true);
+        })
+        .on('close', () => {
+          // eslint-disable-next-line no-console
+          console.log('DB: \t', chalk.red('closed'));
+          resolve(false);
+        });
     });
   }
 
@@ -35,7 +57,7 @@ class Database {
     return new Promise((resolve) => {
       this.db.close((error) => {
         if (error) {
-        // eslint-disable-next-line no-console
+          // eslint-disable-next-line no-console
           console.error('DB: \t', chalk.red(error.message));
         }
         resolve(error ? 1 : 0);
@@ -46,8 +68,17 @@ class Database {
   run(sql: string, params: any[] = []): Promise<Result> {
     return new Promise((resolve, reject) => {
       this.db.run(sql, params, (result: Result, error: Error | null) => {
-        if (error) reject(error);
-        if (result?.errno) reject(result.code);
+        if (error || result?.errno) {
+          const sqlError: SQLError = {
+            error,
+            message: result.message,
+            stack: result.stack,
+            sql: cleanSQL(sql),
+            params,
+            result,
+          };
+          reject(sqlError);
+        }
         resolve(result);
       });
     });
@@ -56,7 +87,15 @@ class Database {
   all(sql: string, params: any[] = []): Promise<any[]> {
     return new Promise((resolve, reject) => {
       this.db.all(sql, params, (error: Error | null, results: any[]) => {
-        if (error) reject(error);
+        if (error) {
+          const sqlError: SQLError = {
+            error,
+            sql: cleanSQL(sql),
+            params,
+            stack: error?.stack,
+          };
+          reject(sqlError);
+        }
         resolve(results);
       });
     });
@@ -65,7 +104,15 @@ class Database {
   get(sql: string, params: any[] = []): Promise<any> {
     return new Promise((resolve, reject) => {
       this.db.get(sql, params, (error: Error | null, result: any) => {
-        if (error) reject(error);
+        if (error) {
+          const sqlError: SQLError = {
+            error,
+            sql: cleanSQL(sql),
+            params,
+            stack: error?.stack,
+          };
+          reject(sqlError);
+        }
         resolve(result);
       });
     });
@@ -74,7 +121,16 @@ class Database {
   exec(sql: string) {
     return new Promise((resolve, reject) => {
       this.db.exec(sql, (error: Error | null) => {
-        if (error) reject(error);
+        if (error) {
+          const params: any[] = [];
+          const sqlError: SQLError = {
+            error,
+            sql: cleanSQL(sql),
+            params,
+            stack: error?.stack,
+          };
+          reject(sqlError);
+        }
         resolve();
       });
     });

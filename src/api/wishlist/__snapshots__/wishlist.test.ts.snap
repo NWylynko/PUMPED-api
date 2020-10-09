@@ -262,7 +262,16 @@ exports[`POST wishlist add shoe (1) to customer (1) 1`] = `500`;
 exports[`POST wishlist add shoe (1) to customer (1) 2`] = `
 Object {
   "error": true,
-  "message": "SQLITE_CONSTRAINT",
+  "message": "SQLITE_CONSTRAINT: UNIQUE constraint failed: WishList.CustomerID, WishList.ShoeID",
+  "params": Array [
+    "1",
+    "1",
+  ],
+  "result": Object {
+    "code": "SQLITE_CONSTRAINT",
+    "errno": 19,
+  },
+  "sql": "INSERT INTO \\"WishList\\"(\\"ShoeID\\",\\"CustomerID\\") VALUES (?, ?);",
 }
 `;
 
@@ -305,7 +314,16 @@ exports[`POST wishlist add shoe (1) to customer (2) 1`] = `500`;
 exports[`POST wishlist add shoe (1) to customer (2) 2`] = `
 Object {
   "error": true,
-  "message": "SQLITE_CONSTRAINT",
+  "message": "SQLITE_CONSTRAINT: UNIQUE constraint failed: WishList.CustomerID, WishList.ShoeID",
+  "params": Array [
+    "1",
+    "2",
+  ],
+  "result": Object {
+    "code": "SQLITE_CONSTRAINT",
+    "errno": 19,
+  },
+  "sql": "INSERT INTO \\"WishList\\"(\\"ShoeID\\",\\"CustomerID\\") VALUES (?, ?);",
 }
 `;
 
@@ -370,7 +388,16 @@ exports[`POST wishlist add shoe (2) to customer (1) 1`] = `500`;
 exports[`POST wishlist add shoe (2) to customer (1) 2`] = `
 Object {
   "error": true,
-  "message": "SQLITE_CONSTRAINT",
+  "message": "SQLITE_CONSTRAINT: UNIQUE constraint failed: WishList.CustomerID, WishList.ShoeID",
+  "params": Array [
+    "2",
+    "1",
+  ],
+  "result": Object {
+    "code": "SQLITE_CONSTRAINT",
+    "errno": 19,
+  },
+  "sql": "INSERT INTO \\"WishList\\"(\\"ShoeID\\",\\"CustomerID\\") VALUES (?, ?);",
 }
 `;
 

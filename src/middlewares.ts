@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import path from 'path';
+import { SQLError } from './db';
 
 export function notFound(req: Request, res: Response, next: NextFunction) {
   res.status(404);
@@ -10,16 +11,23 @@ export function notFound(req: Request, res: Response, next: NextFunction) {
 const baseDir = path.join(__dirname, '../');
 
 const cleanUpStack = (dirtyStack: string) => {
-  const x = dirtyStack.replace(/ {4}at /g, '').split('\n');
-  x.shift();
-  return x.map((value) => value.replace(baseDir, ''));
+  if (dirtyStack) {
+    const x = dirtyStack.replace(/ {4}at /g, '').split('\n');
+    x.shift();
+    return x.map((value) => value.replace(baseDir, ''));
+  }
+  return '';
 };
 
 /* eslint-disable no-unused-vars */
-export function errorHandler(err: Error | string, req: Request, res: Response, next: NextFunction) {
+export function errorHandler(
+  err: Error | SQLError | string,
+  req: Request, res: Response,
+  next: NextFunction,
+) {
   /* eslint-enable no-unused-vars */
 
-  let error: Error;
+  let error: Error | SQLError;
 
   if (typeof err === 'string') {
     error = new Error(err);
@@ -40,20 +48,23 @@ export function errorHandler(err: Error | string, req: Request, res: Response, n
       stack = undefined;
       break;
     default:
-      stack = cleanUpStack(error.stack || '');
+      if (error?.stack) {
+        stack = cleanUpStack(error.stack);
+      }
       break;
   }
 
   res.json({
-    error: true,
+    ...error,
     message: error.message,
+    error: true,
     stack,
   });
 }
 
 export function requireJsonBody(req: Request, res: Response, next: NextFunction) {
   if (Object.keys(req.body).length === 0) {
-    throw new Error('no data sent');
+    next('no data sent');
   }
   next();
 }

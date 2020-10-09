@@ -214,7 +214,19 @@ exports[`POST Review of Shoe add review from customer who already left a review 
 exports[`POST Review of Shoe add review from customer who already left a review (should error) 2`] = `
 Object {
   "error": true,
-  "message": "SQLITE_CONSTRAINT",
+  "message": "SQLITE_CONSTRAINT: UNIQUE constraint failed: Review.ShoeID, Review.CustomerID",
+  "params": Array [
+    "1",
+    "1",
+    2,
+    "baddd",
+    309458,
+  ],
+  "result": Object {
+    "code": "SQLITE_CONSTRAINT",
+    "errno": 19,
+  },
+  "sql": "INSERT INTO \\"Review\\"(\\"ShoeID\\",\\"CustomerID\\",\\"stars\\",\\"message\\",\\"timestamp\\")VALUES (?,?,?,?,?);",
 }
 `;
 
