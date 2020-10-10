@@ -1,3 +1,5 @@
+import { escape } from 'sqlstring';
+
 const objectToSQLupdate = (fields: any) => {
   let sql = '';
 
@@ -6,7 +8,7 @@ const objectToSQLupdate = (fields: any) => {
     // the last item cant have a comma
     const comma = index === array.length - 1 ? '' : ',';
 
-    sql += `${escape(partName)} = '${escape(fields[partName])}'${comma} `;
+    sql += `${escape(partName)} = ${escape(fields[partName])}${comma} `;
   });
 
   return sql;
