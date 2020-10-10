@@ -28,130 +28,46 @@ VALUES
   ('basketball');
 -- Images
 INSERT INTO "Image"(
-    "name",
-    "fileType",
-    "height",
-    "width",
-    "high",
-    "medium",
-    "low",
-    "tiny"
+    "name"
   )
 VALUES
   (
-    'Airss covers',
-    'image/png',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
+    'Airss covers'
   );
 INSERT INTO "Image"(
-    "name",
-    "fileType",
-    "height",
-    "width",
-    "high",
-    "medium",
-    "low",
-    "tiny"
+    "name"
   )
 VALUES
   (
-    'Jumpers covers',
-    'image/png',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
+    'Jumpers covers'
   );
 INSERT INTO "Image"(
-    "name",
-    "fileType",
-    "height",
-    "width",
-    "high",
-    "medium",
-    "low",
-    "tiny"
+    "name"
   )
 VALUES
   (
-    'Kicks covers',
-    'image/png',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
+    'Kicks covers'
   );
 INSERT INTO "Image"(
-    "name",
-    "fileType",
-    "height",
-    "width",
-    "high",
-    "medium",
-    "low",
-    "tiny"
+    "name"
   )
 VALUES
   (
-    'airss red',
-    'image/png',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
+    'airss red'
   );
 INSERT INTO "Image"(
-    "name",
-    "fileType",
-    "height",
-    "width",
-    "high",
-    "medium",
-    "low",
-    "tiny"
+    "name"
   )
 VALUES
   (
-    'airss blue',
-    'image/png',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
+    'airss blue'
   );
 INSERT INTO "Image"(
-    "name",
-    "fileType",
-    "height",
-    "width",
-    "high",
-    "medium",
-    "low",
-    "tiny"
+    "name"
   )
 VALUES
   (
-    'jumpers green',
-    'image/png',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL
+    'jumpers green'
   );
 -- Shoes
 INSERT INTO "Shoe" (

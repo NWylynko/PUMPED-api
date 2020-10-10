@@ -1,53 +1,55 @@
 import express from 'express';
+import multer from 'multer';
+import path from 'path';
+
+import addImage from './addImage';
+import getImage from './getImage';
+import removeImage from './removeImage';
 
 const router = express.Router();
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:ImageID/:size', async (req, res, next) => {
   // get single image
   try {
+    const { ImageID, size } = req.params;
+
+    // get image name
+    const name = await getImage(ImageID);
+
+    // set it as a header
+    res.setHeader('image-name', name);
 
     // send image
+    res.sendFile(path.resolve(`./public/${ImageID}/${size}.webp`));
   } catch (error) {
     next(error);
   }
 });
 
-router.post('/', async (req, res, next) => {
+const ramUploadSpace = multer({ storage: multer.memoryStorage() });
+
+router.post('/', ramUploadSpace.single('image'), async (req, res, next) => {
   // add a new image
   try {
-    const data = {};
+    const { name } = req.body;
 
     res.json({
       success: true,
-      data,
+      data: await addImage(req.file, name),
     });
   } catch (error) {
     next(error);
   }
 });
 
-router.patch('/:id', async (req, res, next) => {
-  // update a single or multiple table of a image
-  try {
-    const data = {};
-
-    res.json({
-      success: true,
-      data,
-    });
-  } catch (error) {
-    next(error);
-  }
-});
-
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:ImageID', async (req, res, next) => {
   // remove a image
   try {
-    const data = {};
+    const { ImageID } = req.params;
 
     res.json({
       success: true,
-      data,
+      data: await removeImage(ImageID),
     });
   } catch (error) {
     next(error);
