@@ -1,0 +1,326 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DELETE remove a Customer removes Customer for ID (1) 1`] = `200`;
+
+exports[`DELETE remove a Customer removes Customer for ID (1) 2`] = `
+Object {
+  "data": Object {
+    "CustomerID": "1",
+  },
+  "success": true,
+}
+`;
+
+exports[`DELETE remove a Customer removes Customer for ID (1) 3`] = `200`;
+
+exports[`DELETE remove a Customer removes Customer for ID (1) 4`] = `
+Object {
+  "empty": true,
+  "success": true,
+}
+`;
+
+exports[`DELETE remove a Customer removes Customer for ID (2) 1`] = `200`;
+
+exports[`DELETE remove a Customer removes Customer for ID (2) 2`] = `
+Object {
+  "data": Object {
+    "CustomerID": "2",
+  },
+  "success": true,
+}
+`;
+
+exports[`DELETE remove a Customer removes Customer for ID (2) 3`] = `200`;
+
+exports[`DELETE remove a Customer removes Customer for ID (2) 4`] = `
+Object {
+  "empty": true,
+  "success": true,
+}
+`;
+
+exports[`DELETE remove a Customer removes Customer for ID (3) 1`] = `200`;
+
+exports[`DELETE remove a Customer removes Customer for ID (3) 2`] = `
+Object {
+  "data": Object {
+    "CustomerID": "3",
+  },
+  "success": true,
+}
+`;
+
+exports[`DELETE remove a Customer removes Customer for ID (3) 3`] = `200`;
+
+exports[`DELETE remove a Customer removes Customer for ID (3) 4`] = `
+Object {
+  "empty": true,
+  "success": true,
+}
+`;
+
+exports[`DELETE remove a Customer removes Customer for ID (4) 1`] = `200`;
+
+exports[`DELETE remove a Customer removes Customer for ID (4) 2`] = `
+Object {
+  "data": Object {
+    "CustomerID": "4",
+  },
+  "success": true,
+}
+`;
+
+exports[`DELETE remove a Customer removes Customer for ID (4) 3`] = `200`;
+
+exports[`DELETE remove a Customer removes Customer for ID (4) 4`] = `
+Object {
+  "empty": true,
+  "success": true,
+}
+`;
+
+exports[`GET Customer gets Customer for ID (1) 1`] = `200`;
+
+exports[`GET Customer gets Customer for ID (1) 2`] = `
+Object {
+  "data": Object {
+    "firstName": "bobby",
+    "lastName": "boo",
+  },
+  "success": true,
+}
+`;
+
+exports[`GET Customer gets Customer for ID (2) 1`] = `200`;
+
+exports[`GET Customer gets Customer for ID (2) 2`] = `
+Object {
+  "data": Object {
+    "firstName": "pippy",
+    "lastName": "nippy",
+  },
+  "success": true,
+}
+`;
+
+exports[`GET Customer gets Customer for ID (3) 1`] = `200`;
+
+exports[`GET Customer gets Customer for ID (3) 2`] = `
+Object {
+  "data": Object {
+    "firstName": "whip",
+    "lastName": "nah",
+  },
+  "success": true,
+}
+`;
+
+exports[`GET Customer gets Customer for ID (4) 1`] = `200`;
+
+exports[`GET Customer gets Customer for ID (4) 2`] = `
+Object {
+  "empty": true,
+  "success": true,
+}
+`;
+
+exports[`PATCH update a Customer customer, all fields 1`] = `200`;
+
+exports[`PATCH update a Customer customer, all fields 2`] = `
+Object {
+  "data": Object {
+    "CustomerID": "1",
+    "firstName": "big",
+    "lastName": "lad",
+  },
+  "success": true,
+}
+`;
+
+exports[`PATCH update a Customer customer, all fields 3`] = `200`;
+
+exports[`PATCH update a Customer customer, all fields 4`] = `
+Object {
+  "data": Object {
+    "firstName": "big",
+    "lastName": "lad",
+  },
+  "success": true,
+}
+`;
+
+exports[`PATCH update a Customer customer, no data 1`] = `500`;
+
+exports[`PATCH update a Customer customer, no data 2`] = `
+Object {
+  "error": true,
+  "message": "no data sent",
+}
+`;
+
+exports[`PATCH update a Customer customer, no data 3`] = `200`;
+
+exports[`PATCH update a Customer customer, no data 4`] = `
+Object {
+  "data": Object {
+    "firstName": "bobby",
+    "lastName": "boo",
+  },
+  "success": true,
+}
+`;
+
+exports[`PATCH update a Customer customer, only one field 1`] = `200`;
+
+exports[`PATCH update a Customer customer, only one field 2`] = `
+Object {
+  "data": Object {
+    "CustomerID": "1",
+    "firstName": "jacky",
+  },
+  "success": true,
+}
+`;
+
+exports[`PATCH update a Customer customer, only one field 3`] = `200`;
+
+exports[`PATCH update a Customer customer, only one field 4`] = `
+Object {
+  "data": Object {
+    "firstName": "jacky",
+    "lastName": "boo",
+  },
+  "success": true,
+}
+`;
+
+exports[`PATCH update a Customer no customer, all fields 1`] = `200`;
+
+exports[`PATCH update a Customer no customer, all fields 2`] = `
+Object {
+  "data": Object {
+    "CustomerID": "4",
+    "firstName": "big",
+    "lastName": "lad",
+  },
+  "success": true,
+}
+`;
+
+exports[`PATCH update a Customer no customer, all fields 3`] = `200`;
+
+exports[`PATCH update a Customer no customer, all fields 4`] = `
+Object {
+  "empty": true,
+  "success": true,
+}
+`;
+
+exports[`PATCH update a Customer no customer, no data 1`] = `500`;
+
+exports[`PATCH update a Customer no customer, no data 2`] = `
+Object {
+  "error": true,
+  "message": "no data sent",
+}
+`;
+
+exports[`PATCH update a Customer no customer, no data 3`] = `200`;
+
+exports[`PATCH update a Customer no customer, no data 4`] = `
+Object {
+  "empty": true,
+  "success": true,
+}
+`;
+
+exports[`PATCH update a Customer no customer, only one field 1`] = `200`;
+
+exports[`PATCH update a Customer no customer, only one field 2`] = `
+Object {
+  "data": Object {
+    "CustomerID": "4",
+    "firstName": "jacky",
+  },
+  "success": true,
+}
+`;
+
+exports[`PATCH update a Customer no customer, only one field 3`] = `200`;
+
+exports[`PATCH update a Customer no customer, only one field 4`] = `
+Object {
+  "empty": true,
+  "success": true,
+}
+`;
+
+exports[`POST add a new Customer correct amount of data 1`] = `200`;
+
+exports[`POST add a new Customer correct amount of data 2`] = `
+Object {
+  "data": Object {
+    "firstName": "big",
+    "lastName": "lad",
+  },
+  "success": true,
+}
+`;
+
+exports[`POST add a new Customer correct amount of data 3`] = `200`;
+
+exports[`POST add a new Customer correct amount of data 4`] = `
+Object {
+  "data": Object {
+    "firstName": "big",
+    "lastName": "lad",
+  },
+  "success": true,
+}
+`;
+
+exports[`POST add a new Customer no data 1`] = `500`;
+
+exports[`POST add a new Customer no data 2`] = `
+Object {
+  "error": true,
+  "message": "no data sent",
+}
+`;
+
+exports[`POST add a new Customer no data 3`] = `200`;
+
+exports[`POST add a new Customer no data 4`] = `
+Object {
+  "empty": true,
+  "success": true,
+}
+`;
+
+exports[`POST add a new Customer not enough data 1`] = `500`;
+
+exports[`POST add a new Customer not enough data 2`] = `
+Object {
+  "error": true,
+  "message": "SQLITE_CONSTRAINT: NOT NULL constraint failed: Customer.lastName",
+  "params": Array [
+    "jacky",
+    null,
+  ],
+  "result": Object {
+    "code": "SQLITE_CONSTRAINT",
+    "errno": 19,
+  },
+  "sql": " INSERT INTO Customer (\\"firstName\\",\\"lastName\\" ) VALUES (?,? ) ",
+}
+`;
+
+exports[`POST add a new Customer not enough data 3`] = `200`;
+
+exports[`POST add a new Customer not enough data 4`] = `
+Object {
+  "empty": true,
+  "success": true,
+}
+`;
