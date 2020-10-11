@@ -3,7 +3,6 @@ import db, { SQL } from '../db';
 
 export const createTables = () => Promise.all([
   db.run(SQL.tables.Brand),
-  db.run(SQL.tables.Cart),
   db.run(SQL.tables.Collection),
   db.run(SQL.tables.Colour),
   db.run(SQL.tables.ColourImage),
@@ -26,7 +25,6 @@ const resetDB = async () => {
   await fs.unlink(`./main.${process.env.NODE_ENV}.db`);
   await db.open();
   await createTables();
-  await db.exec(SQL.testData);
 };
 
 export const resetDBForTest = async () => {

@@ -1,71 +1,85 @@
 import express from 'express';
+import { isArrayEmpty } from '../../utils/isEmpty';
+import { Order, OrderItem, partOfOrderItem } from './types';
+import getOrders from './getOrders';
+import getOrderItems from './getOrderItems';
+import updateOrderItem from './updateOrderItem';
+import removeOrderItem from './removeOrderItem';
+import removeOrder from './removeOrder';
 
 const router = express.Router();
 
-router.get('/:customerID', async (req, res, next) => {
+router.get('/:CustomerID', async (req, res, next) => {
   // get a customers orders
   try {
-    const data = {};
+    const { CustomerID } = req.params;
+
+    const results: Order[] = await getOrders(CustomerID);
 
     res.json({
       success: true,
-      data,
+      data: results,
+      empty: isArrayEmpty(results),
     });
   } catch (error) {
     next(error);
   }
 });
 
-router.post('/:customerID', async (req, res, next) => {
-  // add a new order
+router.get('/items/:OrderID', async (req, res, next) => {
+  // get a customers order items
   try {
-    const data = {};
+    const { OrderID } = req.params;
+
+    const results: OrderItem[] = await getOrderItems(OrderID);
 
     res.json({
       success: true,
-      data,
+      data: results,
+      empty: isArrayEmpty(results),
     });
   } catch (error) {
     next(error);
   }
 });
 
-router.patch('/:customerID/:id', async (req, res, next) => {
+router.patch('/:OrderID/:ShoeID', async (req, res, next) => {
   // update a single or multiple table of a order item
   try {
-    const data = {};
+    const { OrderID, ShoeID } = req.params;
+    const fields: partOfOrderItem = req.body;
 
     res.json({
       success: true,
-      data,
+      data: await updateOrderItem(OrderID, ShoeID, fields),
     });
   } catch (error) {
     next(error);
   }
 });
 
-router.delete('/:customerID/:id', async (req, res, next) => {
+router.delete('/:OrderID/:ShoeID', async (req, res, next) => {
   // remove an order item
   try {
-    const data = {};
+    const { OrderID, ShoeID } = req.params;
 
     res.json({
       success: true,
-      data,
+      data: await removeOrderItem(OrderID, ShoeID),
     });
   } catch (error) {
     next(error);
   }
 });
 
-router.delete('/:customerID', async (req, res, next) => {
+router.delete('/:OrderID', async (req, res, next) => {
   // remove an order
   try {
-    const data = {};
+    const { OrderID } = req.params;
 
     res.json({
       success: true,
-      data,
+      data: await removeOrder(OrderID),
     });
   } catch (error) {
     next(error);

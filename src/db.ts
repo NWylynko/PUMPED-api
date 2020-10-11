@@ -140,7 +140,6 @@ class Database {
 export const SQL = {
   tables: {
     Brand: loadSQL('tables/Brand'),
-    Cart: loadSQL('tables/Cart'),
     Collection: loadSQL('tables/Collection'),
     Colour: loadSQL('tables/Colour'),
     ColourImage: loadSQL('tables/ColourImage'),

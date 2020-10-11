@@ -3,7 +3,7 @@ CREATE TABLE "OrderItem" (
   "ShoeID" INTEGER NOT NULL,
   "StockID" INTEGER NOT NULL,
   "quantity" INTEGER NOT NULL DEFAULT 1,
-  "price" INTEGER NOT NULL,
+  "price" INTEGER,
   PRIMARY KEY("OrderID", "ShoeID", "StockID"),
   FOREIGN KEY("ShoeID") REFERENCES "Shoe"("ID"),
   FOREIGN KEY("OrderID") REFERENCES "Order"("ID"),

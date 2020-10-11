@@ -16,6 +16,8 @@ async function addCustomer({ firstName, lastName }: Customer) {
 
   await db.run(sql, values);
 
+  // create new order with activeCart set to true
+
   return { firstName, lastName };
 }
 
