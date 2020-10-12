@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { getOrderIDFromCustomerID } from './getOrderIDFromCustomerID';
+import { getCartOrderIDFromCustomerID } from './getCartOrderIDFromCustomerID';
 
 interface ShoePrices {
   ShoeID: number;
@@ -19,7 +19,7 @@ async function checkoutCart(CustomerID: string, address: string) {
   // the orders delivery address gets set and dateOfPurchase gets set
   // the paid attribute doesn't get set to 1 (true) until /cart/pay gets called by the customer
   // a new order is made with activeCart set to 1 (true) and assigned to the customer
-  const OrderID = await getOrderIDFromCustomerID(CustomerID);
+  const OrderID = await getCartOrderIDFromCustomerID(CustomerID);
 
   if (!OrderID) {
     throw new Error('no order ID');

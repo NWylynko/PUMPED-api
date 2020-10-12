@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import { partOfOrderItem } from '../order';
-import getOrderIDFromCustomerID from './getOrderIDFromCustomerID';
+import getCartOrderIDFromCustomerID from './getCartOrderIDFromCustomerID';
 import db from '../../db';
 
 export async function addCartItem(
@@ -12,7 +12,7 @@ export async function addCartItem(
     throw new Error('stock id not supplied');
   }
 
-  const OrderID = await getOrderIDFromCustomerID(CustomerID);
+  const OrderID = await getCartOrderIDFromCustomerID(CustomerID);
 
   const { sql, values } = SQL`
     INSERT INTO OrderItem

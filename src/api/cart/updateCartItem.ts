@@ -2,10 +2,10 @@ import { escape } from 'sqlstring';
 import db from '../../db';
 import objectToSQLupdate from '../../utils/objectToSQLupdate';
 import { partOfOrderItem } from '../order/types';
-import getOrderIDFromCustomerID from './getOrderIDFromCustomerID';
+import getCartOrderIDFromCustomerID from './getCartOrderIDFromCustomerID';
 
 async function updateCartItem(CustomerID: string, ShoeID: string, fields: partOfOrderItem) {
-  const OrderID = await getOrderIDFromCustomerID(CustomerID);
+  const OrderID = await getCartOrderIDFromCustomerID(CustomerID);
 
   let sql = 'UPDATE "OrderItem" SET ';
 

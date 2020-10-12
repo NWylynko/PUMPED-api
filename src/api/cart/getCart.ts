@@ -1,8 +1,8 @@
 import { getOrderItems } from '../order';
-import getOrderIDFromCustomerID from './getOrderIDFromCustomerID';
+import getCartOrderIDFromCustomerID from './getCartOrderIDFromCustomerID';
 
 export async function getCart(CustomerID: string) {
-  const OrderID = await getOrderIDFromCustomerID(CustomerID);
+  const OrderID = await getCartOrderIDFromCustomerID(CustomerID);
 
   return getOrderItems(OrderID);
 }

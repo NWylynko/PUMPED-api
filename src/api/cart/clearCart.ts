@@ -1,9 +1,9 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import getOrderIDFromCustomerID from './getOrderIDFromCustomerID';
+import getCartOrderIDFromCustomerID from './getCartOrderIDFromCustomerID';
 
 async function clearCart(CustomerID: string) {
-  const OrderID = await getOrderIDFromCustomerID(CustomerID);
+  const OrderID = await getCartOrderIDFromCustomerID(CustomerID);
 
   const { sql, values } = SQL`
     DELETE FROM OrderItem

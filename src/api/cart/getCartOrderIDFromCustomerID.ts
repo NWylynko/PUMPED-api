@@ -1,7 +1,7 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
 
-export async function getOrderIDFromCustomerID(CustomerID: string): Promise<string> {
+export async function getCartOrderIDFromCustomerID(CustomerID: string): Promise<string> {
   const { sql, values } = SQL`
       SELECT ID
       FROM "Order"
@@ -14,4 +14,4 @@ export async function getOrderIDFromCustomerID(CustomerID: string): Promise<stri
   return OrderID;
 }
 
-export default getOrderIDFromCustomerID;
+export default getCartOrderIDFromCustomerID;
