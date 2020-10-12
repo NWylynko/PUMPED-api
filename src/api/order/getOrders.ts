@@ -4,7 +4,7 @@ import db from '../../db';
 function getOrders(CustomerID: string) {
   const { sql, values } = SQL`
     SELECT *
-    FROM Order
+    FROM "Order"
     WHERE CustomerID = ${CustomerID}
   `;
 
