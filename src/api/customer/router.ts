@@ -2,6 +2,7 @@ import express from 'express';
 import { isEmpty } from '../../utils/isEmpty';
 import { Customer } from './types';
 import { requireJsonBody } from '../../middlewares';
+import getCustomerID from '../../utils/getCustomerID';
 
 import getCustomer from './getCustomer';
 import addCustomer from './addCustomer';
@@ -10,10 +11,10 @@ import removeCustomer from './removeCustomer';
 
 const router = express.Router();
 
-router.get('/:CustomerID', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   // get single customer
   try {
-    const { CustomerID } = req.params;
+    const CustomerID = getCustomerID(req);
 
     const data: Customer = await getCustomer(CustomerID);
 
@@ -41,10 +42,10 @@ router.post('/', requireJsonBody, async (req, res, next) => {
   }
 });
 
-router.patch('/:CustomerID', requireJsonBody, async (req, res, next) => {
+router.patch('/', requireJsonBody, async (req, res, next) => {
   // update a single or multiple table of a customer
   try {
-    const { CustomerID } = req.params;
+    const CustomerID = getCustomerID(req);
     const fields: Customer = req.body;
 
     res.json({
@@ -56,10 +57,10 @@ router.patch('/:CustomerID', requireJsonBody, async (req, res, next) => {
   }
 });
 
-router.delete('/:CustomerID', async (req, res, next) => {
+router.delete('/', async (req, res, next) => {
   // remove a customer
   try {
-    const { CustomerID } = req.params;
+    const CustomerID = getCustomerID(req);
 
     res.json({
       success: true,

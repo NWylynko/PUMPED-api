@@ -6,6 +6,7 @@ import getReviews from './getReviews';
 import addReview from './addReview';
 import updateReview from './updateReview';
 import removeReview from './removeReview';
+import getCustomerID from '../../utils/getCustomerID';
 
 const router = express.Router();
 
@@ -26,11 +27,12 @@ router.get('/:ShoeID', async (req, res, next) => {
   }
 });
 
-router.post('/:CustomerID/:ShoeID', requireJsonBody, async (req, res, next) => {
+router.post('/:ShoeID', requireJsonBody, async (req, res, next) => {
   // add a new review
 
   try {
-    const { CustomerID, ShoeID } = req.params;
+    const { ShoeID } = req.params;
+    const CustomerID = getCustomerID(req);
 
     const json: reviewDetails = req.body;
 
@@ -45,10 +47,11 @@ router.post('/:CustomerID/:ShoeID', requireJsonBody, async (req, res, next) => {
   }
 });
 
-router.patch('/:CustomerID/:ShoeID', requireJsonBody, async (req, res, next) => {
+router.patch('/:ShoeID', requireJsonBody, async (req, res, next) => {
   // update a single or multiple table of a review
   try {
-    const { CustomerID, ShoeID } = req.params;
+    const { ShoeID } = req.params;
+    const CustomerID = getCustomerID(req);
 
     const fields: partOfReview = req.body;
 
@@ -63,10 +66,11 @@ router.patch('/:CustomerID/:ShoeID', requireJsonBody, async (req, res, next) => 
   }
 });
 
-router.delete('/:CustomerID/:ShoeID', async (req, res, next) => {
+router.delete('/:ShoeID', async (req, res, next) => {
   // remove a review
   try {
-    const { CustomerID, ShoeID } = req.params;
+    const { ShoeID } = req.params;
+    const CustomerID = getCustomerID(req);
 
     const result = await removeReview(CustomerID, ShoeID);
 

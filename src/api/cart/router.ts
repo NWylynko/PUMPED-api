@@ -1,13 +1,14 @@
 import express from 'express';
 import { requireJsonBody } from '../../middlewares';
+import getCustomerID from '../../utils/getCustomerID';
 import checkoutCart from './checkoutCart';
 
 const router = express.Router();
 
-router.post('/checkout/:CustomerID', requireJsonBody, async (req, res, next) => {
+router.post('/checkout', requireJsonBody, async (req, res, next) => {
   // checkout the cart to be an order
   try {
-    const { CustomerID } = req.params;
+    const CustomerID = getCustomerID(req);
     const { address } = req.body;
 
     if (!address) {

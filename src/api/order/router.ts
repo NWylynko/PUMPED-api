@@ -1,6 +1,9 @@
 import express from 'express';
 import { isArrayEmpty } from '../../utils/isEmpty';
+import getCustomerID from '../../utils/getCustomerID';
+
 import { Order, OrderItem, partOfOrderItem } from './types';
+
 import getOrders from './getOrders';
 import getOrderItems from './getOrderItems';
 import updateOrderItem from './updateOrderItem';
@@ -9,10 +12,10 @@ import removeOrder from './removeOrder';
 
 const router = express.Router();
 
-router.get('/:CustomerID', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   // get a customers orders
   try {
-    const { CustomerID } = req.params;
+    const CustomerID = getCustomerID(req);
 
     const results: Order[] = await getOrders(CustomerID);
 
@@ -26,7 +29,7 @@ router.get('/:CustomerID', async (req, res, next) => {
   }
 });
 
-router.get('/items/:OrderID', async (req, res, next) => {
+router.get('/:OrderID', async (req, res, next) => {
   // get a customers order items
   try {
     const { OrderID } = req.params;

@@ -1,5 +1,6 @@
 import express from 'express';
 import { isEmpty } from '../../utils/isEmpty';
+import getCustomerID from '../../utils/getCustomerID';
 
 import addWishListItem from './addWishListItem';
 import clearWishList from './clearWishList';
@@ -8,10 +9,10 @@ import removeWishListItem from './removeWishListItem';
 
 const router = express.Router();
 
-router.get('/:CustomerID', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   // get a customers wishlist
   try {
-    const { CustomerID } = req.params;
+    const CustomerID = getCustomerID(req);
 
     const results = await getWishlist(CustomerID);
 
@@ -25,10 +26,11 @@ router.get('/:CustomerID', async (req, res, next) => {
   }
 });
 
-router.post('/:CustomerID/:ShoeID', async (req, res, next) => {
+router.post('/:ShoeID', async (req, res, next) => {
   // add a new wishlist item
   try {
-    const { CustomerID, ShoeID } = req.params;
+    const { ShoeID } = req.params;
+    const CustomerID = getCustomerID(req);
 
     res.json({
       success: true,
@@ -39,10 +41,11 @@ router.post('/:CustomerID/:ShoeID', async (req, res, next) => {
   }
 });
 
-router.delete('/:CustomerID/:ShoeID', async (req, res, next) => {
+router.delete('/:ShoeID', async (req, res, next) => {
   // remove a wishlist item
   try {
-    const { CustomerID, ShoeID } = req.params;
+    const { ShoeID } = req.params;
+    const CustomerID = getCustomerID(req);
 
     res.json({
       success: true,
@@ -53,10 +56,10 @@ router.delete('/:CustomerID/:ShoeID', async (req, res, next) => {
   }
 });
 
-router.delete('/:CustomerID', async (req, res, next) => {
+router.delete('/', async (req, res, next) => {
   // clear a wishlist
   try {
-    const { CustomerID } = req.params;
+    const CustomerID = getCustomerID(req);
 
     res.json({
       success: true,
