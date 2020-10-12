@@ -1,5 +1,5 @@
 import express from 'express';
-import resetDB from '../utils/resetDB';
+import resetDB, { addTestData } from '../utils/resetDB';
 
 const router = express.Router();
 
@@ -12,6 +12,17 @@ router.get('/', async (req, res) => {
 router.get('/resetDB', async (req, res, next) => {
   try {
     await resetDB();
+    res.json({
+      success: true,
+    });
+  } catch (error) {
+    next(new Error(error));
+  }
+});
+
+router.get('/addTestData', async (req, res, next) => {
+  try {
+    await addTestData();
     res.json({
       success: true,
     });

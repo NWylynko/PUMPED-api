@@ -164,26 +164,25 @@ INSERT INTO "Order" (
     "CustomerID",
     "dateOfPurchase",
     "paid",
+	"activeCart",
     "deliveryAddress"
   )
 VALUES
-  (1, 24563456, 'true', 'the moon');
+  (1, 24563456, 1,0, 'the moon');
 INSERT INTO "Order" (
     "CustomerID",
-    "dateOfPurchase",
     "paid",
-    "deliveryAddress"
+	"activeCart"
   )
 VALUES
-  (1, 2049867456, 'true', 'in the stars');
+  (1, 0, 1);
 INSERT INTO "Order" (
     "CustomerID",
-    "dateOfPurchase",
     "paid",
-    "deliveryAddress"
+	"activeCart"
   )
 VALUES
-  (2, 2456245634, 'false', 'mars');
+  (2, 0, 1);
 -- OrderItem
 INSERT INTO "OrderItem" (
     "OrderID",
@@ -202,25 +201,23 @@ INSERT INTO "OrderItem" (
     "price"
   )
 VALUES
-  (1, 2, 3, 1, 70);
+  (1, 2, 3, 1, 50);
 INSERT INTO "OrderItem" (
     "OrderID",
     "ShoeID",
     "StockID",
-    "quantity",
-    "price"
+    "quantity"
   )
 VALUES
-  (2, 1, 2, 1, 70);
+  (2, 1, 2, 1);
 INSERT INTO "OrderItem" (
     "OrderID",
     "ShoeID",
     "StockID",
-    "quantity",
-    "price"
+    "quantity"
   )
 VALUES
-  (3, 2, 3, 1, 70);
+  (3, 2, 3, 1);
 -- Review
 INSERT INTO "Review" (
     "ShoeID",
@@ -302,13 +299,3 @@ VALUES
 INSERT INTO "WishList" ("CustomerID", "ShoeID")
 VALUES
   (2, 1);
--- Carts
-INSERT INTO "Cart" ("CustomerID", "ShoeID", "StockID", "quantity")
-VALUES
-  (1, 1, 2, 2);
-INSERT INTO "Cart" ("CustomerID", "ShoeID", "StockID", "quantity")
-VALUES
-  (1, 2, 1, 4);
-INSERT INTO "Cart" ("CustomerID", "ShoeID", "StockID", "quantity")
-VALUES
-  (2, 1, 1, 3);

@@ -3,13 +3,13 @@ CREATE TABLE "Order" (
   "CustomerID" INTEGER NOT NULL,
   "dateOfPurchase" INTEGER,
   "paid" INTEGER NOT NULL CHECK(
-		"stars" >= 0
-		AND "stars" <= 1
+		"paid" >= 0
+		AND "paid" <= 1
 	),
   "deliveryAddress" TEXT,
   "activeCart" INTEGER NOT NULL CHECK(
-		"stars" >= 0
-		AND "stars" <= 1
+		"activeCart" >= 0
+		AND "activeCart" <= 1
 	),
   FOREIGN KEY("CustomerID") REFERENCES "Customer"("ID")
 );

@@ -27,6 +27,8 @@ const resetDB = async () => {
   await createTables();
 };
 
+export const addTestData = () => db.exec(SQL.testData);
+
 export const resetDBForTest = async () => {
   await db.close();
   await db.open();
