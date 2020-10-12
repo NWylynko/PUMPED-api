@@ -1,11 +1,7 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
 import { getCartOrderIDFromCustomerID } from './getCartOrderIDFromCustomerID';
-
-interface ShoePrices {
-  ShoeID: number;
-  price: number;
-}
+import { ShoePrices } from './types';
 
 async function checkoutCart(CustomerID: string, address: string) {
   // get order id, this gets the id of the order of cart for the customer

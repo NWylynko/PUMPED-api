@@ -6,8 +6,25 @@ import getShoe from './getShoe';
 import removeShoe from './removeShoe';
 import updateShoe from './updateShoe';
 
+import {
+  Shoe,
+  PartOfShoe,
+  newShoe,
+  ShoeWithColours,
+  GetAllShoes,
+} from './types';
+
 export {
-  addShoe, getAllShoes, getShoe, removeShoe, updateShoe,
+  addShoe,
+  getAllShoes,
+  getShoe,
+  removeShoe,
+  updateShoe,
+  Shoe,
+  PartOfShoe,
+  newShoe,
+  ShoeWithColours,
+  GetAllShoes,
 };
 
 export default router;

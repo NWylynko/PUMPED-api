@@ -1,7 +1,8 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
+import { Review } from './types';
 
-function getReviews(ShoeID: string) {
+function getReviews(ShoeID: string): Promise<Review[]> {
   const { sql, values } = SQL`
     SELECT
       Customer.firstName,

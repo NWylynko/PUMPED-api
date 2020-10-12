@@ -4,7 +4,7 @@ import db from '../../db';
 async function getImage(ImageID: string) {
   // get image name
   const { sql, values } = SQL`SELECT name FROM Image WHERE ID = ${ImageID}`;
-  const { name = undefined } = await db.get(sql, values);
+  const { name = undefined }: { name?: string } = await db.get(sql, values);
 
   if (!name) { throw new Error("image doesn't exist"); }
 

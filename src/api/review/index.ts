@@ -6,8 +6,17 @@ import reCalculateStars from './reCalculateStars';
 import removeReview from './removeReview';
 import updateReview from './updateReview';
 
+import { reviewDetails, Review, partOfReview } from './types';
+
 export {
-  addReview, getReviews, reCalculateStars, removeReview, updateReview,
+  addReview,
+  getReviews,
+  reCalculateStars,
+  removeReview,
+  updateReview,
+  reviewDetails,
+  Review,
+  partOfReview,
 };
 
 export default router;

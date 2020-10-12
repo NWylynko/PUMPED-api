@@ -1,7 +1,8 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
+import { Customer } from './types';
 
-function getCustomer(CustomerID: string) {
+function getCustomer(CustomerID: string): Promise<Customer> {
   const { sql, values } = SQL`
     SELECT
       Customer.firstName,

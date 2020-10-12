@@ -7,7 +7,6 @@ export interface reviewDetails {
 export interface Review extends reviewDetails {
   firstName: string;
   lastName: string;
-
 }
 
 export interface partOfReview {

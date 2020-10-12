@@ -9,7 +9,7 @@ export async function getCartOrderIDFromCustomerID(CustomerID: string): Promise<
       AND activeCart = 1
     `;
 
-  const { ID: OrderID } = await db.get(sql, values);
+  const { ID: OrderID }: { ID: string } = await db.get(sql, values);
 
   return OrderID;
 }
