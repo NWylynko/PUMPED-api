@@ -11,6 +11,7 @@ import order from './order';
 import review from './review';
 import section from './section';
 import shoe from './shoe';
+import style from './style';
 import wishlist from './wishlist';
 
 import search from './search';
@@ -28,6 +29,7 @@ router.use('/order', order);
 router.use('/review', review);
 router.use('/section', section);
 router.use('/shoe', shoe);
+router.use('/style', style);
 router.use('/wishlist', wishlist);
 
 router.use('/search', search);
