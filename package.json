@@ -13,7 +13,8 @@
     "lint": "eslint src/**/* --ext .ts",
     "lint:fix": "eslint src/**/* --fix",
     "test": "jest --silent",
-    "test:watch": "jest --watch --silent"
+    "test:watch": "jest --watch --silent",
+    "linesOfCode": "cd src && find . -name '*.ts' | xargs wc -l"
   },
   "dependencies": {
     "chalk": "^4.1.0",
