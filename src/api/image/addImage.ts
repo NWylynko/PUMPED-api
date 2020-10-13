@@ -1,4 +1,3 @@
-import { Express } from 'express';
 import fs from 'fs/promises';
 import sharp from 'sharp';
 import SQL from 'sql-template-tag';
@@ -9,9 +8,9 @@ function resizeAndSaveImage(dir: string, image: sharp.Sharp, { name, width }: Im
   return image.resize(width).toFile(`${dir}/${name}.webp`);
 }
 
-async function addImage(file: Express.Multer.File, name: string) {
+async function addImage(image: string | Buffer, name: string) {
   // convert image to webp
-  const master = sharp(file.buffer).toFormat('webp').webp();
+  const master = sharp(image).toFormat('webp').webp();
 
   // get id
   const { id }: { id: string } = await db.get('SELECT MAX(ID) + 1 as id FROM "Image"');

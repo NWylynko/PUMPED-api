@@ -35,7 +35,7 @@ router.post('/', ramUploadSpace.single('image'), async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await addImage(req.file, name),
+      data: await addImage(req.file.buffer, name),
     });
   } catch (error) {
     next(error);
