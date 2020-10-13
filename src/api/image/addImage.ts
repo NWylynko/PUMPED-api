@@ -13,7 +13,7 @@ async function addImage(image: string | Buffer, name: string) {
   const master = sharp(image).toFormat('webp').webp();
 
   // get id
-  const { id }: { id: string } = await db.get('SELECT MAX(ID) + 1 as id FROM "Image"');
+  const { id }: { id: string } = await db.get('SELECT IFNULL(MAX(ID) + 1, 1) as id FROM "Image"');
 
   // create row
   const { sql, values } = SQL`INSERT INTO "Image" ("ID", "name") VALUES (${id}, ${name})`;

@@ -1,5 +1,6 @@
 import express from 'express';
-import resetDB, { addTestData } from '../utils/resetDB';
+import resetDB from '../utils/resetDB';
+import addTestData from '../testData';
 
 const router = express.Router();
 

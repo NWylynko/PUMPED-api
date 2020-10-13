@@ -21,13 +21,15 @@ export const createTables = () => Promise.all([
 ]);
 
 const resetDB = async () => {
+  (async () => {
+    await fs.rmdir('./public', { recursive: true });
+    await fs.mkdir('./public');
+  })();
   await db.close();
   await fs.unlink(`./main.${process.env.NODE_ENV}.db`);
   await db.open();
   await createTables();
 };
-
-export const addTestData = () => db.exec(SQL.testData);
 
 export const resetDBForTest = async () => {
   await db.close();
