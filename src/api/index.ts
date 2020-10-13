@@ -2,6 +2,7 @@ import express from 'express';
 
 import indexHandlers from './indexHandlers';
 
+import brand from './brand'
 import cart from './cart';
 import customer from './customer';
 import image from './image';
@@ -16,6 +17,7 @@ const router = express.Router();
 
 router.use('/', indexHandlers);
 
+router.use('/brand', brand)
 router.use('/cart', cart);
 router.use('/customer', customer);
 router.use('/image', image);
