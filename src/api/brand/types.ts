@@ -1,7 +1,7 @@
 export interface Brand {
   name: string;
-  website: string;
-  icon: number;
+  website?: string;
+  icon?: number;
 }
 
 export interface BrandWithID extends Brand {
