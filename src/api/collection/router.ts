@@ -10,6 +10,7 @@ import { removeCollection } from './removeCollection';
 const router = express.Router();
 
 router.get('/:CollectionID', async (req, res, next) => {
+  // get a collection by id
   try {
 
     const { CollectionID } = req.params
@@ -27,6 +28,7 @@ router.get('/:CollectionID', async (req, res, next) => {
 });
 
 router.post('/', requireJsonBody, async (req, res, next) => {
+  // add a new collection
   try {
     const fields: Collection = req.body
 
@@ -40,7 +42,7 @@ router.post('/', requireJsonBody, async (req, res, next) => {
 });
 
 router.patch('/:CollectionID', requireJsonBody, async (req, res, next) => {
-  // update a single or multiple table of a customer
+  // update a single or multiple elements of a collection
   try {
     const { CollectionID } = req.params
     const fields: partOfCollection = req.body;
@@ -55,7 +57,7 @@ router.patch('/:CollectionID', requireJsonBody, async (req, res, next) => {
 });
 
 router.delete('/:CollectionID', async (req, res, next) => {
-  // remove a customer
+  // remove a collection by id
   try {
 
     const { CollectionID } = req.params

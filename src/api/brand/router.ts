@@ -10,6 +10,7 @@ import { removeBrand } from './removeBrand';
 const router = express.Router();
 
 router.get('/:BrandID', async (req, res, next) => {
+  // get a brand by id
   try {
 
     const { BrandID } = req.params
@@ -27,6 +28,7 @@ router.get('/:BrandID', async (req, res, next) => {
 });
 
 router.post('/', requireJsonBody, async (req, res, next) => {
+  // add a new brand
   try {
     const fields: Brand = req.body
 
@@ -40,7 +42,7 @@ router.post('/', requireJsonBody, async (req, res, next) => {
 });
 
 router.patch('/:BrandID', requireJsonBody, async (req, res, next) => {
-  // update a single or multiple table of a customer
+  // update a single or multiple elements of a brand
   try {
     const { BrandID } = req.params
     const fields: partOfBrand = req.body;
@@ -55,7 +57,7 @@ router.patch('/:BrandID', requireJsonBody, async (req, res, next) => {
 });
 
 router.delete('/:BrandID', async (req, res, next) => {
-  // remove a customer
+  // remove a brand by id
   try {
 
     const { BrandID } = req.params

@@ -43,7 +43,7 @@ router.post('/', requireJsonBody, async (req, res, next) => {
 });
 
 router.patch('/', requireJsonBody, async (req, res, next) => {
-  // update a single or multiple table of a customer
+  // update a single or multiple elements of a customer
   try {
     const CustomerID = getCustomerID(req);
     const fields: Customer = req.body;
@@ -58,7 +58,7 @@ router.patch('/', requireJsonBody, async (req, res, next) => {
 });
 
 router.delete('/', async (req, res, next) => {
-  // remove a customer
+  // remove a customer by id
   try {
     const CustomerID = getCustomerID(req);
 

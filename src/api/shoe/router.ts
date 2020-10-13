@@ -61,7 +61,7 @@ router.post('/', requireJsonBody, async (req, res, next) => {
 });
 
 router.patch('/:ShoeID', requireJsonBody, async (req, res, next) => {
-  // update a single or multiple items in a shoe
+  // update a single or multiple elements in a shoe
   try {
     const { ShoeID } = req.params;
 

@@ -48,7 +48,7 @@ router.post('/:ShoeID', requireJsonBody, async (req, res, next) => {
 });
 
 router.patch('/:ShoeID', requireJsonBody, async (req, res, next) => {
-  // update a single or multiple table of a review
+  // update a single or multiple elements of a review
   try {
     const { ShoeID } = req.params;
     const CustomerID = getCustomerID(req);
