@@ -1,15 +1,12 @@
-import db from '../../db';
-import objectToSQLupdate from '../../utils/objectToSQLupdate';
+import addColour from './addColour';
+import getColour from './getColour';
+import removeColour from './removeColour';
 import { partOfColour } from './types';
 
-export async function updateColour(ColourID: string, fields: partOfColour) {
-  let sql = 'UPDATE "Brand" SET ';
-
-  sql += objectToSQLupdate(fields);
-
-  sql += `WHERE ID = ${escape(ColourID)}`;
-
-  await db.run(sql);
+export async function updateColour(ColourID: string, newFields: partOfColour) {
+  const fields = await getColour(ColourID);
+  await removeColour(ColourID);
+  await addColour({ ...fields, ...newFields });
 
   return { ColourID, ...fields };
 }

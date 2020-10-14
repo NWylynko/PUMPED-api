@@ -1,5 +1,6 @@
 export interface Colour {
   ShoeID: string;
+  ImageIDs: string[];
   colour: string;
   hex: string;
 }
