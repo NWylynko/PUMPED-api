@@ -9,6 +9,7 @@ export interface Shoe {
   Section: string;
   Collection: string;
   stars: number;
+  CoverImage: number;
 }
 
 export interface PartOfShoe {
