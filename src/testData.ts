@@ -8,6 +8,9 @@ import { addImage } from './api/image';
 import { addShoe } from './api/shoe';
 import { addColour } from './api/colour';
 import { addStock } from './api/stock';
+import { addCustomer } from './api/customer';
+import { addCartItem, checkoutCart } from './api/cart';
+import { addReview } from './api/review';
 
 const addTestData = async () => {
   await addImage(path.resolve(__dirname, '../testData/nike.jpg'), 'Nike icon'); // id 1
@@ -90,7 +93,7 @@ const addTestData = async () => {
     CoverImage: 6,
   }); // id 4
   await addColour({ ShoeID: '4', ImageIDs: ['6'], colour: 'CLOUD WHITE', hex: '#dedde2' }); // id 4
-  await addStock({ ShoeID: 4, ColourID: 4, size: 8, stock: 4 }); // id 4
+  await addStock({ ShoeID: 4, ColourID: 4, size: 8, stock: 4 }); // id 5
 
   await addImage(path.resolve(__dirname, '../testData/Predator_Mutator_20.1_Firm_Ground_Boots.jpg'), 'Predator_Mutator_20.1_Firm_Ground_Boots'); // id 7
   await addShoe({
@@ -105,7 +108,7 @@ const addTestData = async () => {
     CoverImage: 7,
   }); // id 5
   await addColour({ ShoeID: '5', ImageIDs: ['7'], colour: 'GOLD METALLIC', hex: '#ae9869' }); // id 5
-  await addStock({ ShoeID: 5, ColourID: 5, size: 12, stock: 3 }); // id 5
+  await addStock({ ShoeID: 5, ColourID: 5, size: 12, stock: 3 }); // id 6
 
   await addImage(path.resolve(__dirname, '../testData/Dame_7.jpg'), 'Dame_7'); // id 8
   await addShoe({
@@ -120,7 +123,19 @@ const addTestData = async () => {
     CoverImage: 8,
   }); // id 6
   await addColour({ ShoeID: '6', ImageIDs: ['8'], colour: 'GLORY PURPLE', hex: '#673a68' }); // id 6
-  await addStock({ ShoeID: 6, ColourID: 6, size: 9, stock: 6 }); // id 5
+  await addStock({ ShoeID: 6, ColourID: 6, size: 9, stock: 6 }); // id 7
+
+  await addCustomer({ firstName: 'Bobby', lastName: 'Boo' }); // id 1
+  await addCustomer({ firstName: 'Pippy', lastName: 'Nippy' }); // id 2
+  await addCustomer({ firstName: 'Whip', lastName: 'Nah' }); // id 3
+
+  await addCartItem('1', '1', { StockID: 1, quantity: 1 });
+  await addCartItem('1', '2', { StockID: 3, quantity: 2 });
+  await checkoutCart('1', 'the moon');
+  await addCartItem('1', '2', { StockID: 3, quantity: 4 });
+  await addCartItem('1', '4', { StockID: 5, quantity: 2 });
+
+  await addReview('1', '1', { stars: 3, message: 'nice', timestamp: Date.now() });
 };
 
 export default addTestData;
