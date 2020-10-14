@@ -20,9 +20,10 @@ jobs:
         with:
           node-version: '14.x'
       - run: yarn install
-      - run: yarn test
-      - name: Run submit coverage report to codacy
-        uses: codacy/codacy-coverage-reporter-action@master
-        with:
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: coverage/lcov.info
+      - run: yarn build
+      # - run: yarn test
+      # - name: Run submit coverage report to codacy
+      #   uses: codacy/codacy-coverage-reporter-action@master
+      #   with:
+      #     project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      #     coverage-reports: coverage/lcov.info
