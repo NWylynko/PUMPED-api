@@ -1,6 +1,6 @@
 import { escape } from 'sqlstring';
 import db from '../../db';
-import { Customer } from './types';
+import type { Customer } from './types';
 import objectToSQLupdate from '../../utils/objectToSQLupdate';
 
 async function updateCustomer(CustomerID: string, fields: Customer) {

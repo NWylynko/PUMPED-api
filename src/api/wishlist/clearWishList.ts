@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { WishList } from './types';
+import type { WishList } from './types';
 
 async function clearWishList(CustomerID: string): Promise<WishList> {
   const { sql, values } = SQL`

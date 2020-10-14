@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { OrderItem } from './types';
+import type { OrderItem } from './types';
 
 function getOrderItems(OrderID: string): Promise<OrderItem[]> {
   const { sql, values } = SQL`

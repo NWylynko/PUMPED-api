@@ -1,7 +1,7 @@
 import addColour from './addColour';
 import getColour from './getColour';
 import removeColour from './removeColour';
-import { partOfColour } from './types';
+import type { partOfColour } from './types';
 
 export async function updateColour(ColourID: string, newFields: partOfColour) {
   const fields = await getColour(ColourID);

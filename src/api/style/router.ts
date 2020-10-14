@@ -1,7 +1,7 @@
 import express from 'express';
 import { requireJsonBody } from '../../middlewares';
 import { isEmpty } from '../../utils/isEmpty';
-import { Style, partOfStyle } from './types';
+import type { Style, partOfStyle } from './types';
 import { getStyle } from './getStyle';
 import { addStyle } from './addStyle';
 import { updateStyle } from './updateStyle';

@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { Style } from './types';
+import type { Style } from './types';
 
 export async function addStyle({ name }: Style) {
   const { sql, values } = SQL`

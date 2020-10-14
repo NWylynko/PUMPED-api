@@ -1,6 +1,6 @@
 import db from '../../db';
 import objectToSQLupdate from '../../utils/objectToSQLupdate';
-import { partOfStock } from './types';
+import type { partOfStock } from './types';
 
 export async function updateStock(StockID: string, fields: partOfStock) {
   let sql = 'UPDATE "Stock" SET ';

@@ -1,7 +1,7 @@
 import express from 'express';
 import { requireJsonBody } from '../../middlewares';
 import { isEmpty } from '../../utils/isEmpty';
-import { Brand, partOfBrand } from './types'
+import type { Brand, partOfBrand } from './types';
 import { getBrand } from './getBrand';
 import { addBrand } from './addBrand';
 import { updateBrand } from './updateBrand';
@@ -12,15 +12,14 @@ const router = express.Router();
 router.get('/:BrandID', async (req, res, next) => {
   // get a brand by id
   try {
+    const { BrandID } = req.params;
 
-    const { BrandID } = req.params
-
-    const result = await getBrand(BrandID)
+    const result = await getBrand(BrandID);
 
     res.json({
       success: true,
       data: result,
-      empty: isEmpty(result)
+      empty: isEmpty(result),
     });
   } catch (error) {
     next(error);
@@ -30,7 +29,7 @@ router.get('/:BrandID', async (req, res, next) => {
 router.post('/', requireJsonBody, async (req, res, next) => {
   // add a new brand
   try {
-    const fields: Brand = req.body
+    const fields: Brand = req.body;
 
     res.json({
       success: true,
@@ -44,7 +43,7 @@ router.post('/', requireJsonBody, async (req, res, next) => {
 router.patch('/:BrandID', requireJsonBody, async (req, res, next) => {
   // update a single or multiple elements of a brand
   try {
-    const { BrandID } = req.params
+    const { BrandID } = req.params;
     const fields: partOfBrand = req.body;
 
     res.json({
@@ -59,8 +58,7 @@ router.patch('/:BrandID', requireJsonBody, async (req, res, next) => {
 router.delete('/:BrandID', async (req, res, next) => {
   // remove a brand by id
   try {
-
-    const { BrandID } = req.params
+    const { BrandID } = req.params;
 
     res.json({
       success: true,
@@ -71,5 +69,4 @@ router.delete('/:BrandID', async (req, res, next) => {
   }
 });
 
-
-export default router
+export default router;

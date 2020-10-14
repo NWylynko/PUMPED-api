@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { Tag } from './types';
+import type { Tag } from './types';
 
 export async function addTag({ tag }: Tag) {
   const { sql, values } = SQL`

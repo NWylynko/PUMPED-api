@@ -5,13 +5,16 @@ import clearWishList from './clearWishList';
 import getWishlist from './getWishlist';
 import removeWishListItem from './removeWishListItem';
 
-import { WishList, WishListWithShoe } from './types';
+import type { WishList, WishListWithShoe } from './types';
 
 export {
   addWishListItem,
   clearWishList,
   getWishlist,
   removeWishListItem,
+};
+
+export type {
   WishList,
   WishListWithShoe,
 };

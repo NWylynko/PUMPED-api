@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { Shoe } from '../shoe/types';
+import type { Shoe } from '../shoe/types';
 
 function getWishlist(CustomerID: string): Promise<Shoe[]> {
   const { sql, values } = SQL`

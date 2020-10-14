@@ -1,6 +1,6 @@
 import { escape } from 'sqlstring';
 import db from '../../db';
-import { PartOfShoe } from './types';
+import type { PartOfShoe } from './types';
 import objectToSQLupdate from '../../utils/objectToSQLupdate';
 
 async function updateShoe(ShoeID: string, fields: PartOfShoe): Promise<PartOfShoe> {

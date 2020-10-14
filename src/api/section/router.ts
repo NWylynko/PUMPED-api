@@ -1,7 +1,7 @@
 import express from 'express';
 import { requireJsonBody } from '../../middlewares';
 import { isEmpty } from '../../utils/isEmpty';
-import { Section, partOfSection } from './types';
+import type { Section, partOfSection } from './types';
 import { getSection } from './getSection';
 import { addSection } from './addSection';
 import { updateSection } from './updateSection';

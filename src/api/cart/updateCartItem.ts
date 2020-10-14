@@ -1,7 +1,7 @@
 import { escape } from 'sqlstring';
 import db from '../../db';
 import objectToSQLupdate from '../../utils/objectToSQLupdate';
-import { partOfOrderItem } from '../order/types';
+import type { partOfOrderItem } from '../order';
 import getCartOrderIDFromCustomerID from './getCartOrderIDFromCustomerID';
 
 async function updateCartItem(CustomerID: string, ShoeID: string, fields: partOfOrderItem) {

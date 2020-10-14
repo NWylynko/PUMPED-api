@@ -6,7 +6,7 @@ import reCalculateStars from './reCalculateStars';
 import removeReview from './removeReview';
 import updateReview from './updateReview';
 
-import { reviewDetails, Review, partOfReview } from './types';
+import type { reviewDetails, Review, partOfReview } from './types';
 
 export {
   addReview,
@@ -14,6 +14,9 @@ export {
   reCalculateStars,
   removeReview,
   updateReview,
+};
+
+export type {
   reviewDetails,
   Review,
   partOfReview,

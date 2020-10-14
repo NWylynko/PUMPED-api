@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { WishListWithShoe } from './types';
+import type { WishListWithShoe } from './types';
 
 async function addWishListItem(CustomerID: string, ShoeID: string): Promise<WishListWithShoe> {
   const { sql, values } = SQL`

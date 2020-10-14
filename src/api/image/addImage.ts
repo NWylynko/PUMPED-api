@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import sharp from 'sharp';
 import SQL from 'sql-template-tag';
-import { ImageSize } from './types';
+import type { ImageSize } from './types';
 import db from '../../db';
 
 function resizeAndSaveImage(dir: string, image: sharp.Sharp, { name, width }: ImageSize) {

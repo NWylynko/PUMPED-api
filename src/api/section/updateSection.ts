@@ -1,6 +1,6 @@
 import db from '../../db';
 import objectToSQLupdate from '../../utils/objectToSQLupdate';
-import { partOfSection } from './types';
+import type { partOfSection } from './types';
 
 export async function updateSection(SectionID: string, fields: partOfSection) {
   let sql = 'UPDATE "Section" SET ';

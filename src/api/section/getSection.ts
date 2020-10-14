@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { SectionWithID } from './types';
+import type { SectionWithID } from './types';
 
 export function getSection(SectionID: string): Promise<SectionWithID> {
   const { sql, values } = SQL`

@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { Section } from './types';
+import type { Section } from './types';
 
 export async function addSection({ name }: Section) {
   const { sql, values } = SQL`

@@ -8,6 +8,8 @@ import getCartOrderIDFromCustomerID from './getCartOrderIDFromCustomerID';
 import removeCartItem from './removeCartItem';
 import updateCartItem from './updateCartItem';
 
+import type { ShoePrices } from './types';
+
 export {
   addCartItem,
   checkoutCart,
@@ -16,6 +18,10 @@ export {
   getCartOrderIDFromCustomerID,
   removeCartItem,
   updateCartItem,
+};
+
+export type {
+  ShoePrices,
 };
 
 export default router;

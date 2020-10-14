@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { Customer } from './types';
+import type { Customer } from './types';
 
 const getIDOfNewCustomer = (firstName?: string, lastName?: string) => {
   const { sql, values } = SQL`

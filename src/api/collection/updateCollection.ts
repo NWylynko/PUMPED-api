@@ -1,6 +1,6 @@
 import db from '../../db';
 import objectToSQLupdate from '../../utils/objectToSQLupdate';
-import { partOfCollection } from './types';
+import type { partOfCollection } from './types';
 
 export async function updateCollection(CollectionID: string, fields: partOfCollection) {
   let sql = 'UPDATE "Collection" SET ';

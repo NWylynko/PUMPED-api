@@ -5,7 +5,7 @@ import addImage from './addImage';
 import getImage from './getImage';
 import removeImage from './removeImage';
 
-import { ImageSize } from './types';
+import type { ImageSize } from './types';
 
 if (!fs.existsSync('./public')) {
   fs.mkdirSync('./public');
@@ -15,6 +15,9 @@ export {
   addImage,
   getImage,
   removeImage,
+};
+
+export type {
   ImageSize,
 };
 

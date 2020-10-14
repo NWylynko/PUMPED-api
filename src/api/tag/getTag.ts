@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { TagWithID } from './types';
+import type { TagWithID } from './types';
 
 export function getTag(TagID: string): Promise<TagWithID> {
   const { sql, values } = SQL`

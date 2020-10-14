@@ -1,6 +1,6 @@
 import express from 'express';
 import { isArrayEmpty } from '../../utils/isEmpty';
-import { Review, reviewDetails, partOfReview } from './types';
+import type { Review, reviewDetails, partOfReview } from './types';
 import { requireJsonBody } from '../../middlewares';
 import getReviews from './getReviews';
 import addReview from './addReview';

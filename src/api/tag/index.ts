@@ -5,13 +5,16 @@ import { addTag } from './addTag';
 import { updateTag } from './updateTag';
 import { removeTag } from './removeTag';
 
-import { Tag, partOfTag, TagWithID } from './types';
+import type { Tag, partOfTag, TagWithID } from './types';
 
 export {
   getTag,
   addTag,
   updateTag,
   removeTag,
+};
+
+export type {
   Tag,
   partOfTag,
   TagWithID,

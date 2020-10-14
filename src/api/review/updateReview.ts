@@ -1,6 +1,6 @@
 import { escape } from 'sqlstring';
 import db from '../../db';
-import { partOfReview } from './types';
+import type { partOfReview } from './types';
 import objectToSQLupdate from '../../utils/objectToSQLupdate';
 
 async function updateReview(

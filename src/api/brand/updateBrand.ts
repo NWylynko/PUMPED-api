@@ -1,6 +1,6 @@
 import db from '../../db';
 import objectToSQLupdate from '../../utils/objectToSQLupdate';
-import { partOfBrand } from './types';
+import type { partOfBrand } from './types';
 
 export async function updateBrand(BrandID: string, fields: partOfBrand) {
   let sql = 'UPDATE "Brand" SET ';

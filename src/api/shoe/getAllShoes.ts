@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { Shoe, GetAllShoes, ShoeWithColours } from './types';
+import type { Shoe, GetAllShoes, ShoeWithColours } from './types';
 
 async function getAllShoes({
   brand = '%',

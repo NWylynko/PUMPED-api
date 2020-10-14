@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { Colour } from './types';
+import type { Colour } from './types';
 
 function getIDOfNewColour(ShoeID: string, colour: string, hex: string): Promise<{ ID: string }> {
   const { sql, values } = SQL`

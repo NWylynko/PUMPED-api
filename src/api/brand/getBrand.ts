@@ -1,6 +1,6 @@
-import db from '../../db';
 import SQL from 'sql-template-tag';
-import { BrandWithID } from './types';
+import db from '../../db';
+import type { BrandWithID } from './types';
 
 export function getBrand(BrandID: string): Promise<BrandWithID> {
   const { sql, values } = SQL`

@@ -2,7 +2,7 @@ import express from 'express';
 import { isArrayEmpty } from '../../utils/isEmpty';
 import getCustomerID from '../../utils/getCustomerID';
 
-import { Order, OrderItem } from './types';
+import type { Order, OrderItem } from './types';
 
 import getOrders from './getOrders';
 import getOrderItems from './getOrderItems';

@@ -6,7 +6,7 @@ import getShoe from './getShoe';
 import removeShoe from './removeShoe';
 import updateShoe from './updateShoe';
 
-import {
+import type {
   Shoe,
   PartOfShoe,
   newShoe,
@@ -20,6 +20,9 @@ export {
   getShoe,
   removeShoe,
   updateShoe,
+};
+
+export type {
   Shoe,
   PartOfShoe,
   newShoe,

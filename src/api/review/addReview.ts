@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { reviewDetails } from './types';
+import type { reviewDetails } from './types';
 import reCalculateStars from './reCalculateStars';
 
 async function addReview(CustomerID: string, ShoeID: string, {

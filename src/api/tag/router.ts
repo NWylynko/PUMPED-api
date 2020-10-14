@@ -1,7 +1,7 @@
 import express from 'express';
 import { requireJsonBody } from '../../middlewares';
 import { isEmpty } from '../../utils/isEmpty';
-import { Tag, partOfTag } from './types';
+import type { Tag, partOfTag } from './types';
 import { getTag } from './getTag';
 import { addTag } from './addTag';
 import { updateTag } from './updateTag';

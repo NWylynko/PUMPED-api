@@ -5,7 +5,7 @@ import { addColour } from './addColour';
 import { updateColour } from './updateColour';
 import { removeColour } from './removeColour';
 
-import {
+import type {
   Colour, partOfColour, ColourWithID, basicColour,
 } from './types';
 
@@ -14,6 +14,9 @@ export {
   addColour,
   updateColour,
   removeColour,
+};
+
+export type {
   Colour,
   partOfColour,
   ColourWithID,

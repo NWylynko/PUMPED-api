@@ -5,13 +5,16 @@ import { addSection } from './addSection';
 import { updateSection } from './updateSection';
 import { removeSection } from './removeSection';
 
-import { Section, partOfSection, SectionWithID } from './types';
+import type { Section, partOfSection, SectionWithID } from './types';
 
 export {
   getSection,
   addSection,
   updateSection,
   removeSection,
+};
+
+export type {
   Section,
   partOfSection,
   SectionWithID,

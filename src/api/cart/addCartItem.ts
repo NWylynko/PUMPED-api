@@ -1,5 +1,5 @@
 import SQL from 'sql-template-tag';
-import { partOfOrderItem } from '../order';
+import type { partOfOrderItem } from '../order';
 import getCartOrderIDFromCustomerID from './getCartOrderIDFromCustomerID';
 import db from '../../db';
 

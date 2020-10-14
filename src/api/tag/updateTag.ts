@@ -1,6 +1,6 @@
 import db from '../../db';
 import objectToSQLupdate from '../../utils/objectToSQLupdate';
-import { partOfTag } from './types';
+import type { partOfTag } from './types';
 
 export async function updateTag(TagID: string, fields: partOfTag) {
   let sql = 'UPDATE "Tag" SET ';

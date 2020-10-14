@@ -1,6 +1,6 @@
-import db from '../../db';
 import SQL from 'sql-template-tag';
-import { CollectionWithID } from './types';
+import db from '../../db';
+import type { CollectionWithID } from './types';
 
 export function getCollection(CollectionID: string): Promise<CollectionWithID> {
   const { sql, values } = SQL`

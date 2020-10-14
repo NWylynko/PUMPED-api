@@ -1,7 +1,7 @@
 import express from 'express';
 import { isArrayEmpty, isEmpty } from '../../utils/isEmpty';
 import { requireJsonBody } from '../../middlewares';
-import { newShoe, PartOfShoe } from './types';
+import type { newShoe, PartOfShoe } from './types';
 
 import getAllShoes from './getAllShoes';
 import getShoe from './getShoe';

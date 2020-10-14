@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from 'express';
+import type { Request, Response, NextFunction } from 'express';
 import path from 'path';
-import { SQLError } from './db';
+import type { SQLError } from './db';
 
 export function notFound(req: Request, res: Response, next: NextFunction) {
   res.status(404);

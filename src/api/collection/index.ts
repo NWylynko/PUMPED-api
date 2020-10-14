@@ -1,20 +1,23 @@
-import router from './router'
+import router from './router';
 
 import { getCollection } from './getCollection';
 import { addCollection } from './addCollection';
 import { updateCollection } from './updateCollection';
 import { removeCollection } from './removeCollection';
 
-import { Collection, partOfCollection, CollectionWithID } from './types'
+import type { Collection, partOfCollection, CollectionWithID } from './types';
 
 export {
   getCollection,
   addCollection,
   updateCollection,
   removeCollection,
+};
+
+export type {
   Collection,
   partOfCollection,
-  CollectionWithID
-}
+  CollectionWithID,
+};
 
-export default router
+export default router;

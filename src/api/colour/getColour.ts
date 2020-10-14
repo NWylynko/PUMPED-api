@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { ColourWithID } from './types';
+import type { ColourWithID } from './types';
 
 export function getColour(ColourID: string): Promise<ColourWithID> {
   const { sql, values } = SQL`

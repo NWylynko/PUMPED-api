@@ -5,13 +5,16 @@ import { addStock } from './addStock';
 import { updateStock } from './updateStock';
 import { removeStock } from './removeStock';
 
-import { Stock, partOfStock, StockWithID } from './types';
+import type { Stock, partOfStock, StockWithID } from './types';
 
 export {
   getStock,
   addStock,
   updateStock,
   removeStock,
+};
+
+export type {
   Stock,
   partOfStock,
   StockWithID,

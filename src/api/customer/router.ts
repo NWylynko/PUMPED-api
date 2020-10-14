@@ -1,6 +1,6 @@
 import express from 'express';
 import { isEmpty } from '../../utils/isEmpty';
-import { Customer } from './types';
+import type { Customer } from './types';
 import { requireJsonBody } from '../../middlewares';
 import getCustomerID from '../../utils/getCustomerID';
 

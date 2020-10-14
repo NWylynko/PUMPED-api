@@ -1,7 +1,7 @@
 import express from 'express';
 import { requireJsonBody } from '../../middlewares';
 import { isEmpty } from '../../utils/isEmpty';
-import { Stock, partOfStock } from './types';
+import type { Stock, partOfStock } from './types';
 import { getStock } from './getStock';
 import { addStock } from './addStock';
 import { updateStock } from './updateStock';

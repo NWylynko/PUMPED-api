@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { Stock } from './types';
+import type { Stock } from './types';
 
 export async function addStock({
   ShoeID, ColourID, size, stock,

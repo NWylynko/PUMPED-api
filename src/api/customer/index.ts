@@ -5,13 +5,16 @@ import getCustomer from './getCustomer';
 import removeCustomer from './removeCustomer';
 import updateCustomer from './updateCustomer';
 
-import { Customer } from './types';
+import type { Customer } from './types';
 
 export {
   addCustomer,
   getCustomer,
   removeCustomer,
   updateCustomer,
+};
+
+export type {
   Customer,
 };
 
