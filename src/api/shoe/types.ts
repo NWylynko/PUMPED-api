@@ -1,4 +1,4 @@
-import type { basicColour } from '../colour';
+import type { basicColour } from '../colour/types';
 
 export interface Shoe {
   ID: number;
