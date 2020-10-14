@@ -2,6 +2,33 @@ import SQL from 'sql-template-tag';
 import db from '../../db';
 import { Customer } from './types';
 
+const getIDOfNewCustomer = (firstName?: string, lastName?: string) => {
+  const { sql, values } = SQL`
+    SELECT ID
+    FROM Customer
+    WHERE firstName = ${firstName}
+    AND lastName = ${lastName}
+  `;
+
+  return db.get(sql, values);
+};
+const createCustomerCart = (CustomerID: string) => {
+  const { sql, values } = SQL`
+    INSERT INTO "Order"
+    (
+      "CustomerID", 
+      "paid", 
+      "activeCart"
+    ) VALUES (
+      ${CustomerID}, 
+      0, 
+      1
+    );
+  `;
+
+  return db.run(sql, values);
+};
+
 async function addCustomer({ firstName, lastName }: Customer) {
   const { sql, values } = SQL`
     INSERT INTO Customer
@@ -16,7 +43,9 @@ async function addCustomer({ firstName, lastName }: Customer) {
 
   await db.run(sql, values);
 
-  // create new order with activeCart set to true
+  const { ID: CustomerID } = await getIDOfNewCustomer(firstName, lastName);
+
+  await createCustomerCart(CustomerID);
 
   return { firstName, lastName };
 }
