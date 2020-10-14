@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import path from 'path';
 import { addBrand } from './api/brand';
 import { addCollection } from './api/collection';
@@ -5,6 +6,8 @@ import { addSection } from './api/section';
 import { addStyle } from './api/style';
 import { addImage } from './api/image';
 import { addShoe } from './api/shoe';
+import { addColour } from './api/colour';
+import { addStock } from './api/stock';
 
 const addTestData = async () => {
   await addImage(path.resolve(__dirname, '../testData/nike.jpg'), 'Nike icon'); // id 1
@@ -40,10 +43,13 @@ const addTestData = async () => {
     CollectionID: 1,
     CoverImage: 3,
   }); // id 1
+  await addColour({ ShoeID: '1', colour: 'White/Hyper', hex: '#dcdddf' }); // id 1
+  await addStock({ ShoeID: 1, ColourID: 1, size: 11, stock: 2 }); // id 1
+  await addStock({ ShoeID: 1, ColourID: 1, size: 10, stock: 3 }); // id 2
 
   await addImage(path.resolve(__dirname, '../testData/air-zoom-alphafly-next.jpg'), 'air-zoom-alphafly-next'); // id 4
   await addShoe({
-    name: 'Nike Air Zoom Alphafly NEXT%',
+    name: 'Air Zoom Alphafly NEXT%',
     description: 'Gear up for your next personal best with the Nike Air Zoom Alphafly NEXT%.',
     price: 370,
     releaseDate: Date.now() - 200000,
@@ -53,6 +59,8 @@ const addTestData = async () => {
     CollectionID: 1,
     CoverImage: 4,
   }); // id 2
+  await addColour({ ShoeID: '2', colour: 'White/Jade', hex: '#b5ccb0' }); // id 2
+  await addStock({ ShoeID: 2, ColourID: 2, size: 9, stock: 3 }); // id 3
 
   await addImage(path.resolve(__dirname, '../testData/zoom-rize-2-by-you.jpg'), 'zoom-rize-2-by-you'); // id 5
   await addShoe({
@@ -66,6 +74,8 @@ const addTestData = async () => {
     CollectionID: 2,
     CoverImage: 5,
   }); // id 3
+  await addColour({ ShoeID: '3', colour: 'Red', hex: '#c42933' }); // id 3
+  await addStock({ ShoeID: 3, ColourID: 3, size: 10, stock: 1 }); // id 4
 
   await addImage(path.resolve(__dirname, '../testData/Supernova.jpg'), 'Supernova'); // id 6
   await addShoe({
@@ -79,6 +89,8 @@ const addTestData = async () => {
     CollectionID: 3,
     CoverImage: 6,
   }); // id 4
+  await addColour({ ShoeID: '4', colour: 'CLOUD WHITE', hex: '#dedde2' }); // id 4
+  await addStock({ ShoeID: 4, ColourID: 4, size: 8, stock: 4 }); // id 4
 
   await addImage(path.resolve(__dirname, '../testData/Predator_Mutator_20.1_Firm_Ground_Boots.jpg'), 'Predator_Mutator_20.1_Firm_Ground_Boots'); // id 7
   await addShoe({
@@ -92,6 +104,8 @@ const addTestData = async () => {
     CollectionID: 4,
     CoverImage: 7,
   }); // id 5
+  await addColour({ ShoeID: '5', colour: 'GOLD METALLIC', hex: '#ae9869' }); // id 5
+  await addStock({ ShoeID: 5, ColourID: 5, size: 12, stock: 3 }); // id 5
 
   await addImage(path.resolve(__dirname, '../testData/Dame_7.jpg'), 'Dame_7'); // id 8
   await addShoe({
@@ -105,6 +119,8 @@ const addTestData = async () => {
     CollectionID: 5,
     CoverImage: 8,
   }); // id 6
+  await addColour({ ShoeID: '6', colour: 'GLORY PURPLE', hex: '#673a68' }); // id 6
+  await addStock({ ShoeID: 6, ColourID: 6, size: 9, stock: 6 }); // id 5
 };
 
 export default addTestData;
