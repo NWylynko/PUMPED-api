@@ -15,7 +15,7 @@ import { addTag } from './api/tag';
 import { addWishListItem } from './api/wishlist';
 
 const addTestData = async () => {
-  await addImage(path.resolve(__dirname, '../testData/nike.jpg'), 'Nike icon'); // id 1
+  await addImage(path.resolve(__dirname, '../testData/nike.png'), 'Nike icon'); // id 1
   await addImage(path.resolve(__dirname, '../testData/adidas.png'), 'Adidas icon'); // id 2
 
   await addBrand({ name: 'Nike', website: 'nike.com', icon: 1 }); // id 1
@@ -152,6 +152,9 @@ const addTestData = async () => {
   await addWishListItem('1', '5');
 
   await addReview('1', '1', { stars: 3, message: 'nice', timestamp: Date.now() });
+
+  await addImage(path.resolve(__dirname, '../testData/air-zoom-tempo-next-black.jpg'), 'air-zoom-tempo-next-black'); // id 9
+  await addColour({ ShoeID: '1', ImageIDs: ['9'], colour: 'Black/Glacier Ice', hex: '#252527' }); // id 7
 };
 
 export default addTestData;
