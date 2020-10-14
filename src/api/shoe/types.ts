@@ -1,3 +1,5 @@
+import { basicColour } from '../colour';
+
 export interface Shoe {
   ID: number;
   Name: string;
@@ -43,7 +45,7 @@ export interface newShoeWithID extends newShoe {
 }
 
 export interface ShoeWithColours extends Shoe {
-  colours: string[];
+  colours: basicColour[];
 }
 
 export interface GetAllShoes {

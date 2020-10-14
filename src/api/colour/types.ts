@@ -1,8 +1,11 @@
-export interface Colour {
-  ShoeID: string;
-  ImageIDs: string[];
+export interface basicColour {
   colour: string;
   hex: string;
+}
+
+export interface Colour extends basicColour {
+  ShoeID: string;
+  ImageIDs: string[];
 }
 
 export interface ColourWithID extends Colour {
