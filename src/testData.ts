@@ -11,6 +11,8 @@ import { addStock } from './api/stock';
 import { addCustomer } from './api/customer';
 import { addCartItem, checkoutCart } from './api/cart';
 import { addReview } from './api/review';
+import { addTag } from './api/tag';
+import { addWishListItem } from './api/wishlist';
 
 const addTestData = async () => {
   await addImage(path.resolve(__dirname, '../testData/nike.jpg'), 'Nike icon'); // id 1
@@ -33,6 +35,11 @@ const addTestData = async () => {
   await addStyle({ name: 'Racing' }); // id 2
   await addStyle({ name: 'Basketball' }); // id 3
   await addStyle({ name: 'Football' }); // id 4
+
+  await addTag({ tag: 'fast' }); // id 1
+  await addTag({ tag: 'kicker' }); // id 2
+  await addTag({ tag: 'speed' }); // id 3
+  await addTag({ tag: 'style' }); // id 4
 
   await addImage(path.resolve(__dirname, '../testData/air-zoom-tempo-next.jpg'), 'air-zoom-tempo-next'); // id 3
   await addShoe({
@@ -61,6 +68,7 @@ const addTestData = async () => {
     SectionID: 2,
     CollectionID: 1,
     CoverImage: 4,
+    tags: [1, 2],
   }); // id 2
   await addColour({ ShoeID: '2', ImageIDs: ['4'], colour: 'White/Jade', hex: '#b5ccb0' }); // id 2
   await addStock({ ShoeID: 2, ColourID: 2, size: 9, stock: 3 }); // id 3
@@ -76,6 +84,7 @@ const addTestData = async () => {
     SectionID: 3,
     CollectionID: 2,
     CoverImage: 5,
+    tags: [2, 3],
   }); // id 3
   await addColour({ ShoeID: '3', ImageIDs: ['5'], colour: 'Red', hex: '#c42933' }); // id 3
   await addStock({ ShoeID: 3, ColourID: 3, size: 10, stock: 1 }); // id 4
@@ -91,6 +100,7 @@ const addTestData = async () => {
     SectionID: 1,
     CollectionID: 3,
     CoverImage: 6,
+    tags: [3, 4],
   }); // id 4
   await addColour({ ShoeID: '4', ImageIDs: ['6'], colour: 'CLOUD WHITE', hex: '#dedde2' }); // id 4
   await addStock({ ShoeID: 4, ColourID: 4, size: 8, stock: 4 }); // id 5
@@ -106,6 +116,7 @@ const addTestData = async () => {
     SectionID: 3,
     CollectionID: 4,
     CoverImage: 7,
+    tags: [4, 1],
   }); // id 5
   await addColour({ ShoeID: '5', ImageIDs: ['7'], colour: 'GOLD METALLIC', hex: '#ae9869' }); // id 5
   await addStock({ ShoeID: 5, ColourID: 5, size: 12, stock: 3 }); // id 6
@@ -121,6 +132,7 @@ const addTestData = async () => {
     SectionID: 3,
     CollectionID: 5,
     CoverImage: 8,
+    tags: [1, 3],
   }); // id 6
   await addColour({ ShoeID: '6', ImageIDs: ['8'], colour: 'GLORY PURPLE', hex: '#673a68' }); // id 6
   await addStock({ ShoeID: 6, ColourID: 6, size: 9, stock: 6 }); // id 7
@@ -134,6 +146,10 @@ const addTestData = async () => {
   await checkoutCart('1', 'the moon');
   await addCartItem('1', '2', { StockID: 3, quantity: 4 });
   await addCartItem('1', '4', { StockID: 5, quantity: 2 });
+
+  await addWishListItem('1', '2');
+  await addWishListItem('2', '4');
+  await addWishListItem('1', '5');
 
   await addReview('1', '1', { stars: 3, message: 'nice', timestamp: Date.now() });
 };

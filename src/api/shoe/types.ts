@@ -33,7 +33,12 @@ export interface newShoe {
   StyleID: number;
   SectionID: number;
   CollectionID: number;
-  CoverImage?: number | null;
+  CoverImage: number;
+  tags?: number[];
+}
+
+export interface newShoeWithID extends newShoe {
+  ID: number;
 }
 
 export interface ShoeWithColours extends Shoe {

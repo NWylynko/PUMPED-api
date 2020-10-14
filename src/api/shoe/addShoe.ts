@@ -1,6 +1,31 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import { newShoe } from './types';
+import { newShoe, newShoeWithID } from './types';
+
+const getIDOfNewShoe = (CoverImage: number): Promise<{ ID: number }> => {
+  const { sql, values } = SQL`
+    SELECT ID
+    FROM Shoe
+    WHERE CoverImage = ${CoverImage}
+  `;
+
+  return db.get(sql, values);
+};
+
+const addTag = (ShoeID: number, TagID: number) => {
+  const { sql, values } = SQL`
+    INSERT INTO ShoeTag
+    (
+      "ShoeID",
+      "TagID"
+    ) VALUES (
+      ${ShoeID},
+      ${TagID}
+    )
+  `;
+
+  return db.run(sql, values);
+};
 
 async function addShoe({
   name,
@@ -11,8 +36,9 @@ async function addShoe({
   StyleID,
   SectionID,
   CollectionID,
-  CoverImage = null,
-}: newShoe): Promise<newShoe> {
+  CoverImage,
+  tags = [],
+}: newShoe): Promise<newShoeWithID> {
   const { sql, values } = SQL`
     INSERT INTO "Shoe"
     (
@@ -40,7 +66,12 @@ async function addShoe({
 
   await db.run(sql, values);
 
+  const { ID: ShoeID } = await getIDOfNewShoe(CoverImage);
+
+  await Promise.all(tags.map((TagID) => addTag(ShoeID, TagID)));
+
   return {
+    ID: ShoeID,
     name,
     description,
     price,
