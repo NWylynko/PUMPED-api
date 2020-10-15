@@ -3,6 +3,10 @@ export interface basicColour {
   hex: string;
 }
 
+export interface ShoeColour extends basicColour {
+  ImageID: string;
+}
+
 export interface Colour extends basicColour {
   ShoeID: string;
   ImageIDs: string[];

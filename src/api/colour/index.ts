@@ -6,7 +6,7 @@ import { updateColour } from './updateColour';
 import { removeColour } from './removeColour';
 
 import type {
-  Colour, partOfColour, ColourWithID, basicColour,
+  Colour, partOfColour, ColourWithID, basicColour, ShoeColour,
 } from './types';
 
 export {
@@ -21,6 +21,7 @@ export type {
   partOfColour,
   ColourWithID,
   basicColour,
+  ShoeColour,
 };
 
 export default router;
