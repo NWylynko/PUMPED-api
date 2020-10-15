@@ -7,6 +7,7 @@ export interface Shoe {
   Price: number;
   releaseDate: number;
   Brand: string;
+  BrandIcon: string;
   Style: string;
   Section: string;
   Collection: string;
