@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import path from 'path';
 import db, { SQL } from '../db';
 
 export const createTables = () => Promise.all([
@@ -26,7 +27,9 @@ const resetDB = async () => {
     await fs.mkdir('./public');
   })();
   await db.close();
-  await fs.unlink(`./main.${process.env.NODE_ENV}.db`);
+  const { NODE_ENV: env = 'development' } = process.env;
+  const dbFile = path.resolve(__dirname, `../../main.${env}.db`);
+  await fs.unlink(dbFile);
   await db.open();
   await createTables();
 };
