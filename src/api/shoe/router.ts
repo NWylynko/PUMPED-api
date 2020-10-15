@@ -8,6 +8,7 @@ import getShoe from './getShoe';
 import addShoe from './addShoe';
 import updateShoe from './updateShoe';
 import removeShoe from './removeShoe';
+import num from '../../utils/num';
 
 const router = express.Router();
 
@@ -33,7 +34,7 @@ router.get('/:ShoeID', async (req, res, next) => {
   try {
     const { ShoeID } = req.params;
 
-    const result = await getShoe(ShoeID);
+    const result = await getShoe(num(ShoeID));
 
     res.json({
       success: true,
@@ -67,7 +68,7 @@ router.patch('/:ShoeID', requireJsonBody, async (req, res, next) => {
 
     const fields: PartOfShoe = req.body;
 
-    const result = await updateShoe(ShoeID, fields);
+    const result = await updateShoe(num(ShoeID), fields);
 
     res.json({
       success: true,
@@ -83,7 +84,7 @@ router.delete('/:ShoeID', async (req, res, next) => {
   try {
     const { ShoeID } = req.params;
 
-    const result = await removeShoe(ShoeID);
+    const result = await removeShoe(num(ShoeID));
 
     res.json({
       success: true,

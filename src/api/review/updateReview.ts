@@ -4,8 +4,8 @@ import type { partOfReview } from './types';
 import objectToSQLupdate from '../../utils/objectToSQLupdate';
 
 async function updateReview(
-  CustomerID: string,
-  ShoeID: string,
+  CustomerID: number,
+  ShoeID: number,
   fields: partOfReview,
 ): Promise<partOfReview> {
   let sql = 'UPDATE "Review" SET ';

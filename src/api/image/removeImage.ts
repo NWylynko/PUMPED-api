@@ -3,7 +3,7 @@ import SQL from 'sql-template-tag';
 
 import db from '../../db';
 
-async function removeImage(ImageID: string) {
+async function removeImage(ImageID: number) {
   // unlink / remove folder of id
   await fs.rmdir(`./public/${ImageID}`, { recursive: true });
 

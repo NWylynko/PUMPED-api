@@ -12,7 +12,7 @@ const getIDOfNewCustomer = (firstName?: string, lastName?: string) => {
 
   return db.get(sql, values);
 };
-const createCustomerCart = (CustomerID: string) => {
+const createCustomerCart = (CustomerID: number) => {
   const { sql, values } = SQL`
     INSERT INTO "Order"
     (

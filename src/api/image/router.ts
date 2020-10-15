@@ -5,6 +5,7 @@ import path from 'path';
 import addImage from './addImage';
 import getImage from './getImage';
 import removeImage from './removeImage';
+import num from '../../utils/num';
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.get('/:ImageID/:size', async (req, res, next) => {
     const { ImageID, size } = req.params;
 
     // get image name
-    const name = await getImage(ImageID);
+    const name = await getImage(num(ImageID));
 
     // set it as a header
     res.setHeader('image-name', name);
@@ -49,7 +50,7 @@ router.delete('/:ImageID', async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await removeImage(ImageID),
+      data: await removeImage(num(ImageID)),
     });
   } catch (error) {
     next(error);

@@ -3,7 +3,7 @@ export interface Collection {
 }
 
 export interface CollectionWithID extends Collection {
-  ID: string;
+  ID: number;
 }
 
 export interface partOfCollection {

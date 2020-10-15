@@ -2,7 +2,7 @@ import SQL from 'sql-template-tag';
 import db from '../../db';
 import type { BrandWithID } from './types';
 
-export function getBrand(BrandID: string): Promise<BrandWithID> {
+export function getBrand(BrandID: number): Promise<BrandWithID> {
   const { sql, values } = SQL`
     SELECT *
     FROM Brand

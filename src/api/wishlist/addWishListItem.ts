@@ -2,7 +2,7 @@ import SQL from 'sql-template-tag';
 import db from '../../db';
 import type { WishListWithShoe } from './types';
 
-async function addWishListItem(CustomerID: string, ShoeID: string): Promise<WishListWithShoe> {
+async function addWishListItem(CustomerID: number, ShoeID: number): Promise<WishListWithShoe> {
   const { sql, values } = SQL`
       INSERT INTO "WishList"
       (

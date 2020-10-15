@@ -2,7 +2,7 @@ import SQL from 'sql-template-tag';
 import db from '../../db';
 import type { StyleWithID } from './types';
 
-export function getStyle(StyleID: string): Promise<StyleWithID> {
+export function getStyle(StyleID: number): Promise<StyleWithID> {
   const { sql, values } = SQL`
     SELECT *
     FROM Collection

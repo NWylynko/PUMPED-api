@@ -3,7 +3,7 @@ import db from '../../db';
 import type { Customer } from './types';
 import objectToSQLupdate from '../../utils/objectToSQLupdate';
 
-async function updateCustomer(CustomerID: string, fields: Customer) {
+async function updateCustomer(CustomerID: number, fields: Customer) {
   let sql = 'UPDATE "Customer" SET ';
 
   sql += objectToSQLupdate(fields);

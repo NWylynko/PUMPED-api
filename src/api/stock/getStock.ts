@@ -2,7 +2,7 @@ import SQL from 'sql-template-tag';
 import db from '../../db';
 import type { StockWithID } from './types';
 
-export function getStock(StockID: string): Promise<StockWithID> {
+export function getStock(StockID: number): Promise<StockWithID> {
   const { sql, values } = SQL`
     SELECT *
     FROM Stock

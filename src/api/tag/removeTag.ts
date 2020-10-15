@@ -1,7 +1,7 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
 
-export async function removeTag(TagID: string) {
+export async function removeTag(TagID: number) {
   const { sql, values } = SQL`
     DELETE FROM "Tag"
     WHERE ID = ${TagID}

@@ -4,16 +4,16 @@ export interface basicColour {
 }
 
 export interface ShoeColour extends basicColour {
-  ImageID: string;
+  ImageID: number;
 }
 
 export interface Colour extends basicColour {
-  ShoeID: string;
-  ImageIDs: string[];
+  ShoeID: number;
+  ImageIDs: number[];
 }
 
 export interface ColourWithID extends Colour {
-  ID: string;
+  ID: number;
 }
 
 export interface partOfColour {

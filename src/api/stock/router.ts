@@ -6,6 +6,7 @@ import { getStock } from './getStock';
 import { addStock } from './addStock';
 import { updateStock } from './updateStock';
 import { removeStock } from './removeStock';
+import num from '../../utils/num';
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.get('/:StockID', async (req, res, next) => {
   try {
     const { StockID } = req.params;
 
-    const result = await getStock(StockID);
+    const result = await getStock(num(StockID));
 
     res.json({
       success: true,
@@ -48,7 +49,7 @@ router.patch('/:StockID', requireJsonBody, async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await updateStock(StockID, fields),
+      data: await updateStock(num(StockID), fields),
     });
   } catch (error) {
     next(error);
@@ -62,7 +63,7 @@ router.delete('/:StockID', async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await removeStock(StockID),
+      data: await removeStock(num(StockID)),
     });
   } catch (error) {
     next(error);

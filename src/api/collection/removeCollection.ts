@@ -1,7 +1,7 @@
-import db from '../../db';
 import SQL from 'sql-template-tag';
+import db from '../../db';
 
-export async function removeCollection(CollectionID: string) {
+export async function removeCollection(CollectionID: number) {
   const { sql, values } = SQL`
     DELETE FROM "Collection"
     WHERE ID = ${CollectionID}

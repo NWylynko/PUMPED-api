@@ -6,6 +6,7 @@ import { getBrand } from './getBrand';
 import { addBrand } from './addBrand';
 import { updateBrand } from './updateBrand';
 import { removeBrand } from './removeBrand';
+import num from '../../utils/num';
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.get('/:BrandID', async (req, res, next) => {
   try {
     const { BrandID } = req.params;
 
-    const result = await getBrand(BrandID);
+    const result = await getBrand(num(BrandID));
 
     res.json({
       success: true,
@@ -48,7 +49,7 @@ router.patch('/:BrandID', requireJsonBody, async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await updateBrand(BrandID, fields),
+      data: await updateBrand(num(BrandID), fields),
     });
   } catch (error) {
     next(error);
@@ -62,7 +63,7 @@ router.delete('/:BrandID', async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await removeBrand(BrandID),
+      data: await removeBrand(num(BrandID)),
     });
   } catch (error) {
     next(error);

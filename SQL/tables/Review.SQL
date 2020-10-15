@@ -6,7 +6,7 @@ CREATE TABLE "Review" (
 		AND "stars" <= 5
 	),
 	"message" TEXT,
-	"timestamp" timestamp,
+	"timestamp" INTEGER,
 	PRIMARY KEY("ShoeID", "CustomerID"),
 	FOREIGN KEY("CustomerID") REFERENCES "Customer"("ID"),
 	FOREIGN KEY("ShoeID") REFERENCES "Shoe"("ID")

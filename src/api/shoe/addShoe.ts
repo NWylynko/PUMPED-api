@@ -3,6 +3,7 @@ import db from '../../db';
 import type { newShoe, newShoeWithID } from './types';
 
 const getIDOfNewShoe = (CoverImage: number): Promise<{ ID: number }> => {
+  // the cover image is unique so its safe to get the id from it
   const { sql, values } = SQL`
     SELECT ID
     FROM Shoe

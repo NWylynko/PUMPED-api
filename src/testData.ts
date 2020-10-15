@@ -53,7 +53,7 @@ const addTestData = async () => {
     CollectionID: 1,
     CoverImage: 3,
   }); // id 1
-  await addColour({ ShoeID: '1', ImageIDs: ['3'], colour: 'White/Hyper', hex: '#dcdddf' }); // id 1
+  await addColour({ ShoeID: 1, ImageIDs: [3], colour: 'White/Hyper', hex: '#dcdddf' }); // id 1
   await addStock({ ShoeID: 1, ColourID: 1, size: 11, stock: 2 }); // id 1
   await addStock({ ShoeID: 1, ColourID: 1, size: 10, stock: 3 }); // id 2
 
@@ -70,7 +70,7 @@ const addTestData = async () => {
     CoverImage: 4,
     tags: [1, 2],
   }); // id 2
-  await addColour({ ShoeID: '2', ImageIDs: ['4'], colour: 'White/Jade', hex: '#b5ccb0' }); // id 2
+  await addColour({ ShoeID: 2, ImageIDs: [4], colour: 'White/Jade', hex: '#b5ccb0' }); // id 2
   await addStock({ ShoeID: 2, ColourID: 2, size: 9, stock: 3 }); // id 3
 
   await addImage(path.resolve(__dirname, '../testData/zoom-rize-2-by-you.jpg'), 'zoom-rize-2-by-you'); // id 5
@@ -86,7 +86,7 @@ const addTestData = async () => {
     CoverImage: 5,
     tags: [2, 3],
   }); // id 3
-  await addColour({ ShoeID: '3', ImageIDs: ['5'], colour: 'Red', hex: '#c42933' }); // id 3
+  await addColour({ ShoeID: 3, ImageIDs: [5], colour: 'Red', hex: '#c42933' }); // id 3
   await addStock({ ShoeID: 3, ColourID: 3, size: 10, stock: 1 }); // id 4
 
   await addImage(path.resolve(__dirname, '../testData/Supernova.jpg'), 'Supernova'); // id 6
@@ -102,7 +102,7 @@ const addTestData = async () => {
     CoverImage: 6,
     tags: [3, 4],
   }); // id 4
-  await addColour({ ShoeID: '4', ImageIDs: ['6'], colour: 'CLOUD WHITE', hex: '#dedde2' }); // id 4
+  await addColour({ ShoeID: 4, ImageIDs: [6], colour: 'CLOUD WHITE', hex: '#dedde2' }); // id 4
   await addStock({ ShoeID: 4, ColourID: 4, size: 8, stock: 4 }); // id 5
 
   await addImage(path.resolve(__dirname, '../testData/Predator_Mutator_20.1_Firm_Ground_Boots.jpg'), 'Predator_Mutator_20.1_Firm_Ground_Boots'); // id 7
@@ -118,7 +118,7 @@ const addTestData = async () => {
     CoverImage: 7,
     tags: [4, 1],
   }); // id 5
-  await addColour({ ShoeID: '5', ImageIDs: ['7'], colour: 'GOLD METALLIC', hex: '#ae9869' }); // id 5
+  await addColour({ ShoeID: 5, ImageIDs: [7], colour: 'GOLD METALLIC', hex: '#ae9869' }); // id 5
   await addStock({ ShoeID: 5, ColourID: 5, size: 12, stock: 3 }); // id 6
 
   await addImage(path.resolve(__dirname, '../testData/Dame_7.jpg'), 'Dame_7'); // id 8
@@ -134,27 +134,27 @@ const addTestData = async () => {
     CoverImage: 8,
     tags: [1, 3],
   }); // id 6
-  await addColour({ ShoeID: '6', ImageIDs: ['8'], colour: 'GLORY PURPLE', hex: '#673a68' }); // id 6
+  await addColour({ ShoeID: 6, ImageIDs: [8], colour: 'GLORY PURPLE', hex: '#673a68' }); // id 6
   await addStock({ ShoeID: 6, ColourID: 6, size: 9, stock: 6 }); // id 7
 
   await addCustomer({ firstName: 'Bobby', lastName: 'Boo' }); // id 1
   await addCustomer({ firstName: 'Pippy', lastName: 'Nippy' }); // id 2
   await addCustomer({ firstName: 'Whip', lastName: 'Nah' }); // id 3
 
-  await addCartItem('1', '1', { StockID: 1, quantity: 1 });
-  await addCartItem('1', '2', { StockID: 3, quantity: 2 });
-  await checkoutCart('1', 'the moon');
-  await addCartItem('1', '2', { StockID: 3, quantity: 4 });
-  await addCartItem('1', '4', { StockID: 5, quantity: 2 });
+  await addCartItem(1, 1, { StockID: 1, quantity: 1 });
+  await addCartItem(1, 2, { StockID: 3, quantity: 2 });
+  await checkoutCart(1, 'the moon');
+  await addCartItem(1, 2, { StockID: 3, quantity: 4 });
+  await addCartItem(1, 4, { StockID: 5, quantity: 2 });
 
-  await addWishListItem('1', '2');
-  await addWishListItem('2', '4');
-  await addWishListItem('1', '5');
+  await addWishListItem(1, 2);
+  await addWishListItem(2, 4);
+  await addWishListItem(1, 5);
 
-  await addReview('1', '1', { stars: 3, message: 'nice', timestamp: Date.now() });
+  await addReview(1, 1, { stars: 3, message: 'nice', timestamp: Date.now() });
 
   await addImage(path.resolve(__dirname, '../testData/air-zoom-tempo-next-black.jpg'), 'air-zoom-tempo-next-black'); // id 9
-  await addColour({ ShoeID: '1', ImageIDs: ['9'], colour: 'Black/Glacier Ice', hex: '#252527' }); // id 7
+  await addColour({ ShoeID: 1, ImageIDs: [9], colour: 'Black/Glacier Ice', hex: '#252527' }); // id 7
 };
 
 export default addTestData;

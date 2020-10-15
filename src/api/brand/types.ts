@@ -5,7 +5,7 @@ export interface Brand {
 }
 
 export interface BrandWithID extends Brand {
-  ID: string;
+  ID: number;
 }
 
 export interface partOfBrand {

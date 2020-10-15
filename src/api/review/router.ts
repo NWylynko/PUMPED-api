@@ -7,6 +7,7 @@ import addReview from './addReview';
 import updateReview from './updateReview';
 import removeReview from './removeReview';
 import getCustomerID from '../../utils/getCustomerID';
+import num from '../../utils/num';
 
 const router = express.Router();
 
@@ -15,7 +16,7 @@ router.get('/:ShoeID', async (req, res, next) => {
   try {
     const { ShoeID } = req.params;
 
-    const results: Review[] = await getReviews(ShoeID);
+    const results: Review[] = await getReviews(num(ShoeID));
 
     res.json({
       success: true,
@@ -36,7 +37,7 @@ router.post('/:ShoeID', requireJsonBody, async (req, res, next) => {
 
     const json: reviewDetails = req.body;
 
-    const result = await addReview(CustomerID, ShoeID, json);
+    const result = await addReview(CustomerID, num(ShoeID), json);
 
     res.json({
       success: true,
@@ -55,7 +56,7 @@ router.patch('/:ShoeID', requireJsonBody, async (req, res, next) => {
 
     const fields: partOfReview = req.body;
 
-    const result = await updateReview(CustomerID, ShoeID, fields);
+    const result = await updateReview(CustomerID, num(ShoeID), fields);
 
     res.json({
       success: true,
@@ -72,7 +73,7 @@ router.delete('/:ShoeID', async (req, res, next) => {
     const { ShoeID } = req.params;
     const CustomerID = getCustomerID(req);
 
-    const result = await removeReview(CustomerID, ShoeID);
+    const result = await removeReview(CustomerID, num(ShoeID));
 
     res.json({
       success: true,

@@ -6,7 +6,7 @@ export interface Stock {
 }
 
 export interface StockWithID extends Stock {
-  ID: string;
+  ID: number;
 }
 
 export interface partOfStock {

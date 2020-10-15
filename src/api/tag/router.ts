@@ -6,6 +6,7 @@ import { getTag } from './getTag';
 import { addTag } from './addTag';
 import { updateTag } from './updateTag';
 import { removeTag } from './removeTag';
+import num from '../../utils/num';
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.get('/:TagID', async (req, res, next) => {
   try {
     const { TagID } = req.params;
 
-    const result = await getTag(TagID);
+    const result = await getTag(num(TagID));
 
     res.json({
       success: true,
@@ -48,7 +49,7 @@ router.patch('/:TagID', requireJsonBody, async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await updateTag(TagID, fields),
+      data: await updateTag(num(TagID), fields),
     });
   } catch (error) {
     next(error);
@@ -62,7 +63,7 @@ router.delete('/:TagID', async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await removeTag(TagID),
+      data: await removeTag(num(TagID)),
     });
   } catch (error) {
     next(error);

@@ -3,7 +3,7 @@ export interface Section {
 }
 
 export interface SectionWithID extends Section {
-  ID: string;
+  ID: number;
 }
 
 export interface partOfSection {

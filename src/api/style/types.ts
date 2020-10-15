@@ -3,7 +3,7 @@ export interface Style {
 }
 
 export interface StyleWithID extends Style {
-  ID: string;
+  ID: number;
 }
 
 export interface partOfStyle {

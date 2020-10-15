@@ -4,7 +4,7 @@ import objectToSQLupdate from '../../utils/objectToSQLupdate';
 import type { partOfOrderItem } from '../order';
 import getCartOrderIDFromCustomerID from './getCartOrderIDFromCustomerID';
 
-async function updateCartItem(CustomerID: string, ShoeID: string, fields: partOfOrderItem) {
+async function updateCartItem(CustomerID: number, ShoeID: number, fields: partOfOrderItem) {
   const OrderID = await getCartOrderIDFromCustomerID(CustomerID);
 
   let sql = 'UPDATE "OrderItem" SET ';

@@ -1,5 +1,5 @@
-import db from '../../db';
 import SQL from 'sql-template-tag';
+import db from '../../db';
 import { Collection } from './types';
 
 export async function addCollection({ name }: Collection) {

@@ -2,7 +2,7 @@ import SQL from 'sql-template-tag';
 import db from '../../db';
 import type { Order } from './types';
 
-function getOrders(CustomerID: string): Promise<Order[]> {
+function getOrders(CustomerID: number): Promise<Order[]> {
   const { sql, values } = SQL`
     SELECT *
     FROM "Order"

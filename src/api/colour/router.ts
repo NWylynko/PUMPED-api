@@ -6,6 +6,7 @@ import { getColour } from './getColour';
 import { addColour } from './addColour';
 import { updateColour } from './updateColour';
 import { removeColour } from './removeColour';
+import num from '../../utils/num';
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.get('/:ColourID', async (req, res, next) => {
   try {
     const { ColourID } = req.params;
 
-    const result = await getColour(ColourID);
+    const result = await getColour(num(ColourID));
 
     res.json({
       success: true,
@@ -48,7 +49,7 @@ router.patch('/:ColourID', requireJsonBody, async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await updateColour(ColourID, fields),
+      data: await updateColour(num(ColourID), fields),
     });
   } catch (error) {
     next(error);
@@ -62,7 +63,7 @@ router.delete('/:ColourID', async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await removeColour(ColourID),
+      data: await removeColour(num(ColourID)),
     });
   } catch (error) {
     next(error);

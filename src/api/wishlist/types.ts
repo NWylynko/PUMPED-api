@@ -1,7 +1,7 @@
 export interface WishList {
-  CustomerID: string
+  CustomerID: number
 }
 
 export interface WishListWithShoe extends WishList {
-  ShoeID: string
+  ShoeID: number
 }

@@ -1,7 +1,7 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
 
-async function reCalculateStars(ShoeID: string) {
+async function reCalculateStars(ShoeID: number) {
   const { sql, values } = SQL`
     UPDATE Shoe
     SET

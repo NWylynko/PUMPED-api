@@ -2,7 +2,7 @@ import SQL from 'sql-template-tag';
 import db from '../../db';
 import type { Shoe } from '../shoe/types';
 
-function getWishlist(CustomerID: string): Promise<Shoe[]> {
+function getWishlist(CustomerID: number): Promise<Shoe[]> {
   const { sql, values } = SQL`
       SELECT
         Shoe.ID,

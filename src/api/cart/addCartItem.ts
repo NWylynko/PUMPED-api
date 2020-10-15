@@ -4,8 +4,8 @@ import getCartOrderIDFromCustomerID from './getCartOrderIDFromCustomerID';
 import db from '../../db';
 
 export async function addCartItem(
-  CustomerID: string,
-  ShoeID: string,
+  CustomerID: number,
+  ShoeID: number,
   { StockID, quantity = 1 }: partOfOrderItem,
 ) {
   if (!StockID) {

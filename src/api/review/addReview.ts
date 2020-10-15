@@ -3,7 +3,7 @@ import db from '../../db';
 import type { reviewDetails } from './types';
 import reCalculateStars from './reCalculateStars';
 
-async function addReview(CustomerID: string, ShoeID: string, {
+async function addReview(CustomerID: number, ShoeID: number, {
   stars,
   message,
   timestamp,

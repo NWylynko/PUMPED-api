@@ -6,6 +6,7 @@ import type { Order, OrderItem } from './types';
 
 import getOrders from './getOrders';
 import getOrderItems from './getOrderItems';
+import num from '../../utils/num';
 
 const router = express.Router();
 
@@ -31,7 +32,7 @@ router.get('/:OrderID', async (req, res, next) => {
   try {
     const { OrderID } = req.params;
 
-    const results: OrderItem[] = await getOrderItems(OrderID);
+    const results: OrderItem[] = await getOrderItems(num(OrderID));
 
     res.json({
       success: true,

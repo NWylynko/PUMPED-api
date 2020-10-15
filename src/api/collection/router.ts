@@ -6,6 +6,7 @@ import { getCollection } from './getCollection';
 import { addCollection } from './addCollection';
 import { updateCollection } from './updateCollection';
 import { removeCollection } from './removeCollection';
+import num from '../../utils/num';
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.get('/:CollectionID', async (req, res, next) => {
   try {
     const { CollectionID } = req.params;
 
-    const result = await getCollection(CollectionID);
+    const result = await getCollection(num(CollectionID));
 
     res.json({
       success: true,
@@ -48,7 +49,7 @@ router.patch('/:CollectionID', requireJsonBody, async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await updateCollection(CollectionID, fields),
+      data: await updateCollection(num(CollectionID), fields),
     });
   } catch (error) {
     next(error);
@@ -62,7 +63,7 @@ router.delete('/:CollectionID', async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await removeCollection(CollectionID),
+      data: await removeCollection(num(CollectionID)),
     });
   } catch (error) {
     next(error);

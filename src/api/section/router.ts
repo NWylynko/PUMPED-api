@@ -6,6 +6,7 @@ import { getSection } from './getSection';
 import { addSection } from './addSection';
 import { updateSection } from './updateSection';
 import { removeSection } from './removeSection';
+import num from '../../utils/num';
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.get('/:SectionID', async (req, res, next) => {
   try {
     const { SectionID } = req.params;
 
-    const result = await getSection(SectionID);
+    const result = await getSection(num(SectionID));
 
     res.json({
       success: true,
@@ -48,7 +49,7 @@ router.patch('/:SectionID', requireJsonBody, async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await updateSection(SectionID, fields),
+      data: await updateSection(num(SectionID), fields),
     });
   } catch (error) {
     next(error);
@@ -62,7 +63,7 @@ router.delete('/:SectionID', async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await removeSection(SectionID),
+      data: await removeSection(num(SectionID)),
     });
   } catch (error) {
     next(error);

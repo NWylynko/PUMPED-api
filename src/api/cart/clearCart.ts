@@ -2,7 +2,7 @@ import SQL from 'sql-template-tag';
 import db from '../../db';
 import getCartOrderIDFromCustomerID from './getCartOrderIDFromCustomerID';
 
-async function clearCart(CustomerID: string) {
+async function clearCart(CustomerID: number) {
   const OrderID = await getCartOrderIDFromCustomerID(CustomerID);
 
   const { sql, values } = SQL`

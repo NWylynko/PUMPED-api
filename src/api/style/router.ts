@@ -6,6 +6,7 @@ import { getStyle } from './getStyle';
 import { addStyle } from './addStyle';
 import { updateStyle } from './updateStyle';
 import { removeStyle } from './removeStyle';
+import num from '../../utils/num';
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.get('/:StyleID', async (req, res, next) => {
   try {
     const { StyleID } = req.params;
 
-    const result = await getStyle(StyleID);
+    const result = await getStyle(num(StyleID));
 
     res.json({
       success: true,
@@ -48,7 +49,7 @@ router.patch('/:StyleID', requireJsonBody, async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await updateStyle(StyleID, fields),
+      data: await updateStyle(num(StyleID), fields),
     });
   } catch (error) {
     next(error);
@@ -62,7 +63,7 @@ router.delete('/:StyleID', async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await removeStyle(StyleID),
+      data: await removeStyle(num(StyleID)),
     });
   } catch (error) {
     next(error);

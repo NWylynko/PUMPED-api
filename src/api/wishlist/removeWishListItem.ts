@@ -2,7 +2,7 @@ import SQL from 'sql-template-tag';
 import db from '../../db';
 import type { WishListWithShoe } from './types';
 
-async function removeWishListItem(CustomerID: string, ShoeID: string): Promise<WishListWithShoe> {
+async function removeWishListItem(CustomerID: number, ShoeID: number): Promise<WishListWithShoe> {
   const { sql, values } = SQL`
       DELETE FROM "WishList"
       WHERE CustomerID = ${CustomerID}

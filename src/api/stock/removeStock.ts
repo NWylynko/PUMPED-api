@@ -1,7 +1,7 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
 
-export async function removeStock(StockID: string) {
+export async function removeStock(StockID: number) {
   const { sql, values } = SQL`
     DELETE FROM "Stock"
     WHERE ID = ${StockID}

@@ -3,7 +3,7 @@ export interface Tag {
 }
 
 export interface TagWithID extends Tag {
-  ID: string;
+  ID: number;
 }
 
 export interface partOfTag {

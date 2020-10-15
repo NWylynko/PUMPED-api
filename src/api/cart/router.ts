@@ -9,6 +9,7 @@ import updateCartItem from './updateCartItem';
 
 import { addCartItem } from './addCartItem';
 import { getCart } from './getCart';
+import num from '../../utils/num';
 
 const router = express.Router();
 
@@ -33,7 +34,7 @@ router.post('/add/:ShoeID', requireJsonBody, async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await addCartItem(CustomerID, ShoeID, fields),
+      data: await addCartItem(CustomerID, num(ShoeID), fields),
     });
   } catch (error) {
     next(error);
@@ -68,7 +69,7 @@ router.patch('/:ShoeID', async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await updateCartItem(CustomerID, ShoeID, fields),
+      data: await updateCartItem(CustomerID, num(ShoeID), fields),
     });
   } catch (error) {
     next(error);
@@ -83,7 +84,7 @@ router.delete('/:ShoeID', async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await removeCartItem(CustomerID, ShoeID),
+      data: await removeCartItem(CustomerID, num(ShoeID)),
     });
   } catch (error) {
     next(error);

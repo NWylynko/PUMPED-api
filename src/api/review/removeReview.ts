@@ -1,7 +1,7 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
 
-async function removeReview(CustomerID: string, ShoeID: string) {
+async function removeReview(CustomerID: number, ShoeID: number) {
   const { sql, values } = SQL`
     DELETE FROM "Review"
     WHERE Review.ShoeID = ${ShoeID}

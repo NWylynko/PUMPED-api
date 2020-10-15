@@ -3,7 +3,7 @@ import db from '../../db';
 import { getCartOrderIDFromCustomerID } from './getCartOrderIDFromCustomerID';
 import type { ShoePrices } from './types';
 
-async function checkoutCart(CustomerID: string, address: string) {
+async function checkoutCart(CustomerID: number, address: string) {
   // get order id, this gets the id of the order of cart for the customer
   // each customer will have an order that has activeCart set to 1 (true)
   // this then gets converted to a placed order when the customer checks out

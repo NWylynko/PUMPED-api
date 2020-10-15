@@ -6,6 +6,7 @@ import addWishListItem from './addWishListItem';
 import clearWishList from './clearWishList';
 import getWishlist from './getWishlist';
 import removeWishListItem from './removeWishListItem';
+import num from '../../utils/num';
 
 const router = express.Router();
 
@@ -34,7 +35,7 @@ router.post('/:ShoeID', async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await addWishListItem(CustomerID, ShoeID),
+      data: await addWishListItem(CustomerID, num(ShoeID)),
     });
   } catch (error) {
     next(error);
@@ -49,7 +50,7 @@ router.delete('/:ShoeID', async (req, res, next) => {
 
     res.json({
       success: true,
-      data: await removeWishListItem(CustomerID, ShoeID),
+      data: await removeWishListItem(CustomerID, num(ShoeID)),
     });
   } catch (error) {
     next(error);

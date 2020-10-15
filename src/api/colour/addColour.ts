@@ -2,7 +2,7 @@ import SQL from 'sql-template-tag';
 import db from '../../db';
 import type { Colour } from './types';
 
-function getIDOfNewColour(ShoeID: string, colour: string, hex: string): Promise<{ ID: string }> {
+function getIDOfNewColour(ShoeID: number, colour: string, hex: string): Promise<{ ID: number }> {
   const { sql, values } = SQL`
       SELECT ID
       FROM Colour
@@ -14,7 +14,7 @@ function getIDOfNewColour(ShoeID: string, colour: string, hex: string): Promise<
   return db.get(sql, values);
 }
 
-function connectImageToColour(ColourID: string, ImageID: string) {
+function connectImageToColour(ColourID: number, ImageID: number) {
   const { sql, values } = SQL`
       INSERT INTO ColourImage
       (
