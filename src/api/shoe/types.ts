@@ -11,7 +11,7 @@ export interface Shoe {
   Style: string;
   Section: string;
   Collection: string;
-  stars: number;
+  Stars: number;
   CoverImage: number;
 }
 

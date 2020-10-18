@@ -6,9 +6,9 @@ function getShoe(ShoeID: number): Promise<Shoe> {
   const { sql, values } = SQL`
     SELECT
       Shoe.ID,
-      Shoe.Name,
-      Shoe.Description,
-      Shoe.Price,
+      Shoe.Name as "Name",
+      Shoe.Description as "Description",
+      Shoe.Price as "Price",
       Shoe.releaseDate,
       Shoe.Stars,
       Brand.name as "Brand",
