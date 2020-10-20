@@ -11,6 +11,7 @@ function getShoe(ShoeID: number): Promise<Shoe> {
       Shoe.Price as "Price",
       Shoe.releaseDate,
       Shoe.Stars,
+      Shoe.CoverImage,
       Brand.name as "Brand",
       Style.name as "Style",
       Section.name as "Section",
