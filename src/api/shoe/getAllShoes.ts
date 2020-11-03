@@ -42,8 +42,13 @@ async function getAllShoes({
   const results: ShoeWithColours[] = await Promise.all(shoes.map(async (shoe) => {
     // eslint-disable-next-line no-shadow
     const { sql, values } = SQL`
-      SELECT Colour.colour, Colour.hex, ColourImage.ImageID
-      FROM Colour, ColourImage
+      SELECT
+        Colour.colour,
+        Colour.hex,
+        ColourImage.ImageID
+      FROM 
+        Colour,
+        ColourImage
       WHERE Colour.ID = ColourImage.ColourID
       AND ShoeID = ${shoe.ID}`;
     const colours = await db.all(sql, values);
