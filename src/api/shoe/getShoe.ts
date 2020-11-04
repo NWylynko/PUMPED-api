@@ -13,6 +13,7 @@ async function getShoe(ShoeID: number): Promise<ShoeWithColours> {
       Shoe.Stars,
       Shoe.CoverImage,
       Brand.name as "Brand",
+      Brand.icon as "BrandIcon",
       Style.name as "Style",
       Section.name as "Section",
       Collection.name as "Collection"
