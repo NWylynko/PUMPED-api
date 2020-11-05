@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import type { Shoe, GetAllShoes, ShoeWithDetails } from './types';
+import type { Shoe, GetAllShoes, ShoeWithColours } from './types';
 
 async function getAllShoes({
   brand = '%',
@@ -9,7 +9,7 @@ async function getAllShoes({
   collection = '%',
   name = '%',
   stars = 0,
-}: GetAllShoes): Promise<ShoeWithDetails[]> {
+}: GetAllShoes): Promise<ShoeWithColours[]> {
   const { sql, values } = SQL`
     SELECT
       Shoe.ID,
@@ -39,7 +39,7 @@ async function getAllShoes({
 
   const shoes: Shoe[] = await db.all(sql, values);
 
-  const results: ShoeWithDetails[] = await Promise.all(shoes.map(async (shoe) => {
+  const results: ShoeWithColours[] = await Promise.all(shoes.map(async (shoe) => {
     // eslint-disable-next-line no-shadow
     const { sql, values } = SQL`
       SELECT DISTINCT

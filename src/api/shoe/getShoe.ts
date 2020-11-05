@@ -1,6 +1,8 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
 import type { Shoe, ShoeWithDetails } from './types';
+import type { ShoeColour } from '../colour/types';
+import type { StockWithID } from '../stock/types';
 
 async function getShoe(ShoeID: number): Promise<ShoeWithDetails> {
   const { sql, values } = SQL`
@@ -29,20 +31,32 @@ async function getShoe(ShoeID: number): Promise<ShoeWithDetails> {
 
   const result: ShoeWithDetails = await (async () => {
     // eslint-disable-next-line no-shadow
-    const { sql, values } = SQL`
-      SELECT
-        Colour.colour,
-        Colour.hex,
-        ColourImage.ImageID
-      FROM 
-        Colour,
-        ColourImage
-      WHERE Colour.ID = ColourImage.ColourID
-      AND ShoeID = ${shoe.ID}
-      ORDER BY Colour.ID
+    const colours = await (async (): Promise<ShoeColour[]> => {
+      const { sql, values } = SQL`
+        SELECT
+          Colour.colour,
+          Colour.hex,
+          ColourImage.ImageID
+        FROM 
+          Colour,
+          ColourImage
+        WHERE Colour.ID = ColourImage.ColourID
+        AND ShoeID = ${shoe.ID}
+        ORDER BY Colour.ID
       `;
-    const colours = await db.all(sql, values);
-    return { ...shoe, colours };
+      return db.all(sql, values);
+    })();
+
+    const stock = await (async (): Promise<StockWithID[]> => {
+      const { sql, values } = SQL`
+        SELECT *
+        FROM Stock
+        AND ShoeID = ${shoe.ID}
+      `;
+      return db.all(sql, values);
+    })();
+
+    return { ...shoe, colours, stock };
   })();
 
   return result;

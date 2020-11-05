@@ -1,4 +1,5 @@
 import type { ShoeColour } from '../colour/types';
+import type { StockWithID } from '../stock/types';
 
 export interface Shoe {
   ID: number;
@@ -45,8 +46,12 @@ export interface newShoeWithID extends newShoe {
   ID: number;
 }
 
-export interface ShoeWithDetails extends Shoe {
+export interface ShoeWithColours extends Shoe {
   colours: ShoeColour[];
+}
+
+export interface ShoeWithDetails extends ShoeWithColours {
+  stock: StockWithID[];
 }
 
 export interface GetAllShoes {
