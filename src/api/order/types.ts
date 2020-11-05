@@ -20,3 +20,8 @@ export interface partOfOrderItem {
   StockID?: number;
   quantity?: number;
 }
+
+export interface partOfOrderItemWithIDs extends partOfOrderItem {
+  CustomerID: number;
+  ShoeID: number;
+}
