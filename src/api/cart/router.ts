@@ -1,7 +1,7 @@
 import express from 'express';
 import { requireJsonBody } from '../../middlewares';
 import getCustomerID from '../../utils/getCustomerID';
-import { partOfOrderItem } from '../order';
+import type { partOfOrderItem } from '../order';
 import checkoutCart from './checkoutCart';
 import clearCart from './clearCart';
 import removeCartItem from './removeCartItem';

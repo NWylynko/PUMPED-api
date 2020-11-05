@@ -10,7 +10,7 @@ import type {
   Shoe,
   PartOfShoe,
   newShoe,
-  ShoeWithColours,
+  ShoeWithDetails,
   GetAllShoes,
 } from './types';
 
@@ -26,7 +26,7 @@ export type {
   Shoe,
   PartOfShoe,
   newShoe,
-  ShoeWithColours,
+  ShoeWithDetails as ShoeWithColours,
   GetAllShoes,
 };
 

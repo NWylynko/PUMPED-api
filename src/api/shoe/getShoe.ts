@@ -1,8 +1,8 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import type { Shoe, ShoeWithColours } from './types';
+import type { Shoe, ShoeWithDetails } from './types';
 
-async function getShoe(ShoeID: number): Promise<ShoeWithColours> {
+async function getShoe(ShoeID: number): Promise<ShoeWithDetails> {
   const { sql, values } = SQL`
     SELECT
       Shoe.ID,
@@ -27,7 +27,7 @@ async function getShoe(ShoeID: number): Promise<ShoeWithColours> {
 
   const shoe: Shoe = await db.get(sql, values);
 
-  const result: ShoeWithColours = await (async () => {
+  const result: ShoeWithDetails = await (async () => {
     // eslint-disable-next-line no-shadow
     const { sql, values } = SQL`
       SELECT

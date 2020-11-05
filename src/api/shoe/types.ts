@@ -45,7 +45,7 @@ export interface newShoeWithID extends newShoe {
   ID: number;
 }
 
-export interface ShoeWithColours extends Shoe {
+export interface ShoeWithDetails extends Shoe {
   colours: ShoeColour[];
 }
 
