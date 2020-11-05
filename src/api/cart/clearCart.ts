@@ -3,7 +3,7 @@ import db from '../../db';
 import getCartOrderIDFromCustomerID from './getCartOrderIDFromCustomerID';
 import type { clearedCart } from './types';
 
-async function clearCart(CustomerID: number): promise<clearedCart> {
+async function clearCart(CustomerID: number): Promise<clearedCart> {
   const OrderID = await getCartOrderIDFromCustomerID(CustomerID);
 
   const { sql, values } = SQL`
