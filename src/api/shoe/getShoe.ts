@@ -51,7 +51,7 @@ async function getShoe(ShoeID: number): Promise<ShoeWithDetails> {
       const { sql, values } = SQL`
         SELECT *
         FROM Stock
-        AND ShoeID = ${shoe.ID}
+        WHERE ShoeID = ${shoe.ID}
       `;
       return db.all(sql, values);
     })();
