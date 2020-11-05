@@ -13,3 +13,7 @@ export interface partOfBrand {
   website?: string;
   icon?: string;
 }
+
+export interface partOfBrandWithID extends partOfBrand {
+  BrandID: number;
+}

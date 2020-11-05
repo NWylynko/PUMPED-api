@@ -1,8 +1,11 @@
 import db from '../../db';
 import objectToSQLupdate from '../../utils/objectToSQLupdate';
-import type { partOfBrand } from './types';
+import type { partOfBrand, partOfBrandWithID } from './types';
 
-export async function updateBrand(BrandID: number, fields: partOfBrand) {
+export async function updateBrand(
+  BrandID: number,
+  fields: partOfBrand,
+): Promise<partOfBrandWithID> {
   let sql = 'UPDATE "Brand" SET ';
 
   sql += objectToSQLupdate(fields);

@@ -2,7 +2,7 @@ import SQL from 'sql-template-tag';
 import db from '../../db';
 import type { Brand } from './types';
 
-export async function addBrand({ name, website, icon }: Brand) {
+export async function addBrand({ name, website, icon }: Brand): Promise<Brand> {
   const { sql, values } = SQL`
     INSERT INTO Brand
     (

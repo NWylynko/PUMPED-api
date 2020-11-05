@@ -1,7 +1,7 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
 
-export async function removeBrand(BrandID: number) {
+export async function removeBrand(BrandID: number): Promise<{BrandID: number}> {
   const { sql, values } = SQL`
     DELETE FROM "Brand"
     WHERE ID = ${BrandID}
