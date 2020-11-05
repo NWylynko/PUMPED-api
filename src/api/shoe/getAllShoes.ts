@@ -42,7 +42,7 @@ async function getAllShoes({
   const results: ShoeWithColours[] = await Promise.all(shoes.map(async (shoe) => {
     // eslint-disable-next-line no-shadow
     const { sql, values } = SQL`
-      SELECT
+      SELECT DISTINCT
         Colour.colour,
         Colour.hex,
         ColourImage.ImageID
@@ -50,7 +50,10 @@ async function getAllShoes({
         Colour,
         ColourImage
       WHERE Colour.ID = ColourImage.ColourID
-      AND ShoeID = ${shoe.ID}`;
+      AND ShoeID = ${shoe.ID}
+      GROUP BY Colour.hex
+      ORDER BY Colour.ID
+      `;
     const colours = await db.all(sql, values);
     return { ...shoe, colours };
   }));
