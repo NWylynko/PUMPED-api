@@ -1,8 +1,8 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import type { Customer } from './types';
+import type { Customer, CustomerWithID } from './types';
 
-const getIDOfNewCustomer = (firstName?: string, lastName?: string) => {
+const getIDOfNewCustomer = (firstName?: string, lastName?: string): Promise<{ ID: number }> => {
   const { sql, values } = SQL`
     SELECT ID
     FROM Customer
@@ -12,6 +12,7 @@ const getIDOfNewCustomer = (firstName?: string, lastName?: string) => {
 
   return db.get(sql, values);
 };
+
 const createCustomerCart = (CustomerID: number) => {
   const { sql, values } = SQL`
     INSERT INTO "Order"
@@ -29,7 +30,7 @@ const createCustomerCart = (CustomerID: number) => {
   return db.run(sql, values);
 };
 
-async function addCustomer({ firstName, lastName }: Customer) {
+async function addCustomer({ firstName, lastName }: Customer): Promise<CustomerWithID> {
   const { sql, values } = SQL`
     INSERT INTO Customer
     ( 
@@ -41,13 +42,17 @@ async function addCustomer({ firstName, lastName }: Customer) {
     )
   `;
 
-  await db.run(sql, values);
+  try {
+    await db.run(sql, values);
+  } catch (error) {
+    // customer already exists
+  }
 
   const { ID: CustomerID } = await getIDOfNewCustomer(firstName, lastName);
 
   await createCustomerCart(CustomerID);
 
-  return { firstName, lastName };
+  return { firstName, lastName, ID: CustomerID };
 }
 
 export default addCustomer;
