@@ -31,6 +31,21 @@ const createCustomerCart = (CustomerID: number) => {
 };
 
 async function addCustomer({ firstName, lastName }: Customer): Promise<CustomerWithID> {
+  const customer = await (async (): Promise<CustomerWithID> => {
+    const { sql, values } = SQL`
+    SELECT *
+    FROM Customer
+    WHERE firstName = ${firstName}
+    AND lastName = ${lastName}
+  `;
+
+    return db.get(sql, values);
+  })();
+
+  if (customer) {
+    return customer;
+  }
+
   const { sql, values } = SQL`
     INSERT INTO Customer
     ( 
@@ -42,11 +57,7 @@ async function addCustomer({ firstName, lastName }: Customer): Promise<CustomerW
     )
   `;
 
-  try {
-    await db.run(sql, values);
-  } catch (error) {
-    // customer already exists
-  }
+  await db.run(sql, values);
 
   const { ID: CustomerID } = await getIDOfNewCustomer(firstName, lastName);
 
