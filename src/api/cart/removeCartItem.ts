@@ -1,8 +1,9 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
 import getCartOrderIDFromCustomerID from './getCartOrderIDFromCustomerID';
+import type { removedCartItem } from './types';
 
-async function removeCartItem(CustomerID: number, ShoeID: number) {
+async function removeCartItem(CustomerID: number, ShoeID: number): Promise<removedCartItem> {
   const OrderID = await getCartOrderIDFromCustomerID(CustomerID);
 
   const { sql, values } = SQL`

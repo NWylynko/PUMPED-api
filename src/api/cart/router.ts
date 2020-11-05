@@ -77,7 +77,7 @@ router.patch('/:ShoeID', async (req, res, next) => {
 });
 
 router.delete('/:ShoeID', async (req, res, next) => {
-  // remove an order item
+  // remove a cart item
   try {
     const CustomerID = getCustomerID(req);
     const { ShoeID } = req.params;
@@ -92,7 +92,7 @@ router.delete('/:ShoeID', async (req, res, next) => {
 });
 
 router.delete('/', async (req, res, next) => {
-  // remove an order
+  // clear the cart
   try {
     const CustomerID = getCustomerID(req);
 
