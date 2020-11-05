@@ -30,7 +30,7 @@ async function getShoe(ShoeID: number): Promise<ShoeWithColours> {
   const result: ShoeWithColours = await (async () => {
     // eslint-disable-next-line no-shadow
     const { sql, values } = SQL`
-      SELECT DISTINCT
+      SELECT
         Colour.colour,
         Colour.hex,
         ColourImage.ImageID
@@ -39,7 +39,6 @@ async function getShoe(ShoeID: number): Promise<ShoeWithColours> {
         ColourImage
       WHERE Colour.ID = ColourImage.ColourID
       AND ShoeID = ${shoe.ID}
-      GROUP BY Colour.hex
       ORDER BY Colour.ID
       `;
     const colours = await db.all(sql, values);
