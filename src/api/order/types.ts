@@ -13,6 +13,7 @@ export interface OrderItem {
   StockID: number;
   quantity: number;
   price?: number;
+  currentPrice: number;
 }
 
 export interface partOfOrderItem {
