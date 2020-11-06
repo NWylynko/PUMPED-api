@@ -20,3 +20,13 @@ export interface partOfColour {
   colour?: string;
   hex?: string;
 }
+
+export interface addedColour {
+  ShoeID: number;
+  colour: string;
+  hex: string;
+}
+
+export interface updatedColour extends ColourWithID {
+  ColourID: number;
+}

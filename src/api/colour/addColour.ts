@@ -1,6 +1,6 @@
 import SQL from 'sql-template-tag';
 import db from '../../db';
-import type { Colour } from './types';
+import type { Colour, addedColour } from './types';
 
 function getIDOfNewColour(ShoeID: number, colour: string, hex: string): Promise<{ ID: number }> {
   const { sql, values } = SQL`
@@ -31,7 +31,7 @@ function connectImageToColour(ColourID: number, ImageID: number) {
 
 export async function addColour({
   ShoeID, ImageIDs, colour, hex,
-}: Colour) {
+}: Colour): Promise<addedColour> {
   await (() => {
     const { sql, values } = SQL`
       INSERT INTO Colour
