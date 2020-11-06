@@ -1,12 +1,13 @@
 import express from 'express';
 import { isEmpty } from '../../utils/isEmpty';
 import getCustomerID from '../../utils/getCustomerID';
+import num from '../../utils/num';
 
 import addWishListItem from './addWishListItem';
+import isInWishlist from './isInWishlist';
 import clearWishList from './clearWishList';
 import getWishlist from './getWishlist';
 import removeWishListItem from './removeWishListItem';
-import num from '../../utils/num';
 
 const router = express.Router();
 
@@ -21,6 +22,23 @@ router.get('/', async (req, res, next) => {
       success: true,
       data: results,
       empty: isEmpty(results),
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/:ShoeID', async (req, res, next) => {
+  // returns true if the shoe is in the customeres wishlist or false if not
+  try {
+    const { ShoeID } = req.params;
+    const CustomerID = getCustomerID(req);
+
+    const result = await isInWishlist(CustomerID, ShoeID);
+
+    res.json({
+      success: true,
+      data: result,
     });
   } catch (error) {
     next(error);
