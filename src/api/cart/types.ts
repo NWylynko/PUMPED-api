@@ -13,3 +13,11 @@ export interface clearedCart {
   CustomerID: number;
   OrderID: number;
 }
+
+export interface AddedToCart {
+  CustomerID: number;
+  ShoeID: number;
+  OrderID: number;
+  StockID: number;
+  quantity: number;
+}
