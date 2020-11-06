@@ -1,5 +1,7 @@
 /* eslint-disable object-curly-newline */
 import path from 'path';
+import fs from 'fs/promises';
+
 import { addBrand } from './api/brand';
 import { addCollection } from './api/collection';
 import { addSection } from './api/section';
@@ -14,9 +16,11 @@ import { addReview } from './api/review';
 import { addTag } from './api/tag';
 import { addWishListItem } from './api/wishlist';
 
+const image = (dir: string) => fs.readFile(path.resolve(__dirname, '../testData/', dir));
+
 const addTestData = async () => {
-  await addImage(path.resolve(__dirname, '../testData/nike.png'), 'Nike icon'); // id 1
-  await addImage(path.resolve(__dirname, '../testData/adidas.png'), 'Adidas icon'); // id 2
+  await addImage(await image('nike.png'), 'Nike icon'); // id 1
+  await addImage(await image('adidas.png'), 'Adidas icon'); // id 2
 
   await addBrand({ name: 'Nike', website: 'nike.com', icon: 1 }); // id 1
   await addBrand({ name: 'Adidas', website: 'nike.com.au', icon: 2 }); // id 2
@@ -41,7 +45,7 @@ const addTestData = async () => {
   await addTag({ tag: 'speed' }); // id 3
   await addTag({ tag: 'style' }); // id 4
 
-  await addImage(path.resolve(__dirname, '../testData/air-zoom-tempo-next.jpg'), 'air-zoom-tempo-next'); // id 3
+  await addImage(await image('air-zoom-tempo-next.jpg'), 'air-zoom-tempo-next'); // id 3
   await addShoe({
     name: 'Air Zoom Tempo NEXT%',
     description: 'The Nike Air Zoom Tempo NEXT% mixes durability with a design that helps push you towards your personal best.',
@@ -57,7 +61,7 @@ const addTestData = async () => {
   await addStock({ ShoeID: 1, ColourID: 1, size: 11, stock: 2 }); // id 1
   await addStock({ ShoeID: 1, ColourID: 1, size: 10, stock: 3 }); // id 2
 
-  await addImage(path.resolve(__dirname, '../testData/air-zoom-alphafly-next.jpg'), 'air-zoom-alphafly-next'); // id 4
+  await addImage(await image('air-zoom-alphafly-next.jpg'), 'air-zoom-alphafly-next'); // id 4
   await addShoe({
     name: 'Air Zoom Alphafly NEXT%',
     description: 'Gear up for your next personal best with the Nike Air Zoom Alphafly NEXT%.',
@@ -73,7 +77,7 @@ const addTestData = async () => {
   await addColour({ ShoeID: 2, ImageIDs: [4], colour: 'White/Jade', hex: '#b5ccb0' }); // id 2
   await addStock({ ShoeID: 2, ColourID: 2, size: 9, stock: 3 }); // id 3
 
-  await addImage(path.resolve(__dirname, '../testData/zoom-rize-2-by-you.jpg'), 'zoom-rize-2-by-you'); // id 5
+  await addImage(await image('zoom-rize-2-by-you.jpg'), 'zoom-rize-2-by-you'); // id 5
   await addShoe({
     name: 'Zoom Rize 2 By You',
     description: "It's finally here: The Nike Zoom Rize 2 By You is a customisable shoe that's brimming with team spirit.",
@@ -89,7 +93,7 @@ const addTestData = async () => {
   await addColour({ ShoeID: 3, ImageIDs: [5], colour: 'Red', hex: '#c42933' }); // id 3
   await addStock({ ShoeID: 3, ColourID: 3, size: 10, stock: 1 }); // id 4
 
-  await addImage(path.resolve(__dirname, '../testData/Supernova.jpg'), 'Supernova'); // id 6
+  await addImage(await image('Supernova.jpg'), 'Supernova'); // id 6
   await addShoe({
     name: 'SUPERNOVA',
     description: "When you're ready to get serious about running, you're ready for adidas Supernova Shoes.",
@@ -105,7 +109,7 @@ const addTestData = async () => {
   await addColour({ ShoeID: 4, ImageIDs: [6], colour: 'CLOUD WHITE', hex: '#dedde2' }); // id 4
   await addStock({ ShoeID: 4, ColourID: 4, size: 8, stock: 4 }); // id 5
 
-  await addImage(path.resolve(__dirname, '../testData/Predator_Mutator_20.1_Firm_Ground_Boots.jpg'), 'Predator_Mutator_20.1_Firm_Ground_Boots'); // id 7
+  await addImage(await image('Predator_Mutator_20.1_Firm_Ground_Boots.jpg'), 'Predator_Mutator_20.1_Firm_Ground_Boots'); // id 7
   await addShoe({
     name: 'MUTATOR 20.1 FIRM GROUND BOOTS',
     description: 'Your confidence consumes them. Your vision leaves them with nowhere to hide.',
@@ -121,7 +125,7 @@ const addTestData = async () => {
   await addColour({ ShoeID: 5, ImageIDs: [7], colour: 'GOLD METALLIC', hex: '#ae9869' }); // id 5
   await addStock({ ShoeID: 5, ColourID: 5, size: 12, stock: 3 }); // id 6
 
-  await addImage(path.resolve(__dirname, '../testData/Dame_7.jpg'), 'Dame_7'); // id 8
+  await addImage(await image('Dame_7.jpg'), 'Dame_7'); // id 8
   await addShoe({
     name: '7',
     description: 'No one in the game today sees the court quite like Damian Lillard.',
@@ -153,8 +157,8 @@ const addTestData = async () => {
 
   await addReview(1, 1, { stars: 3, message: 'nice', timestamp: Date.now() });
 
-  await addImage(path.resolve(__dirname, '../testData/air-zoom-tempo-next-black.jpg'), 'air-zoom-tempo-next-black'); // id 9
-  await addImage(path.resolve(__dirname, '../testData/air-zoom-tempo-next-black-2.jpg'), 'air-zoom-tempo-next-black-2'); // id 10
+  await addImage(await image('air-zoom-tempo-next-black.jpg'), 'air-zoom-tempo-next-black'); // id 9
+  await addImage(await image('air-zoom-tempo-next-black-2.jpg'), 'air-zoom-tempo-next-black-2'); // id 10
   await addColour({ ShoeID: 1, ImageIDs: [9, 10], colour: 'Black/Glacier Ice', hex: '#252527' }); // id 7
 };
 
